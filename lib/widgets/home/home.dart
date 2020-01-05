@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/004_animated-container/animated-container.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
 
     var navItems = [
       header,
+      getNavItem(Icons.view_carousel, "Animated Container", AnimatedContainerPage.routeName),
       getNavItem(Icons.expand_more, "Expanded", ExpandedPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
@@ -48,11 +50,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: Container(
-        child: Center(
-          child: Text("Use the menu to check the widgets"),
-        ),
-      ),
+      body: Center(child: Text("Use the menu to check the widgets")),
       drawer: getNavDrawer(context),
     );
   }
