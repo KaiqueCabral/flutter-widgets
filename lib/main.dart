@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_tests/themes/theme-blue.dart';
 import 'package:widget_tests/widgets/003_wrap/wrap.dart';
 import 'package:widget_tests/widgets/004_animated-container/animated-container.dart';
+import 'package:widget_tests/widgets/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
 import 'package:widget_tests/widgets/002_expanded/expanded.dart';
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
       theme: appTheme("blue"),
       home: HomePage(title: 'Flutter Study Home Page'),
       routes: <String, WidgetBuilder>{
-        SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
+        AnimatedContainerPage.routeName: (BuildContext context) => AnimatedContainerPage(),
         ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
+        OpacityPage.routeName: (BuildContext context) => OpacityPage(),
+        SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
         WrapPage.routeName: (BuildContext context) => WrapPage(),
-        AnimatedContainerPage.routeName: (BuildContext context) => AnimatedContainerPage()
       }
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/004_animated-container/animated-container.dart';
+import 'package:widget_tests/widgets/005_opacity/opacity.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
       header,
       getNavItem(Icons.view_carousel, "Animated Container", AnimatedContainerPage.routeName),
       getNavItem(Icons.expand_more, "Expanded", ExpandedPage.routeName),
+      getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
