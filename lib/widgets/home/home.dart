@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/004_animated-container/animated-container.dart';
 import 'package:widget_tests/widgets/005_opacity/opacity.dart';
+import 'package:widget_tests/widgets/006_future-builder/future-builder.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -22,8 +23,14 @@ class _HomePageState extends State<HomePage> {
 
     ListTile getNavItem(IconData icon, String title, String routeName) {
       return ListTile(
-        leading: Icon(icon),
-        title: Text(title),
+        leading: Icon(
+          icon,
+          color: Colors.lightBlueAccent,
+        ),
+        title: Text(
+          title,
+          style: TextStyle(color: Colors.black),
+        ),
         onTap: () {
           setState(() {
             Navigator.of(context).pop();
@@ -36,7 +43,8 @@ class _HomePageState extends State<HomePage> {
     var navItems = [
       header,
       getNavItem(Icons.view_carousel, "Animated Container", AnimatedContainerPage.routeName),
-      getNavItem(Icons.expand_more, "Expanded", ExpandedPage.routeName),
+      getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),
+      getNavItem(Icons.arrow_forward_ios, "Future Builder", FutureBuilderPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
