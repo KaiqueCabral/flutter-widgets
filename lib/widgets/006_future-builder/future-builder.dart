@@ -65,7 +65,7 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
                                 'Title: ${snapshot.data.title}',
                                 style: TextStyle(fontSize: 18),
                                 textAlign: TextAlign.center,
-                                ),
+                              ),
                             ),
                             Divider(),
                             Container(
@@ -89,7 +89,7 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 16),
                         child: Text('Error: ${snapshot.error}'),
-                      )
+                      ),
                     ];
                   } else {
                     children = <Widget>[
@@ -101,7 +101,7 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
                       const Padding(
                         padding: EdgeInsets.only(top: 16),
                         child: Text('Awaiting result...'),
-                      )
+                      ),
                     ];
                   }
 

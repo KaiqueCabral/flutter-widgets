@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/themes/theme-blue.dart';
+import 'package:widget_tests/widgets/007_fade-transition/fade-transition.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
 import 'package:widget_tests/widgets/002_expanded/expanded.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         AnimatedContainerPage.routeName: (BuildContext context) => AnimatedContainerPage(),
         ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
+        FadeTransitionPage.routeName: (BuildContext context) => FadeTransitionPage(),
         FutureBuilderPage.routeName: (BuildContext context) => FutureBuilderPage(),
         OpacityPage.routeName: (BuildContext context) => OpacityPage(),
         SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
