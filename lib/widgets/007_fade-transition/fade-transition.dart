@@ -17,7 +17,7 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
     );
 
     _curveAnimation = CurvedAnimation(parent: _animationController, curve: Curves.easeIn);
@@ -26,14 +26,14 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
 
     _animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        _animationController.reverse();
+        _animationController.stop();
       } else if (status == AnimationStatus.dismissed) {
         _animationController.forward();
       }
     });
 
     //This command is here to start the animation when the page starts
-    _animationController.forward();
+    //_animationController.forward();
 
     super.initState();
   }
@@ -65,6 +65,7 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
         backgroundColor: Colors.lightBlue,
         onPressed: () {
           setState(() {
+            _animationController.reset();
             _animationController.forward();
           });
         },
