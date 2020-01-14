@@ -22,6 +22,7 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
   Animation<double> _translateButton;
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
+  String _text = "Testing Floating Action Button";
 
   @override
   void initState() {
@@ -56,6 +57,7 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
   }
 
   animate() {
+    _text = "Testing Floating Action Button";
     if (!isOpened) {
       _animationController.forward();
     } else {
@@ -68,8 +70,13 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
   Widget add() {
     return new Container(
       child: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          setState(() {
+            _text = "Add";
+          });
+        },
         tooltip: "Add",
+        heroTag: "btnAdd",
         child: Icon(Icons.add),
       ),
     );
@@ -78,8 +85,13 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
   Widget image() {
     return new Container(
       child: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          setState(() {
+            _text = "Image";
+          });
+        },
         tooltip: "Image",
+        heroTag: "btnImage",
         child: Icon(Icons.image),
       ),
     );
@@ -88,8 +100,13 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
   Widget inbox() {
     return new Container(
       child: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          setState(() {
+            _text = "Inbox";
+          });
+        },
         tooltip: "Inbox",
+        heroTag: "btnInbox",
         child: Icon(Icons.inbox),
       ),
     );
@@ -100,6 +117,7 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
       backgroundColor: _buttonColor.value,
       onPressed: animate,
       tooltip: "Toggle",
+      heroTag: "btnToggle",
       child: AnimatedIcon(
         icon: AnimatedIcons.menu_close,
         progress: _animateIcon,
@@ -113,11 +131,24 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
       appBar: AppBar(
         title: Text("Floating Action Button"),
       ),
-      body: Container(
-        alignment: Alignment.bottomCenter,
-        child: Text("Click here! >>> ", style: 
-        TextStyle(fontSize: 24, color: Colors.grey),),
-        padding: EdgeInsets.all(25),
+      body: Row(
+        children: <Widget>[
+          Container(
+            child: Text(_text),
+            alignment: Alignment.center,
+            color: Colors.grey,
+            padding: EdgeInsets.all(20),
+            width: 225,
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              "Click here! >>> ",
+              style: TextStyle(fontSize: 24, color: Colors.grey),
+            ),
+            padding: EdgeInsets.all(25),
+          ),
+        ],
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
