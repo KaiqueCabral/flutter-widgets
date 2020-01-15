@@ -3,6 +3,7 @@ import 'package:widget_tests/themes/theme-blue.dart';
 import 'package:widget_tests/widgets/007_fade-transition/fade-transition.dart';
 import 'package:widget_tests/widgets/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/009_page-view/page-view.dart';
+import 'package:widget_tests/widgets/010_table/table.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
 import 'package:widget_tests/widgets/002_expanded/expanded.dart';
@@ -18,21 +19,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: appTheme("blue"),
-      home: HomePage(title: 'Flutter Widgets Home Page'),
-      routes: <String, WidgetBuilder>{
-        AnimatedContainerPage.routeName: (BuildContext context) => AnimatedContainerPage(),
-        ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
-        FadeTransitionPage.routeName: (BuildContext context) => FadeTransitionPage(),
-        FloatingActionButtonPage.routeName: (BuildContext context) => FloatingActionButtonPage(),
-        FutureBuilderPage.routeName: (BuildContext context) => FutureBuilderPage(),
-        OpacityPage.routeName: (BuildContext context) => OpacityPage(),
-        PageViewPage.routeName: (BuildContext context) => PageViewPage(),
-        SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
-        WrapPage.routeName: (BuildContext context) => WrapPage(),
-      }
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: appTheme("blue"),
+        home: HomePage(title: 'Flutter Widgets Home Page'),
+        routes: <String, WidgetBuilder>{
+          AnimatedContainerPage.routeName: (BuildContext context) =>
+              AnimatedContainerPage(),
+          ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
+          FadeTransitionPage.routeName: (BuildContext context) =>
+              FadeTransitionPage(),
+          FloatingActionButtonPage.routeName: (BuildContext context) =>
+              FloatingActionButtonPage(),
+          FutureBuilderPage.routeName: (BuildContext context) =>
+              FutureBuilderPage(),
+          OpacityPage.routeName: (BuildContext context) => OpacityPage(),
+          PageViewPage.routeName: (BuildContext context) => PageViewPage(),
+          SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
+          TablePage.routeName: (BuildContext context) => TablePage(),
+          WrapPage.routeName: (BuildContext context) => WrapPage(),
+        });
   }
 }

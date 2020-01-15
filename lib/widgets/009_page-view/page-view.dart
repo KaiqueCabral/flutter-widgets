@@ -37,7 +37,10 @@ class PageViewPage extends StatelessWidget {
         title: Text("Page View"),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.swap_horiz, color: Colors.white,),
+            icon: Icon(
+              Icons.swap_horiz,
+              color: Colors.white,
+            ),
             onPressed: null,
           )
         ],

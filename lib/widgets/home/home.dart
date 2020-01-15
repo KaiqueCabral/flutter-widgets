@@ -5,6 +5,7 @@ import 'package:widget_tests/widgets/006_future-builder/future-builder.dart';
 import 'package:widget_tests/widgets/007_fade-transition/fade-transition.dart';
 import 'package:widget_tests/widgets/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/009_page-view/page-view.dart';
+import 'package:widget_tests/widgets/010_table/table.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -45,14 +46,18 @@ class _HomePageState extends State<HomePage> {
 
     var navItems = [
       header,
-      getNavItem(Icons.view_carousel, "Animated Container", AnimatedContainerPage.routeName),
+      getNavItem(Icons.view_carousel, "Animated Container",
+          AnimatedContainerPage.routeName),
       getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),
       getNavItem(Icons.mood, "Fade Transition", FadeTransitionPage.routeName),
-      getNavItem(Icons.touch_app, "Floating Action Button", FloatingActionButtonPage.routeName),
-      getNavItem(Icons.arrow_forward_ios, "Future Builder", FutureBuilderPage.routeName),
+      getNavItem(Icons.touch_app, "Floating Action Button",
+          FloatingActionButtonPage.routeName),
+      getNavItem(Icons.arrow_forward_ios, "Future Builder",
+          FutureBuilderPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.pageview, "Page View", PageViewPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
+      getNavItem(Icons.table_chart, "Table", TablePage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
     ];
