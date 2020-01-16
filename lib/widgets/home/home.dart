@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/013_fade-in-image/fade-in-image.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -51,6 +52,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.view_carousel, "Animated Container",
           AnimatedContainerPage.routeName),
       getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),
+      getNavItem(Icons.mood, "Fade In Image", FadeInImagePage.routeName),
       getNavItem(Icons.mood, "Fade Transition", FadeTransitionPage.routeName),
       getNavItem(Icons.touch_app, "Floating Action Button",
           FloatingActionButtonPage.routeName),
