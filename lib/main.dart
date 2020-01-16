@@ -5,6 +5,7 @@ import 'package:widget_tests/widgets/008_floating-action-button/floating-action-
 import 'package:widget_tests/widgets/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/010_table/table.dart';
 import 'package:widget_tests/widgets/011_sliver-app-bar/sliver-app-bar.dart';
+import 'package:widget_tests/widgets/012_sliver-list-grid/sliver-list-grid.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
 import 'package:widget_tests/widgets/002_expanded/expanded.dart';
@@ -39,6 +40,8 @@ class MyApp extends StatelessWidget {
           SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
           SliverAppBarPage.routeName: (BuildContext context) =>
               SliverAppBarPage(),
+          SliverListGridPage.routeName: (BuildContext context) =>
+              SliverListGridPage(),
           TablePage.routeName: (BuildContext context) => TablePage(),
           WrapPage.routeName: (BuildContext context) => WrapPage(),
         });

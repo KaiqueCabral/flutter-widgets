@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'about.dart';
+import 'drawer-header.dart';
+import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
+import 'package:widget_tests/widgets/002_expanded/expanded.dart';
+import 'package:widget_tests/widgets/003_wrap/wrap.dart';
 import 'package:widget_tests/widgets/004_animated-container/animated-container.dart';
 import 'package:widget_tests/widgets/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/006_future-builder/future-builder.dart';
@@ -7,11 +12,7 @@ import 'package:widget_tests/widgets/008_floating-action-button/floating-action-
 import 'package:widget_tests/widgets/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/010_table/table.dart';
 import 'package:widget_tests/widgets/011_sliver-app-bar/sliver-app-bar.dart';
-import 'about.dart';
-import 'drawer-header.dart';
-import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
-import 'package:widget_tests/widgets/002_expanded/expanded.dart';
-import 'package:widget_tests/widgets/003_wrap/wrap.dart';
+import 'package:widget_tests/widgets/012_sliver-list-grid/sliver-list-grid.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -60,6 +61,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver App Bar",
           SliverAppBarPage.routeName),
+      getNavItem(Icons.calendar_view_day, "Sliver List/Grid",
+          SliverListGridPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
