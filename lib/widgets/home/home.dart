@@ -6,6 +6,7 @@ import 'package:widget_tests/widgets/007_fade-transition/fade-transition.dart';
 import 'package:widget_tests/widgets/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/010_table/table.dart';
+import 'package:widget_tests/widgets/011_sliver-app-bar/sliver-app-bar.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -57,6 +58,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.pageview, "Page View", PageViewPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
+      getNavItem(Icons.calendar_view_day, "Sliver App Bar",
+          SliverAppBarPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
