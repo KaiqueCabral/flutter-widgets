@@ -26,7 +26,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
                 alignment: Alignment.bottomCenter,
                 child: FadeInImage.memoryNetwork(
                   fadeInDuration: Duration(
-                    seconds: 2,
+                    seconds: 1,
                   ),
                   fadeInCurve: Curves.easeInToLinear,
                   placeholder: kTransparentImage,
@@ -45,7 +45,9 @@ class _FadeInImagePage extends State<FadeInImagePage> {
                   ),
                   fadeInCurve: Curves.easeInToLinear,
                   placeholder: 'assets/images/loading.gif',
-                  image: 'assets/images/flutter-fade-in-image.jpg',
+                  image:
+                      'https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=200',
+                  //image has to be an URL
                   height: 300,
                 ),
               ),
@@ -60,10 +62,12 @@ class _FadeInImagePage extends State<FadeInImagePage> {
           color: Colors.white,
         ),
         onPressed: () {
-          setState(() {
-            _imageURL =
-                "https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=400";
-          });
+          setState(
+            () {
+              _imageURL =
+                  "https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=400";
+            },
+          );
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

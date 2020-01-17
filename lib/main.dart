@@ -13,6 +13,7 @@ import 'package:widget_tests/widgets/010_table/table.dart';
 import 'package:widget_tests/widgets/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/012_sliver-list-grid/sliver-list-grid.dart';
 import 'package:widget_tests/widgets/013_fade-in-image/fade-in-image.dart';
+import 'package:widget_tests/widgets/014_stream-builder/stream-builder.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -45,6 +46,8 @@ class MyApp extends StatelessWidget {
               SliverAppBarPage(),
           SliverListGridPage.routeName: (BuildContext context) =>
               SliverListGridPage(),
+          StreamBuilderPage.routeName: (BuildContext context) =>
+              StreamBuilderPage(),
           TablePage.routeName: (BuildContext context) => TablePage(),
           WrapPage.routeName: (BuildContext context) => WrapPage(),
         });

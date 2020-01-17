@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/013_fade-in-image/fade-in-image.dart';
+import 'package:widget_tests/widgets/014_stream-builder/stream-builder.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -52,7 +53,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.view_carousel, "Animated Container",
           AnimatedContainerPage.routeName),
       getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),
-      getNavItem(Icons.mood, "Fade In Image", FadeInImagePage.routeName),
+      getNavItem(
+          Icons.image_aspect_ratio, "Fade In Image", FadeInImagePage.routeName),
       getNavItem(Icons.mood, "Fade Transition", FadeTransitionPage.routeName),
       getNavItem(Icons.touch_app, "Floating Action Button",
           FloatingActionButtonPage.routeName),
@@ -65,6 +67,8 @@ class _HomePageState extends State<HomePage> {
           SliverAppBarPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver List/Grid",
           SliverListGridPage.routeName),
+      getNavItem(
+          Icons.view_stream, "Stream Builder", StreamBuilderPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
