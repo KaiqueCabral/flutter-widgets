@@ -14,6 +14,7 @@ import 'package:widget_tests/widgets/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/012_sliver-list-grid/sliver-list-grid.dart';
 import 'package:widget_tests/widgets/013_fade-in-image/fade-in-image.dart';
 import 'package:widget_tests/widgets/014_stream-builder/stream-builder.dart';
+import 'package:widget_tests/widgets/015_inherited-model/inherited-model.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -39,6 +40,8 @@ class MyApp extends StatelessWidget {
               FloatingActionButtonPage(),
           FutureBuilderPage.routeName: (BuildContext context) =>
               FutureBuilderPage(),
+          InheritedModelPage.routeName: (BuildContext context) =>
+              InheritedModelPage(),
           OpacityPage.routeName: (BuildContext context) => OpacityPage(),
           PageViewPage.routeName: (BuildContext context) => PageViewPage(),
           SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/widgets/013_fade-in-image/fade-in-image.dart';
-import 'package:widget_tests/widgets/014_stream-builder/stream-builder.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -15,6 +13,9 @@ import 'package:widget_tests/widgets/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/010_table/table.dart';
 import 'package:widget_tests/widgets/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/012_sliver-list-grid/sliver-list-grid.dart';
+import 'package:widget_tests/widgets/013_fade-in-image/fade-in-image.dart';
+import 'package:widget_tests/widgets/014_stream-builder/stream-builder.dart';
+import 'package:widget_tests/widgets/015_inherited-model/inherited-model.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -60,6 +61,7 @@ class _HomePageState extends State<HomePage> {
           FloatingActionButtonPage.routeName),
       getNavItem(Icons.arrow_forward_ios, "Future Builder",
           FutureBuilderPage.routeName),
+      getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.pageview, "Page View", PageViewPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
