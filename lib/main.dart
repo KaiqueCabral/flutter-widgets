@@ -18,6 +18,7 @@ import 'package:widget_tests/widgets/015_inherited-model/inherited-model.dart';
 import 'package:widget_tests/widgets/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/017_hero/hero-details.dart';
 import 'package:widget_tests/widgets/017_hero/hero.dart';
+import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         AnimatedContainerPage.routeName: (BuildContext context) =>
             AnimatedContainerPage(),
         ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
+        CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
         ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
         FadeInImagePage.routeName: (BuildContext context) => FadeInImagePage(),
         FadeTransitionPage.routeName: (BuildContext context) =>

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/017_hero/hero.dart';
+import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -56,6 +57,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.view_carousel, "Animated Container",
           AnimatedContainerPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
+      getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
       getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),
       getNavItem(
           Icons.image_aspect_ratio, "Fade In Image", FadeInImagePage.routeName),
