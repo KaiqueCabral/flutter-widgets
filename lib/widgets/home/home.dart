@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/016_clip-r-rect/clip-r-rect.dart';
+import 'package:widget_tests/widgets/017_hero/hero.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -63,6 +64,7 @@ class _HomePageState extends State<HomePage> {
           FloatingActionButtonPage.routeName),
       getNavItem(Icons.arrow_forward_ios, "Future Builder",
           FutureBuilderPage.routeName),
+      getNavItem(Icons.transit_enterexit, "Hero", HeroPage.routeName),
       getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.pageview, "Page View", PageViewPage.routeName),
