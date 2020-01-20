@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/017_hero/hero.dart';
 import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
+import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -78,6 +79,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(
           Icons.view_stream, "Stream Builder", StreamBuilderPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
+      getNavItem(Icons.title, "Tooltip", TooltipPage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
     ];

@@ -19,6 +19,7 @@ import 'package:widget_tests/widgets/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/017_hero/hero-details.dart';
 import 'package:widget_tests/widgets/017_hero/hero.dart';
 import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
+import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         StreamBuilderPage.routeName: (BuildContext context) =>
             StreamBuilderPage(),
         TablePage.routeName: (BuildContext context) => TablePage(),
+        TooltipPage.routeName: (BuildContext context) => TooltipPage(),
         WrapPage.routeName: (BuildContext context) => WrapPage(),
       },
     );
