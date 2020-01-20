@@ -3,6 +3,7 @@ import 'package:widget_tests/widgets/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/017_hero/hero.dart';
 import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
+import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -63,6 +64,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(
           Icons.image_aspect_ratio, "Fade In Image", FadeInImagePage.routeName),
       getNavItem(Icons.mood, "Fade Transition", FadeTransitionPage.routeName),
+      getNavItem(Icons.add_box, "Fitted Box", FittedBoxPage.routeName),
       getNavItem(Icons.touch_app, "Floating Action Button",
           FloatingActionButtonPage.routeName),
       getNavItem(Icons.arrow_forward_ios, "Future Builder",

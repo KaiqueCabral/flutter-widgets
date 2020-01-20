@@ -20,6 +20,7 @@ import 'package:widget_tests/widgets/017_hero/hero-details.dart';
 import 'package:widget_tests/widgets/017_hero/hero.dart';
 import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
+import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         FadeInImagePage.routeName: (BuildContext context) => FadeInImagePage(),
         FadeTransitionPage.routeName: (BuildContext context) =>
             FadeTransitionPage(),
+        FittedBoxPage.routeName: (BuildContext context) => FittedBoxPage(),
         FloatingActionButtonPage.routeName: (BuildContext context) =>
             FloatingActionButtonPage(),
         FutureBuilderPage.routeName: (BuildContext context) =>
