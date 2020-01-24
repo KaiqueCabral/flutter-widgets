@@ -21,6 +21,7 @@ import 'package:widget_tests/widgets/017_hero/hero.dart';
 import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
+import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -53,6 +54,8 @@ class MyApp extends StatelessWidget {
         HeroDetailsPage.routeName: (BuildContext context) => HeroDetailsPage(),
         InheritedModelPage.routeName: (BuildContext context) =>
             InheritedModelPage(),
+        LayoutBuilderPage.routeName: (BuildContext context) =>
+            LayoutBuilderPage(),
         OpacityPage.routeName: (BuildContext context) => OpacityPage(),
         PageViewPage.routeName: (BuildContext context) => PageViewPage(),
         SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),

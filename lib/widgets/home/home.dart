@@ -4,6 +4,7 @@ import 'package:widget_tests/widgets/017_hero/hero.dart';
 import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
+import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -71,6 +72,7 @@ class _HomePageState extends State<HomePage> {
           FutureBuilderPage.routeName),
       getNavItem(Icons.transit_enterexit, "Hero", HeroPage.routeName),
       getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
+      getNavItem(Icons.pages, "Layout Builder", LayoutBuilderPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.pageview, "Page View", PageViewPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
