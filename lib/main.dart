@@ -25,6 +25,7 @@ import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
 import 'package:widget_tests/widgets/022_absorb-pointer/absorb-pointer.dart';
 import 'package:widget_tests/widgets/023_transform/transform.dart';
 import 'package:widget_tests/widgets/024_backdrop-filter/backdrop-filter.dart';
+import 'package:widget_tests/widgets/025_align/align.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       theme: appTheme(Colors.blue),
       home: HomePage(title: 'Flutter Widgets Home Page'),
       routes: <String, WidgetBuilder>{
+        AlignPage.routeName: (BuildContext context) => AlignPage(),
         AbsorbPointerPage.routeName: (BuildContext context) =>
             AbsorbPointerPage(),
         AnimatedContainerPage.routeName: (BuildContext context) =>
