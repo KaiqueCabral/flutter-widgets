@@ -22,6 +22,7 @@ import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
 import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
+import 'package:widget_tests/widgets/022_absorb-pointer/absorb-pointer.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -37,6 +38,8 @@ class MyApp extends StatelessWidget {
       theme: appTheme(Colors.blue),
       home: HomePage(title: 'Flutter Widgets Home Page'),
       routes: <String, WidgetBuilder>{
+        AbsorbPointerPage.routeName: (BuildContext context) =>
+            AbsorbPointerPage(),
         AnimatedContainerPage.routeName: (BuildContext context) =>
             AnimatedContainerPage(),
         ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),

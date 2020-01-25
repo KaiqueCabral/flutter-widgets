@@ -5,6 +5,7 @@ import 'package:widget_tests/widgets/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
 import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
+import 'package:widget_tests/widgets/022_absorb-pointer/absorb-pointer.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
 
     var navItems = [
       header,
+      getNavItem(Icons.mouse, "Absorb Pointer", AbsorbPointerPage.routeName),
       getNavItem(Icons.view_carousel, "Animated Container",
           AnimatedContainerPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
