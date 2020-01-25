@@ -24,6 +24,7 @@ import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
 import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
 import 'package:widget_tests/widgets/022_absorb-pointer/absorb-pointer.dart';
 import 'package:widget_tests/widgets/023_transform/transform.dart';
+import 'package:widget_tests/widgets/024_backdrop-filter/backdrop-filter.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -43,6 +44,8 @@ class MyApp extends StatelessWidget {
             AbsorbPointerPage(),
         AnimatedContainerPage.routeName: (BuildContext context) =>
             AnimatedContainerPage(),
+        BackdropFilterPage.routeName: (BuildContext context) =>
+            BackdropFilterPage(),
         ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
         CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
         ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),

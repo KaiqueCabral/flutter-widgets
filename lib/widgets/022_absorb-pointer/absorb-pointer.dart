@@ -84,77 +84,74 @@ class _AbsorbPointerPage extends State<AbsorbPointerPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                AbsorbPointer(
-                  child: RaisedButton(
-                    child: RichText(
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: "Disabled (absorbing: ",
-                            style: TextStyle(
-                              color: Colors.black,
+                Expanded(
+                  child: AbsorbPointer(
+                    child: RaisedButton(
+                      child: RichText(
+                        text: TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: "Disabled absorbing: ",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: "true",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                            TextSpan(
+                              text: "true",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: ")",
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            _text = "Disabled (absorbing: false)";
+                          },
+                        );
+                      },
                     ),
-                    onPressed: () {
-                      setState(
-                        () {
-                          _text = "Disabled (absorbing: false)";
-                        },
-                      );
-                    },
+                    absorbing: true,
                   ),
-                  absorbing: true,
                 ),
-                AbsorbPointer(
-                  child: RaisedButton(
-                    child: RichText(
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: "Disabled (absorbing: ",
-                            style: TextStyle(
-                              color: Colors.black,
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: AbsorbPointer(
+                    child: RaisedButton(
+                      child: RichText(
+                        text: TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: "Disabled absorbing: ",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: "false",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                            TextSpan(
+                              text: "false",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: ")",
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            _text = "Disabled (absorbing: false)";
+                          },
+                        );
+                      },
                     ),
-                    onPressed: () {
-                      setState(
-                        () {
-                          _text = "Disabled (absorbing: false)";
-                        },
-                      );
-                    },
+                    absorbing: false,
                   ),
-                  absorbing: false,
                 ),
               ],
             ),
