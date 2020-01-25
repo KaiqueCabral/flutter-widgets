@@ -78,6 +78,9 @@ class _AbsorbPointerPage extends State<AbsorbPointerPage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 80,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[

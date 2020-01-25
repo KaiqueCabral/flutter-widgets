@@ -6,6 +6,7 @@ import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
 import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
 import 'package:widget_tests/widgets/022_absorb-pointer/absorb-pointer.dart';
+import 'package:widget_tests/widgets/023_transform/transform.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -86,6 +87,7 @@ class _HomePageState extends State<HomePage> {
           Icons.view_stream, "Stream Builder", StreamBuilderPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
       getNavItem(Icons.title, "Tooltip", TooltipPage.routeName),
+      getNavItem(Icons.transform, "Transform", TransformPage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
     ];

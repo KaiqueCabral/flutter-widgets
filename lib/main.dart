@@ -23,6 +23,7 @@ import 'package:widget_tests/widgets/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/020_fitted-box/fitted-box.dart';
 import 'package:widget_tests/widgets/021_layout-builder/layout-builder.dart';
 import 'package:widget_tests/widgets/022_absorb-pointer/absorb-pointer.dart';
+import 'package:widget_tests/widgets/023_transform/transform.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
             StreamBuilderPage(),
         TablePage.routeName: (BuildContext context) => TablePage(),
         TooltipPage.routeName: (BuildContext context) => TooltipPage(),
+        TransformPage.routeName: (BuildContext context) => TransformPage(),
         WrapPage.routeName: (BuildContext context) => WrapPage(),
       },
     );
