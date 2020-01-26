@@ -26,6 +26,7 @@ import 'package:widget_tests/widgets/022_absorb-pointer/absorb-pointer.dart';
 import 'package:widget_tests/widgets/023_transform/transform.dart';
 import 'package:widget_tests/widgets/024_backdrop-filter/backdrop-filter.dart';
 import 'package:widget_tests/widgets/025_align/align.dart';
+import 'package:widget_tests/widgets/026_positioned/positioned.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
             LayoutBuilderPage(),
         OpacityPage.routeName: (BuildContext context) => OpacityPage(),
         PageViewPage.routeName: (BuildContext context) => PageViewPage(),
+        PositionedPage.routeName: (BuildContext context) => PositionedPage(),
         SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
         SliverAppBarPage.routeName: (BuildContext context) =>
             SliverAppBarPage(),
