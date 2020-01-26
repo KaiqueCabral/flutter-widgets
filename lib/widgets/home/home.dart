@@ -10,6 +10,7 @@ import 'package:widget_tests/widgets/023_transform/transform.dart';
 import 'package:widget_tests/widgets/024_backdrop-filter/backdrop-filter.dart';
 import 'package:widget_tests/widgets/025_align/align.dart';
 import 'package:widget_tests/widgets/026_positioned/positioned.dart';
+import 'package:widget_tests/widgets/027_animated-builder/animated-builder.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -66,6 +67,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.vertical_align_bottom, "Align", AlignPage.routeName),
       getNavItem(Icons.view_carousel, "Animated Container",
           AnimatedContainerPage.routeName),
+      getNavItem(Icons.view_carousel, "Animated Builder",
+          AnimatedBuilderPage.routeName),
       getNavItem(Icons.filter, "Backdrop Filter", BackdropFilterPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
       getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
