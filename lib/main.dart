@@ -28,6 +28,7 @@ import 'package:widget_tests/widgets/024_backdrop-filter/backdrop-filter.dart';
 import 'package:widget_tests/widgets/025_align/align.dart';
 import 'package:widget_tests/widgets/026_positioned/positioned.dart';
 import 'package:widget_tests/widgets/027_animated-builder/animated-builder.dart';
+import 'package:widget_tests/widgets/028_dismissible/dismissible.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
             BackdropFilterPage(),
         ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
         CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
+        DismissiblePage.routeName: (BuildContext context) => DismissiblePage(),
         ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
         FadeInImagePage.routeName: (BuildContext context) => FadeInImagePage(),
         FadeTransitionPage.routeName: (BuildContext context) =>
