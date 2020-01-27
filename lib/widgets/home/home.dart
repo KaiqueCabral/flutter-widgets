@@ -12,6 +12,7 @@ import 'package:widget_tests/widgets/025_align/align.dart';
 import 'package:widget_tests/widgets/026_positioned/positioned.dart';
 import 'package:widget_tests/widgets/027_animated-builder/animated-builder.dart';
 import 'package:widget_tests/widgets/028_dismissible/dismissible.dart';
+import 'package:widget_tests/widgets/029_sized-box/sized-box.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -91,6 +92,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(
           Icons.vertical_align_top, "Positioned", PositionedPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
+      getNavItem(
+          Icons.photo_size_select_large, "Sized Box", SizedBoxPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver App Bar",
           SliverAppBarPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver List/Grid",

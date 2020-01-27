@@ -29,6 +29,7 @@ import 'package:widget_tests/widgets/025_align/align.dart';
 import 'package:widget_tests/widgets/026_positioned/positioned.dart';
 import 'package:widget_tests/widgets/027_animated-builder/animated-builder.dart';
 import 'package:widget_tests/widgets/028_dismissible/dismissible.dart';
+import 'package:widget_tests/widgets/029_sized-box/sized-box.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -75,6 +76,7 @@ class MyApp extends StatelessWidget {
         PageViewPage.routeName: (BuildContext context) => PageViewPage(),
         PositionedPage.routeName: (BuildContext context) => PositionedPage(),
         SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
+        SizedBoxPage.routeName: (BuildContext context) => SizedBoxPage(),
         SliverAppBarPage.routeName: (BuildContext context) =>
             SliverAppBarPage(),
         SliverListGridPage.routeName: (BuildContext context) =>
