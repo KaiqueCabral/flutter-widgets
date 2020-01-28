@@ -30,6 +30,7 @@ import 'package:widget_tests/widgets/026_positioned/positioned.dart';
 import 'package:widget_tests/widgets/027_animated-builder/animated-builder.dart';
 import 'package:widget_tests/widgets/028_dismissible/dismissible.dart';
 import 'package:widget_tests/widgets/029_sized-box/sized-box.dart';
+import 'package:widget_tests/widgets/030_value-listenable-builder/value-listenable-builder.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -86,6 +87,10 @@ class MyApp extends StatelessWidget {
         TablePage.routeName: (BuildContext context) => TablePage(),
         TooltipPage.routeName: (BuildContext context) => TooltipPage(),
         TransformPage.routeName: (BuildContext context) => TransformPage(),
+        ValueListenableBuilderPage.routeName: (BuildContext context) =>
+            ValueListenableBuilderPage(
+              title: "Value Listenable Builder",
+            ),
         WrapPage.routeName: (BuildContext context) => WrapPage(),
       },
     );

@@ -13,6 +13,7 @@ import 'package:widget_tests/widgets/026_positioned/positioned.dart';
 import 'package:widget_tests/widgets/027_animated-builder/animated-builder.dart';
 import 'package:widget_tests/widgets/028_dismissible/dismissible.dart';
 import 'package:widget_tests/widgets/029_sized-box/sized-box.dart';
+import 'package:widget_tests/widgets/030_value-listenable-builder/value-listenable-builder.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -103,6 +104,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
       getNavItem(Icons.title, "Tooltip", TooltipPage.routeName),
       getNavItem(Icons.transform, "Transform", TransformPage.routeName),
+      getNavItem(Icons.queue, "Value Listenable Builder",
+          ValueListenableBuilderPage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),
       aboutChild
     ];
