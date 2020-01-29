@@ -15,6 +15,7 @@ import 'package:widget_tests/widgets/028_dismissible/dismissible.dart';
 import 'package:widget_tests/widgets/029_sized-box/sized-box.dart';
 import 'package:widget_tests/widgets/030_value-listenable-builder/value-listenable-builder.dart';
 import 'package:widget_tests/widgets/031_draggable/draggable.dart';
+import 'package:widget_tests/widgets/032_animated-list/animated-list.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -69,10 +70,11 @@ class _HomePageState extends State<HomePage> {
       header,
       getNavItem(Icons.mouse, "Absorb Pointer", AbsorbPointerPage.routeName),
       getNavItem(Icons.vertical_align_bottom, "Align", AlignPage.routeName),
-      getNavItem(Icons.view_carousel, "Animated Container",
-          AnimatedContainerPage.routeName),
       getNavItem(Icons.view_carousel, "Animated Builder",
           AnimatedBuilderPage.routeName),
+      getNavItem(Icons.view_carousel, "Animated Container",
+          AnimatedContainerPage.routeName),
+      getNavItem(Icons.line_style, "Animated List", AnimatedListPage.routeName),
       getNavItem(Icons.filter, "Backdrop Filter", BackdropFilterPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
       getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
