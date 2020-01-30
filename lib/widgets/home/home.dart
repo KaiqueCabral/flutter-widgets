@@ -16,6 +16,7 @@ import 'package:widget_tests/widgets/029_sized-box/sized-box.dart';
 import 'package:widget_tests/widgets/030_value-listenable-builder/value-listenable-builder.dart';
 import 'package:widget_tests/widgets/031_draggable/draggable.dart';
 import 'package:widget_tests/widgets/032_animated-list/animated-list.dart';
+import 'package:widget_tests/widgets/033_flexible/flexible.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -85,6 +86,7 @@ class _HomePageState extends State<HomePage> {
           Icons.image_aspect_ratio, "Fade In Image", FadeInImagePage.routeName),
       getNavItem(Icons.mood, "Fade Transition", FadeTransitionPage.routeName),
       getNavItem(Icons.add_box, "Fitted Box", FittedBoxPage.routeName),
+      getNavItem(Icons.panorama_wide_angle, "Flexible", FlexiblePage.routeName),
       getNavItem(Icons.touch_app, "Floating Action Button",
           FloatingActionButtonPage.routeName),
       getNavItem(Icons.arrow_forward_ios, "Future Builder",

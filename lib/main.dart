@@ -33,6 +33,7 @@ import 'package:widget_tests/widgets/029_sized-box/sized-box.dart';
 import 'package:widget_tests/widgets/030_value-listenable-builder/value-listenable-builder.dart';
 import 'package:widget_tests/widgets/031_draggable/draggable.dart';
 import 'package:widget_tests/widgets/032_animated-list/animated-list.dart';
+import 'package:widget_tests/widgets/033_flexible/flexible.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
         FadeTransitionPage.routeName: (BuildContext context) =>
             FadeTransitionPage(),
         FittedBoxPage.routeName: (BuildContext context) => FittedBoxPage(),
+        FlexiblePage.routeName: (BuildContext context) => FlexiblePage(),
         FloatingActionButtonPage.routeName: (BuildContext context) =>
             FloatingActionButtonPage(),
         FutureBuilderPage.routeName: (BuildContext context) =>
