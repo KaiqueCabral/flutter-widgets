@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/widgets/017_hero/hero-details.dart';
+import 'package:widget_tests/widgets/InteractionModels/017_hero/hero-details.dart';
 
 class HeroPage extends StatefulWidget {
   static const String routeName = "/hero";
