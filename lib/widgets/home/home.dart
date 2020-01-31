@@ -17,6 +17,7 @@ import 'package:widget_tests/widgets/030_value-listenable-builder/value-listenab
 import 'package:widget_tests/widgets/031_draggable/draggable.dart';
 import 'package:widget_tests/widgets/032_animated-list/animated-list.dart';
 import 'package:widget_tests/widgets/033_flexible/flexible.dart';
+import 'package:widget_tests/widgets/034_media-query/media-query.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -94,6 +95,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.transit_enterexit, "Hero", HeroPage.routeName),
       getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
       getNavItem(Icons.pages, "Layout Builder", LayoutBuilderPage.routeName),
+      getNavItem(
+          Icons.screen_rotation, "Media Query", MediaQueryPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.pageview, "Page View", PageViewPage.routeName),
       getNavItem(

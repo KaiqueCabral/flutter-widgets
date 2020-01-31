@@ -34,6 +34,7 @@ import 'package:widget_tests/widgets/030_value-listenable-builder/value-listenab
 import 'package:widget_tests/widgets/031_draggable/draggable.dart';
 import 'package:widget_tests/widgets/032_animated-list/animated-list.dart';
 import 'package:widget_tests/widgets/033_flexible/flexible.dart';
+import 'package:widget_tests/widgets/034_media-query/media-query.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -80,6 +81,7 @@ class MyApp extends StatelessWidget {
             InheritedModelPage(),
         LayoutBuilderPage.routeName: (BuildContext context) =>
             LayoutBuilderPage(),
+        MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),
         OpacityPage.routeName: (BuildContext context) => OpacityPage(),
         PageViewPage.routeName: (BuildContext context) => PageViewPage(),
         PositionedPage.routeName: (BuildContext context) => PositionedPage(),
