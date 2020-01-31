@@ -18,6 +18,7 @@ import 'package:widget_tests/widgets/031_draggable/draggable.dart';
 import 'package:widget_tests/widgets/032_animated-list/animated-list.dart';
 import 'package:widget_tests/widgets/033_flexible/flexible.dart';
 import 'package:widget_tests/widgets/034_media-query/media-query.dart';
+import 'package:widget_tests/widgets/035_spacer/spacer.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/001_safe-area/safe-area.dart';
@@ -108,6 +109,7 @@ class _HomePageState extends State<HomePage> {
           SliverAppBarPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver List/Grid",
           SliverListGridPage.routeName),
+      getNavItem(Icons.space_bar, "Spacer", SpacerPage.routeName),
       getNavItem(
           Icons.view_stream, "Stream Builder", StreamBuilderPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),

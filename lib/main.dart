@@ -35,6 +35,7 @@ import 'package:widget_tests/widgets/031_draggable/draggable.dart';
 import 'package:widget_tests/widgets/032_animated-list/animated-list.dart';
 import 'package:widget_tests/widgets/033_flexible/flexible.dart';
 import 'package:widget_tests/widgets/034_media-query/media-query.dart';
+import 'package:widget_tests/widgets/035_spacer/spacer.dart';
 import 'package:widget_tests/widgets/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -91,6 +92,7 @@ class MyApp extends StatelessWidget {
             SliverAppBarPage(),
         SliverListGridPage.routeName: (BuildContext context) =>
             SliverListGridPage(),
+        SpacerPage.routeName: (BuildContext context) => SpacerPage(),
         StreamBuilderPage.routeName: (BuildContext context) =>
             StreamBuilderPage(),
         TablePage.routeName: (BuildContext context) => TablePage(),
