@@ -29,6 +29,7 @@ import 'package:widget_tests/widgets/Layout/029_sized-box/sized-box.dart';
 import 'package:widget_tests/widgets/Layout/033_flexible/flexible.dart';
 import 'package:widget_tests/widgets/Layout/035_spacer/spacer.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
+import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
             InheritedWidgetPage(),
         LayoutBuilderPage.routeName: (BuildContext context) =>
             LayoutBuilderPage(),
+        LimitedBoxPage.routeName: (BuildContext context) => LimitedBoxPage(),
         MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),
         OpacityPage.routeName: (BuildContext context) => OpacityPage(),
         PageViewPage.routeName: (BuildContext context) => PageViewPage(),

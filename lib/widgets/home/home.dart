@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-icon.dart';
 import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
+import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/AnimationMotion/004_animated-container/animated-container.dart';
@@ -102,6 +103,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
       getNavItem(Icons.add, "Inherited Widget", InheritedWidgetPage.routeName),
       getNavItem(Icons.pages, "Layout Builder", LayoutBuilderPage.routeName),
+      getNavItem(Icons.crop_square, "Limited Box", LimitedBoxPage.routeName),
       getNavItem(
           Icons.screen_rotation, "Media Query", MediaQueryPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
