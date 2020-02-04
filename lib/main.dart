@@ -9,6 +9,7 @@ import 'package:widget_tests/widgets/Async/006_future-builder/future-builder.dar
 import 'package:widget_tests/widgets/Async/014_stream-builder/stream-builder.dart';
 import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
 import 'package:widget_tests/widgets/Basics/015_inherited-model/inherited-model.dart';
+import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
 import 'package:widget_tests/widgets/InteractionModels/017_hero/hero-details.dart';
 import 'package:widget_tests/widgets/InteractionModels/017_hero/hero.dart';
 import 'package:widget_tests/widgets/InteractionModels/022_absorb-pointer/absorb-pointer.dart';
@@ -80,6 +81,8 @@ class MyApp extends StatelessWidget {
         HeroDetailsPage.routeName: (BuildContext context) => HeroDetailsPage(),
         InheritedModelPage.routeName: (BuildContext context) =>
             InheritedModelPage(),
+        InheritedWidgetPage.routeName: (BuildContext context) =>
+            InheritedWidgetPage(),
         LayoutBuilderPage.routeName: (BuildContext context) =>
             LayoutBuilderPage(),
         MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),

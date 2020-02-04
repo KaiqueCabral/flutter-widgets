@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/AnimationMotion/004_animated-container/animated-container.dart';
@@ -95,6 +96,7 @@ class _HomePageState extends State<HomePage> {
           FutureBuilderPage.routeName),
       getNavItem(Icons.transit_enterexit, "Hero", HeroPage.routeName),
       getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
+      getNavItem(Icons.add, "Inherited Widget", InheritedWidgetPage.routeName),
       getNavItem(Icons.pages, "Layout Builder", LayoutBuilderPage.routeName),
       getNavItem(
           Icons.screen_rotation, "Media Query", MediaQueryPage.routeName),
@@ -129,8 +131,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Center(child: Text("Use the menu to check the widgets")),
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Text("Use the menu to check the widgets"),
+      ),
       drawer: getNavDrawer(context),
     );
   }
