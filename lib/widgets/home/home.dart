@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-icon.dart';
 import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
+import 'package:widget_tests/widgets/Basics/040_place-holder/place-holder.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'about.dart';
@@ -108,6 +109,7 @@ class _HomePageState extends State<HomePage> {
           Icons.screen_rotation, "Media Query", MediaQueryPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
       getNavItem(Icons.pageview, "Page View", PageViewPage.routeName),
+      getNavItem(Icons.fullscreen, "Place Holder", PlaceHolderPage.routeName),
       getNavItem(
           Icons.vertical_align_top, "Positioned", PositionedPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
