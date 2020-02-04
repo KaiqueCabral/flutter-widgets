@@ -5,6 +5,7 @@ import 'package:widget_tests/widgets/AnimationMotion/007_fade-transition/fade-tr
 import 'package:widget_tests/widgets/AnimationMotion/013_fade-in-image/fade-in-image.dart';
 import 'package:widget_tests/widgets/AnimationMotion/027_animated-builder/animated-builder.dart';
 import 'package:widget_tests/widgets/AnimationMotion/032_animated-list/animated-list.dart';
+import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-icon.dart';
 import 'package:widget_tests/widgets/Async/006_future-builder/future-builder.dart';
 import 'package:widget_tests/widgets/Async/014_stream-builder/stream-builder.dart';
 import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
@@ -59,6 +60,8 @@ class MyApp extends StatelessWidget {
             AnimatedBuilderPage(),
         AnimatedContainerPage.routeName: (BuildContext context) =>
             AnimatedContainerPage(),
+        AnimatedIconPage.routeName: (BuildContext context) =>
+            AnimatedIconPage(),
         AnimatedListPage.routeName: (BuildContext context) =>
             AnimatedListPage(),
         BackdropFilterPage.routeName: (BuildContext context) =>

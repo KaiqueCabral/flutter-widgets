@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-icon.dart';
 import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
 import 'about.dart';
 import 'drawer-header.dart';
@@ -78,6 +79,7 @@ class _HomePageState extends State<HomePage> {
           AnimatedBuilderPage.routeName),
       getNavItem(Icons.view_carousel, "Animated Container",
           AnimatedContainerPage.routeName),
+      getNavItem(Icons.play_arrow, "Animated Icon", AnimatedIconPage.routeName),
       getNavItem(Icons.line_style, "Animated List", AnimatedListPage.routeName),
       getNavItem(Icons.filter, "Backdrop Filter", BackdropFilterPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
