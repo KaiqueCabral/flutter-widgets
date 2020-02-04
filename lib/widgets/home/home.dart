@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-icon.dart';
 import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
+import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/AnimationMotion/004_animated-container/animated-container.dart';
@@ -81,6 +82,7 @@ class _HomePageState extends State<HomePage> {
           AnimatedContainerPage.routeName),
       getNavItem(Icons.play_arrow, "Animated Icon", AnimatedIconPage.routeName),
       getNavItem(Icons.line_style, "Animated List", AnimatedListPage.routeName),
+      getNavItem(Icons.aspect_ratio, "Aspect Ratio", AspectRatioPage.routeName),
       getNavItem(Icons.filter, "Backdrop Filter", BackdropFilterPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
       getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),

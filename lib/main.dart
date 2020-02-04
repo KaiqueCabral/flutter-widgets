@@ -28,6 +28,7 @@ import 'package:widget_tests/widgets/Layout/026_positioned/positioned.dart';
 import 'package:widget_tests/widgets/Layout/029_sized-box/sized-box.dart';
 import 'package:widget_tests/widgets/Layout/033_flexible/flexible.dart';
 import 'package:widget_tests/widgets/Layout/035_spacer/spacer.dart';
+import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
             AnimatedIconPage(),
         AnimatedListPage.routeName: (BuildContext context) =>
             AnimatedListPage(),
+        AspectRatioPage.routeName: (BuildContext context) => AspectRatioPage(),
         BackdropFilterPage.routeName: (BuildContext context) =>
             BackdropFilterPage(),
         ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
