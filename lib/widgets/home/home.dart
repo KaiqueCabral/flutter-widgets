@@ -4,6 +4,7 @@ import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widge
 import 'package:widget_tests/widgets/Basics/040_place-holder/place-holder.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
+import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'about.dart';
 import 'drawer-header.dart';
@@ -114,6 +115,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(
           Icons.vertical_align_top, "Positioned", PositionedPage.routeName),
       getNavItem(Icons.text_fields, "Rich Text", RichTextPage.routeName),
+      getNavItem(Icons.filter_list, "Reordenable ListView",
+          ReordenableListViewPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
       getNavItem(
           Icons.photo_size_select_large, "Sized Box", SizedBoxPage.routeName),

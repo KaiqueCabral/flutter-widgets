@@ -40,6 +40,7 @@ import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-pai
 import 'package:widget_tests/widgets/PaintingEffects/023_transform/transform.dart';
 import 'package:widget_tests/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
 import 'package:widget_tests/widgets/Scrolling/009_page-view/page-view.dart';
+import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'package:widget_tests/widgets/home/home.dart';
@@ -99,6 +100,8 @@ class MyApp extends StatelessWidget {
         PageViewPage.routeName: (BuildContext context) => PageViewPage(),
         PlaceHolderPage.routeName: (BuildContext context) => PlaceHolderPage(),
         PositionedPage.routeName: (BuildContext context) => PositionedPage(),
+        ReordenableListViewPage.routeName: (BuildContext context) =>
+            ReordenableListViewPage(),
         RichTextPage.routeName: (BuildContext context) => RichTextPage(),
         SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
         SizedBoxPage.routeName: (BuildContext context) => SizedBoxPage(),
