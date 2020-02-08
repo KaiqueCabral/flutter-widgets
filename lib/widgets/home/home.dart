@@ -9,6 +9,7 @@ import 'package:widget_tests/widgets/Basics/040_place-holder/place-holder.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart';
+import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'about.dart';
@@ -101,6 +102,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.filter, "Backdrop Filter", BackdropFilterPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
       getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
+      getNavItem(
+          Icons.add_box, "Constrained Box", ConstrainedBoxPage.routeName),
       getNavItem(Icons.drag_handle, "Draggable", DraggablePage.routeName),
       getNavItem(Icons.arrow_left, "Dismissible", DismissiblePage.routeName),
       getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),

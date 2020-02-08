@@ -7,7 +7,7 @@ class HeroDetailsPage extends StatefulWidget {
 }
 
 class _HeroDetailsPage extends State<HeroDetailsPage> {
-  static const String routeName = "/hero-details";
+  //static const String routeName = "/hero-details";
 
   @override
   Widget build(BuildContext context) {

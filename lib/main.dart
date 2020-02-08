@@ -36,6 +36,7 @@ import 'package:widget_tests/widgets/Layout/035_spacer/spacer.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart';
+import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -85,6 +86,8 @@ class MyApp extends StatelessWidget {
         BackdropFilterPage.routeName: (BuildContext context) =>
             BackdropFilterPage(),
         ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
+        ConstrainedBoxPage.routeName: (BuildContext context) =>
+            ConstrainedBoxPage(),
         CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
         DraggablePage.routeName: (BuildContext context) => DraggablePage(),
         DismissiblePage.routeName: (BuildContext context) => DismissiblePage(),
