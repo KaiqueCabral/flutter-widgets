@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/Acessibility/047_semantics/semantics.dart';
 import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-icon.dart';
 import 'package:widget_tests/widgets/AnimationMotion/043_animated-switcher/animated-switcher.dart';
 import 'package:widget_tests/widgets/AnimationMotion/044_animated-positioned/animated-positioned.dart';
@@ -7,6 +8,7 @@ import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widge
 import 'package:widget_tests/widgets/Basics/040_place-holder/place-holder.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
+import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'about.dart';
@@ -112,6 +114,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.arrow_forward_ios, "Future Builder",
           FutureBuilderPage.routeName),
       getNavItem(Icons.transit_enterexit, "Hero", HeroPage.routeName),
+      getNavItem(Icons.layers, "Indexed Stack", IndexedStackPage.routeName),
       getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
       getNavItem(Icons.add, "Inherited Widget", InheritedWidgetPage.routeName),
       getNavItem(Icons.pages, "Layout Builder", LayoutBuilderPage.routeName),
@@ -127,6 +130,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.filter_list, "Reordenable ListView",
           ReordenableListViewPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
+      getNavItem(Icons.textsms, "Semantics", SemanticsPage.routeName),
       getNavItem(
           Icons.photo_size_select_large, "Sized Box", SizedBoxPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver App Bar",

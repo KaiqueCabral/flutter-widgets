@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/themes/theme-blue.dart';
+import 'package:widget_tests/widgets/Acessibility/047_semantics/semantics.dart';
 import 'package:widget_tests/widgets/AnimationMotion/004_animated-container/animated-container.dart';
 import 'package:widget_tests/widgets/AnimationMotion/007_fade-transition/fade-transition.dart';
 import 'package:widget_tests/widgets/AnimationMotion/013_fade-in-image/fade-in-image.dart';
@@ -34,6 +35,7 @@ import 'package:widget_tests/widgets/Layout/033_flexible/flexible.dart';
 import 'package:widget_tests/widgets/Layout/035_spacer/spacer.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
+import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -56,8 +58,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      showSemanticsDebugger: false,
       checkerboardOffscreenLayers: false,
+      title: 'Flutter Demo',
       theme: appTheme(Colors.blue),
       home: HomePage(title: 'Flutter Widgets Home Page'),
       routes: <String, WidgetBuilder>{
@@ -97,6 +100,8 @@ class MyApp extends StatelessWidget {
             FutureBuilderPage(),
         HeroPage.routeName: (BuildContext context) => HeroPage(),
         HeroDetailsPage.routeName: (BuildContext context) => HeroDetailsPage(),
+        IndexedStackPage.routeName: (BuildContext context) =>
+            IndexedStackPage(),
         InheritedModelPage.routeName: (BuildContext context) =>
             InheritedModelPage(),
         InheritedWidgetPage.routeName: (BuildContext context) =>
@@ -113,6 +118,7 @@ class MyApp extends StatelessWidget {
             ReordenableListViewPage(),
         RichTextPage.routeName: (BuildContext context) => RichTextPage(),
         SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
+        SemanticsPage.routeName: (BuildContext context) => SemanticsPage(),
         SizedBoxPage.routeName: (BuildContext context) => SizedBoxPage(),
         SliverAppBarPage.routeName: (BuildContext context) =>
             SliverAppBarPage(),
