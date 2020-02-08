@@ -4,6 +4,7 @@ import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-
 import 'package:widget_tests/widgets/AnimationMotion/043_animated-switcher/animated-switcher.dart';
 import 'package:widget_tests/widgets/AnimationMotion/044_animated-positioned/animated-positioned.dart';
 import 'package:widget_tests/widgets/AnimationMotion/045_animated-padding/animated-padding.dart';
+import 'package:widget_tests/widgets/AnimationMotion/050_animated-opacity/animated-opacity.dart';
 import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
 import 'package:widget_tests/widgets/Basics/040_place-holder/place-holder.dart';
 import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
@@ -95,6 +96,8 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.line_style, "Animated List", AnimatedListPage.routeName),
       getNavItem(Icons.photo_size_select_small, "Animated Padding",
           AnimatedPaddingPage.routeName),
+      getNavItem(
+          Icons.swap_calls, "Animated Opacity", AnimatedOpacityPage.routeName),
       getNavItem(Icons.swap_calls, "Animated Positioned",
           AnimatedPositionedPage.routeName),
       getNavItem(Icons.swap_horizontal_circle, "Animated Switcher",

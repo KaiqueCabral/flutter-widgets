@@ -10,6 +10,7 @@ import 'package:widget_tests/widgets/AnimationMotion/037_animated-icon/animated-
 import 'package:widget_tests/widgets/AnimationMotion/043_animated-switcher/animated-switcher.dart';
 import 'package:widget_tests/widgets/AnimationMotion/044_animated-positioned/animated-positioned.dart';
 import 'package:widget_tests/widgets/AnimationMotion/045_animated-padding/animated-padding.dart';
+import 'package:widget_tests/widgets/AnimationMotion/050_animated-opacity/animated-opacity.dart';
 import 'package:widget_tests/widgets/Async/006_future-builder/future-builder.dart';
 import 'package:widget_tests/widgets/Async/014_stream-builder/stream-builder.dart';
 import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
@@ -79,6 +80,8 @@ class MyApp extends StatelessWidget {
             AnimatedListPage(),
         AnimatedPaddingPage.routeName: (BuildContext context) =>
             AnimatedPaddingPage(),
+        AnimatedOpacityPage.routeName: (BuildContext context) =>
+            AnimatedOpacityPage(),
         AnimatedPositionedPage.routeName: (BuildContext context) =>
             AnimatedPositionedPage(),
         AnimatedSwitcherPage.routeName: (BuildContext context) =>
