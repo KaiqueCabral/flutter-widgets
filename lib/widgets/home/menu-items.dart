@@ -14,6 +14,7 @@ import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart';
 import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
 import 'package:widget_tests/widgets/Layout/049_stack/stack.dart';
+import 'package:widget_tests/widgets/Layout/051_fractionally-sized-box/fractionally-sized-box.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'package:widget_tests/widgets/AnimationMotion/004_animated-container/animated-container.dart';
@@ -117,6 +118,8 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.panorama_wide_angle, "Flexible", FlexiblePage.routeName),
       getNavItem(Icons.touch_app, "Floating Action Button",
           FloatingActionButtonPage.routeName),
+      getNavItem(Icons.aspect_ratio, "Fractionally Sized Box",
+          FractionallySizedBoxPage.routeName),
       getNavItem(Icons.arrow_forward_ios, "Future Builder",
           FutureBuilderPage.routeName),
       getNavItem(Icons.transit_enterexit, "Hero", HeroPage.routeName),

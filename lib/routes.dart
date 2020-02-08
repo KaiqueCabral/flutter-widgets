@@ -38,6 +38,7 @@ import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart';
 import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
 import 'package:widget_tests/widgets/Layout/049_stack/stack.dart';
+import 'package:widget_tests/widgets/Layout/051_fractionally-sized-box/fractionally-sized-box.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -86,6 +87,8 @@ routes() {
     FlexiblePage.routeName: (BuildContext context) => FlexiblePage(),
     FloatingActionButtonPage.routeName: (BuildContext context) =>
         FloatingActionButtonPage(),
+    FractionallySizedBoxPage.routeName: (BuildContext context) =>
+        FractionallySizedBoxPage(),
     FutureBuilderPage.routeName: (BuildContext context) => FutureBuilderPage(),
     HeroPage.routeName: (BuildContext context) => HeroPage(),
     HeroDetailsPage.routeName: (BuildContext context) => HeroDetailsPage(),
