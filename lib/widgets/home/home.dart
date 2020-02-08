@@ -10,6 +10,7 @@ import 'package:widget_tests/widgets/Layout/038_aspect-ratio/aspect-ratio.dart';
 import 'package:widget_tests/widgets/Layout/039_limited-box/limited-box.dart';
 import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart';
 import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
+import 'package:widget_tests/widgets/Layout/049_stack/stack.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'about.dart';
@@ -141,6 +142,7 @@ class _HomePageState extends State<HomePage> {
       getNavItem(Icons.calendar_view_day, "Sliver List/Grid",
           SliverListGridPage.routeName),
       getNavItem(Icons.space_bar, "Spacer", SpacerPage.routeName),
+      getNavItem(Icons.layers, "Stack", StackPage.routeName),
       getNavItem(
           Icons.view_stream, "Stream Builder", StreamBuilderPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
