@@ -42,6 +42,7 @@ import 'package:widget_tests/widgets/Layout/051_fractionally-sized-box/fractiona
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
+import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -100,6 +101,7 @@ routes() {
         InheritedWidgetPage(),
     LayoutBuilderPage.routeName: (BuildContext context) => LayoutBuilderPage(),
     LimitedBoxPage.routeName: (BuildContext context) => LimitedBoxPage(),
+    ListTilePage.routeName: (BuildContext context) => ListTilePage(),
     ListViewPage.routeName: (BuildContext context) => ListViewPage(),
     MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),
     OpacityPage.routeName: (BuildContext context) => OpacityPage(),

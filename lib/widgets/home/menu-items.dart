@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'about.dart';
 import 'drawer-header.dart';
@@ -129,6 +130,7 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.add, "Inherited Widget", InheritedWidgetPage.routeName),
       getNavItem(Icons.pages, "Layout Builder", LayoutBuilderPage.routeName),
       getNavItem(Icons.crop_square, "Limited Box", LimitedBoxPage.routeName),
+      getNavItem(Icons.list, "List Tile", ListTilePage.routeName),
       getNavItem(Icons.list, "List View", ListViewPage.routeName),
       getNavItem(
           Icons.screen_rotation, "Media Query", MediaQueryPage.routeName),
