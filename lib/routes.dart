@@ -49,6 +49,7 @@ import 'package:widget_tests/widgets/PaintingEffects/023_transform/transform.dar
 import 'package:widget_tests/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
 import 'package:widget_tests/widgets/Scrolling/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
+import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 
@@ -99,6 +100,7 @@ routes() {
         InheritedWidgetPage(),
     LayoutBuilderPage.routeName: (BuildContext context) => LayoutBuilderPage(),
     LimitedBoxPage.routeName: (BuildContext context) => LimitedBoxPage(),
+    ListViewPage.routeName: (BuildContext context) => ListViewPage(),
     MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),
     OpacityPage.routeName: (BuildContext context) => OpacityPage(),
     PageViewPage.routeName: (BuildContext context) => PageViewPage(),

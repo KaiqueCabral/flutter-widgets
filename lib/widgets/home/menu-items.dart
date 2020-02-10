@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/Acessibility/047_semantics/semantics.dart';
@@ -128,6 +129,7 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.add, "Inherited Widget", InheritedWidgetPage.routeName),
       getNavItem(Icons.pages, "Layout Builder", LayoutBuilderPage.routeName),
       getNavItem(Icons.crop_square, "Limited Box", LimitedBoxPage.routeName),
+      getNavItem(Icons.list, "List View", ListViewPage.routeName),
       getNavItem(
           Icons.screen_rotation, "Media Query", MediaQueryPage.routeName),
       getNavItem(Icons.opacity, "Opacity", OpacityPage.routeName),
