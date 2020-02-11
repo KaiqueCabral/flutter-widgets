@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'about.dart';
@@ -110,6 +111,8 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
       getNavItem(
           Icons.add_box, "Constrained Box", ConstrainedBoxPage.routeName),
+      getNavItem(
+          Icons.indeterminate_check_box, "Container", ContainerPage.routeName),
       getNavItem(Icons.drag_handle, "Draggable", DraggablePage.routeName),
       getNavItem(Icons.arrow_left, "Dismissible", DismissiblePage.routeName),
       getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),

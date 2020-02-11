@@ -39,6 +39,7 @@ import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart
 import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
 import 'package:widget_tests/widgets/Layout/049_stack/stack.dart';
 import 'package:widget_tests/widgets/Layout/051_fractionally-sized-box/fractionally-sized-box.dart';
+import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -78,6 +79,7 @@ routes() {
     ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
     ConstrainedBoxPage.routeName: (BuildContext context) =>
         ConstrainedBoxPage(),
+    ContainerPage.routeName: (BuildContext context) => ContainerPage(),
     CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
     DraggablePage.routeName: (BuildContext context) => DraggablePage(),
     DismissiblePage.routeName: (BuildContext context) => DismissiblePage(),
