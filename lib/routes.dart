@@ -54,6 +54,7 @@ import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reorden
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
+import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
 
 routes() {
   return <String, WidgetBuilder>{
@@ -114,6 +115,8 @@ routes() {
         ReordenableListViewPage(),
     RichTextPage.routeName: (BuildContext context) => RichTextPage(),
     SafeAreaPage.routeName: (BuildContext context) => SafeAreaPage(),
+    SelectableTextPage.routeName: (BuildContext context) =>
+        SelectableTextPage(),
     SemanticsPage.routeName: (BuildContext context) => SemanticsPage(),
     SizedBoxPage.routeName: (BuildContext context) => SizedBoxPage(),
     SliverAppBarPage.routeName: (BuildContext context) => SliverAppBarPage(),

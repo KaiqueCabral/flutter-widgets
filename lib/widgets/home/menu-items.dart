@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
+import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
 import 'about.dart';
 import 'drawer-header.dart';
 import 'package:widget_tests/widgets/Acessibility/047_semantics/semantics.dart';
@@ -146,6 +147,8 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.filter_list, "Reordenable ListView",
           ReordenableListViewPage.routeName),
       getNavItem(Icons.crop_square, "Safe Area", SafeAreaPage.routeName),
+      getNavItem(
+          Icons.text_format, "Selectable Text", SelectableTextPage.routeName),
       getNavItem(Icons.textsms, "Semantics", SemanticsPage.routeName),
       getNavItem(
           Icons.photo_size_select_large, "Sized Box", SizedBoxPage.routeName),
