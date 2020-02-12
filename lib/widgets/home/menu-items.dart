@@ -3,6 +3,7 @@ import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
+import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
 import 'about.dart';
@@ -93,6 +94,7 @@ class _MenuItems extends State<MenuItems> {
     var navItems = [
       header,
       getNavItem(Icons.mouse, "Absorb Pointer", AbsorbPointerPage.routeName),
+      getNavItem(Icons.add_alert, "Alert Dialog", AlertDialogPage.routeName),
       getNavItem(Icons.vertical_align_bottom, "Align", AlignPage.routeName),
       getNavItem(Icons.view_carousel, "Animated Builder",
           AnimatedBuilderPage.routeName),

@@ -46,6 +46,7 @@ import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
+import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
 import 'package:widget_tests/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -61,6 +62,7 @@ import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.da
 routes() {
   return <String, WidgetBuilder>{
     AbsorbPointerPage.routeName: (BuildContext context) => AbsorbPointerPage(),
+    AlertDialogPage.routeName: (BuildContext context) => AlertDialogPage(),
     AlignPage.routeName: (BuildContext context) => AlignPage(),
     AnimatedBuilderPage.routeName: (BuildContext context) =>
         AnimatedBuilderPage(),
