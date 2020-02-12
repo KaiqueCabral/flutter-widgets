@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
+import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
 import 'about.dart';
@@ -156,6 +157,7 @@ class _MenuItems extends State<MenuItems> {
           Icons.photo_size_select_large, "Sized Box", SizedBoxPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver App Bar",
           SliverAppBarPage.routeName),
+      getNavItem(Icons.slideshow, "Slider", SliderPage.routeName),
       getNavItem(Icons.calendar_view_day, "Sliver List/Grid",
           SliverListGridPage.routeName),
       getNavItem(Icons.space_bar, "Spacer", SpacerPage.routeName),

@@ -45,6 +45,7 @@ import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/slive
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
+import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -121,6 +122,7 @@ routes() {
         SelectableTextPage(),
     SemanticsPage.routeName: (BuildContext context) => SemanticsPage(),
     SizedBoxPage.routeName: (BuildContext context) => SizedBoxPage(),
+    SliderPage.routeName: (BuildContext context) => SliderPage(),
     SliverAppBarPage.routeName: (BuildContext context) => SliverAppBarPage(),
     SliverListGridPage.routeName: (BuildContext context) =>
         SliverListGridPage(),
