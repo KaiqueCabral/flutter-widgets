@@ -44,6 +44,7 @@ import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-butt
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
+import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
 import 'package:widget_tests/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -82,6 +83,7 @@ routes() {
         ConstrainedBoxPage(),
     ContainerPage.routeName: (BuildContext context) => ContainerPage(),
     CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
+    DataTablePage.routeName: (BuildContext context) => DataTablePage(),
     DraggablePage.routeName: (BuildContext context) => DraggablePage(),
     DismissiblePage.routeName: (BuildContext context) => DismissiblePage(),
     ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
