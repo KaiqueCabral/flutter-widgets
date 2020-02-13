@@ -10,6 +10,7 @@ import 'package:widget_tests/widgets/AnimationMotion/043_animated-switcher/anima
 import 'package:widget_tests/widgets/AnimationMotion/044_animated-positioned/animated-positioned.dart';
 import 'package:widget_tests/widgets/AnimationMotion/045_animated-padding/animated-padding.dart';
 import 'package:widget_tests/widgets/AnimationMotion/050_animated-opacity/animated-opacity.dart';
+import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
 import 'package:widget_tests/widgets/Async/006_future-builder/future-builder.dart';
 import 'package:widget_tests/widgets/Async/014_stream-builder/stream-builder.dart';
 import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
@@ -68,6 +69,8 @@ routes() {
         AnimatedBuilderPage(),
     AnimatedContainerPage.routeName: (BuildContext context) =>
         AnimatedContainerPage(),
+    AnimatedcrossFadePage.routeName: (BuildContext context) =>
+        AnimatedcrossFadePage(),
     AnimatedIconPage.routeName: (BuildContext context) => AnimatedIconPage(),
     AnimatedListPage.routeName: (BuildContext context) => AnimatedListPage(),
     AnimatedPaddingPage.routeName: (BuildContext context) =>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
@@ -100,6 +101,8 @@ class _MenuItems extends State<MenuItems> {
           AnimatedBuilderPage.routeName),
       getNavItem(Icons.view_carousel, "Animated Container",
           AnimatedContainerPage.routeName),
+      getNavItem(Icons.view_carousel, "Animated Cross Fade",
+          AnimatedcrossFadePage.routeName),
       getNavItem(Icons.play_arrow, "Animated Icon", AnimatedIconPage.routeName),
       getNavItem(Icons.line_style, "Animated List", AnimatedListPage.routeName),
       getNavItem(Icons.photo_size_select_small, "Animated Padding",
