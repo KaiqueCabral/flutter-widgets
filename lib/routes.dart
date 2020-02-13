@@ -56,6 +56,7 @@ import 'package:widget_tests/widgets/PaintingEffects/024_backdrop-filter/backdro
 import 'package:widget_tests/widgets/Scrolling/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
+import 'package:widget_tests/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
 import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
@@ -91,6 +92,8 @@ routes() {
     CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
     DataTablePage.routeName: (BuildContext context) => DataTablePage(),
     DraggablePage.routeName: (BuildContext context) => DraggablePage(),
+    DraggableScrollableSheetPage.routeName: (BuildContext context) =>
+        DraggableScrollableSheetPage(),
     DismissiblePage.routeName: (BuildContext context) => DismissiblePage(),
     ExpandedPage.routeName: (BuildContext context) => ExpandedPage(),
     FadeInImagePage.routeName: (BuildContext context) => FadeInImagePage(),

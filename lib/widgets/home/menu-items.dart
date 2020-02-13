@@ -6,6 +6,7 @@ import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-tabl
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
+import 'package:widget_tests/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
 import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
 import 'about.dart';
 import 'drawer-header.dart';
@@ -123,6 +124,8 @@ class _MenuItems extends State<MenuItems> {
           Icons.indeterminate_check_box, "Container", ContainerPage.routeName),
       getNavItem(Icons.table_chart, "Data Table", DataTablePage.routeName),
       getNavItem(Icons.drag_handle, "Draggable", DraggablePage.routeName),
+      getNavItem(Icons.drag_handle, "Draggable Scrollable Sheet",
+          DraggableScrollableSheetPage.routeName),
       getNavItem(Icons.arrow_left, "Dismissible", DismissiblePage.routeName),
       getNavItem(Icons.zoom_out_map, "Expanded", ExpandedPage.routeName),
       getNavItem(
