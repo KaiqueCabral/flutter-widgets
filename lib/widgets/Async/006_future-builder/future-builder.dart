@@ -124,8 +124,6 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
           setState(() {
             _post++;
           });
-
-          getFutureResponse(_post);
         },
         label: Text("Click here!"),
         icon: Icon(
