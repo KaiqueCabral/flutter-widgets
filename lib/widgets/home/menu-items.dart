@@ -7,6 +7,7 @@ import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
+import 'package:widget_tests/widgets/Styling/061_color-filtered/color-filtered.dart';
 import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
 import 'about.dart';
 import 'drawer-header.dart';
@@ -117,11 +118,13 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.aspect_ratio, "Aspect Ratio", AspectRatioPage.routeName),
       getNavItem(Icons.filter, "Backdrop Filter", BackdropFilterPage.routeName),
       getNavItem(Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName),
-      getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
+      getNavItem(
+          Icons.color_lens, "Color Filtered", ColorFilteredPage.routeName),
       getNavItem(
           Icons.add_box, "Constrained Box", ConstrainedBoxPage.routeName),
       getNavItem(
           Icons.indeterminate_check_box, "Container", ContainerPage.routeName),
+      getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
       getNavItem(Icons.table_chart, "Data Table", DataTablePage.routeName),
       getNavItem(Icons.drag_handle, "Draggable", DraggablePage.routeName),
       getNavItem(Icons.drag_handle, "Draggable Scrollable Sheet",

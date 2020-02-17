@@ -58,6 +58,7 @@ import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reorden
 import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
 import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
+import 'package:widget_tests/widgets/Styling/061_color-filtered/color-filtered.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
 import 'package:widget_tests/widgets/Text/055_selectable-text/selectable-text.dart';
 
@@ -86,6 +87,7 @@ routes() {
     BackdropFilterPage.routeName: (BuildContext context) =>
         BackdropFilterPage(),
     ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
+    ColorFilteredPage.routeName: (BuildContext context) => ColorFilteredPage(),
     ConstrainedBoxPage.routeName: (BuildContext context) =>
         ConstrainedBoxPage(),
     ContainerPage.routeName: (BuildContext context) => ContainerPage(),
