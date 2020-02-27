@@ -11,7 +11,7 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation _animation;
-  CurvedAnimation _curveAnimation;
+  CurvedAnimation _curvedAnimation;
 
   @override
   void initState() {
@@ -20,9 +20,10 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
       duration: Duration(seconds: 2),
     );
 
-    _curveAnimation = CurvedAnimation(parent: _animationController, curve: Curves.easeIn);
+    _curvedAnimation =
+        CurvedAnimation(parent: _animationController, curve: Curves.easeIn);
 
-    _animation = Tween(begin: 0.0, end: 1.0).animate(_curveAnimation);
+    _animation = Tween(begin: 0.0, end: 1.0).animate(_curvedAnimation);
 
     _animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {

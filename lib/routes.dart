@@ -22,6 +22,7 @@ import 'package:widget_tests/widgets/InteractionModels/017_hero/hero.dart';
 import 'package:widget_tests/widgets/InteractionModels/022_absorb-pointer/absorb-pointer.dart';
 import 'package:widget_tests/widgets/InteractionModels/028_dismissible/dismissible.dart';
 import 'package:widget_tests/widgets/InteractionModels/031_draggable/draggable.dart';
+import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:widget_tests/widgets/Layout/001_safe-area/safe-area.dart';
 import 'package:widget_tests/widgets/Layout/002_expanded/expanded.dart';
 import 'package:widget_tests/widgets/Layout/003_wrap/wrap.dart';
@@ -140,6 +141,7 @@ routes() {
     StackPage.routeName: (BuildContext context) => StackPage(),
     StreamBuilderPage.routeName: (BuildContext context) => StreamBuilderPage(),
     TablePage.routeName: (BuildContext context) => TablePage(),
+    ToggleButtonsPage.routeName: (BuildContext context) => ToggleButtonsPage(),
     TooltipPage.routeName: (BuildContext context) => TooltipPage(),
     TransformPage.routeName: (BuildContext context) => TransformPage(),
     ValueListenableBuilderPage.routeName: (BuildContext context) =>

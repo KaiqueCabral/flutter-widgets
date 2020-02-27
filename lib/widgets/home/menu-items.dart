@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
+import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
@@ -176,6 +177,7 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(
           Icons.view_stream, "Stream Builder", StreamBuilderPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
+      getNavItem(Icons.sync, "Toggle Buttons", ToggleButtonsPage.routeName),
       getNavItem(Icons.title, "Tooltip", TooltipPage.routeName),
       getNavItem(Icons.transform, "Transform", TransformPage.routeName),
       getNavItem(Icons.queue, "Value Listenable Builder",
