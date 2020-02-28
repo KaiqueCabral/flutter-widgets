@@ -23,6 +23,7 @@ import 'package:widget_tests/widgets/InteractionModels/022_absorb-pointer/absorb
 import 'package:widget_tests/widgets/InteractionModels/028_dismissible/dismissible.dart';
 import 'package:widget_tests/widgets/InteractionModels/031_draggable/draggable.dart';
 import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
+import 'package:widget_tests/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
 import 'package:widget_tests/widgets/Layout/001_safe-area/safe-area.dart';
 import 'package:widget_tests/widgets/Layout/002_expanded/expanded.dart';
 import 'package:widget_tests/widgets/Layout/003_wrap/wrap.dart';
@@ -92,6 +93,8 @@ routes() {
     ConstrainedBoxPage.routeName: (BuildContext context) =>
         ConstrainedBoxPage(),
     ContainerPage.routeName: (BuildContext context) => ContainerPage(),
+    CupertinoActionSheetPage.routeName: (BuildContext context) =>
+        CupertinoActionSheetPage(),
     CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
     DataTablePage.routeName: (BuildContext context) => DataTablePage(),
     DraggablePage.routeName: (BuildContext context) => DraggablePage(),

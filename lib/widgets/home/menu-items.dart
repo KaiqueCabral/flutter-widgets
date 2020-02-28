@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
 import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
+import 'package:widget_tests/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
@@ -125,6 +126,8 @@ class _MenuItems extends State<MenuItems> {
           Icons.add_box, "Constrained Box", ConstrainedBoxPage.routeName),
       getNavItem(
           Icons.indeterminate_check_box, "Container", ContainerPage.routeName),
+      getNavItem(Icons.menu, "Cupertino Action Sheet",
+          CupertinoActionSheetPage.routeName),
       getNavItem(Icons.format_paint, "Custom Paint", CustomPaintPage.routeName),
       getNavItem(Icons.table_chart, "Data Table", DataTablePage.routeName),
       getNavItem(Icons.drag_handle, "Draggable", DraggablePage.routeName),
