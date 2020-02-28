@@ -145,9 +145,7 @@ routes() {
     TooltipPage.routeName: (BuildContext context) => TooltipPage(),
     TransformPage.routeName: (BuildContext context) => TransformPage(),
     ValueListenableBuilderPage.routeName: (BuildContext context) =>
-        ValueListenableBuilderPage(
-          title: "Value Listenable Builder",
-        ),
+        ValueListenableBuilderPage(),
     WrapPage.routeName: (BuildContext context) => WrapPage(),
   };
 }

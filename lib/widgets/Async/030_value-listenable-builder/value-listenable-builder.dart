@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 class ValueListenableBuilderPage extends StatefulWidget {
   static const String routeName = "/value-listenable-builder";
 
-  ValueListenableBuilderPage({Key key, this.title}) : super(key: key);
-  final String title;
-
   @override
   _ValueListenableBuilderPage createState() => _ValueListenableBuilderPage();
 }
@@ -16,7 +13,7 @@ class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(title: Text("Value Listenable Builder")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
