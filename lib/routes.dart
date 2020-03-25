@@ -45,6 +45,7 @@ import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.
 import 'package:widget_tests/widgets/Layout/049_stack/stack.dart';
 import 'package:widget_tests/widgets/Layout/051_fractionally-sized-box/fractionally-sized-box.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
+import 'package:widget_tests/widgets/Layout/066_tab-bar/default-tab-controller.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -147,6 +148,7 @@ routes() {
     StackPage.routeName: (BuildContext context) => StackPage(),
     StreamBuilderPage.routeName: (BuildContext context) => StreamBuilderPage(),
     TablePage.routeName: (BuildContext context) => TablePage(),
+    TabsPage.routeName: (BuildContext context) => TabsPage(),
     ToggleButtonsPage.routeName: (BuildContext context) => ToggleButtonsPage(),
     TooltipPage.routeName: (BuildContext context) => TooltipPage(),
     TransformPage.routeName: (BuildContext context) => TransformPage(),

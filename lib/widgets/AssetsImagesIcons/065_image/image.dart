@@ -39,6 +39,7 @@ class ImagePage extends StatelessWidget {
                         ),
                       );
                     },
+                    semanticLabel: "Image of an owl from the internet",
                   ),
                 ),
                 listItem(
@@ -46,6 +47,7 @@ class ImagePage extends StatelessWidget {
                     'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-3.jpg?v=5',
                     fit: BoxFit.cover,
                     width: 300,
+                    semanticLabel: "Image of an owl from the internet",
                   ),
                 ),
                 listItem(Text("Asset Images")),
@@ -56,6 +58,7 @@ class ImagePage extends StatelessWidget {
                     height: 100,
                     fit: BoxFit.cover,
                     alignment: Alignment(1, 1),
+                    semanticLabel: "Image of Smartphones from the Assets",
                   ),
                 ),
                 listItem(
@@ -68,6 +71,7 @@ class ImagePage extends StatelessWidget {
                     colorBlendMode: BlendMode.multiply,
                     filterQuality: FilterQuality.low,
                     repeat: ImageRepeat.repeatY,
+                    semanticLabel: "Image of Smartphones from the Assets",
                   ),
                 ),
               ],

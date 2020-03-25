@@ -5,6 +5,7 @@ import 'package:widget_tests/widgets/AssetsImagesIcons/065_image/image.dart';
 import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:widget_tests/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
+import 'package:widget_tests/widgets/Layout/066_tab-bar/default-tab-controller.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
@@ -183,6 +184,7 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(
           Icons.view_stream, "Stream Builder", StreamBuilderPage.routeName),
       getNavItem(Icons.table_chart, "Table", TablePage.routeName),
+      getNavItem(Icons.tab, "Tabs", TabsPage.routeName),
       getNavItem(Icons.sync, "Toggle Buttons", ToggleButtonsPage.routeName),
       getNavItem(Icons.title, "Tooltip", TooltipPage.routeName),
       getNavItem(Icons.transform, "Transform", TransformPage.routeName),
