@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
+import 'package:widget_tests/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
 import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:widget_tests/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
@@ -183,6 +184,8 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.sync, "Toggle Buttons", ToggleButtonsPage.routeName),
       getNavItem(Icons.title, "Tooltip", TooltipPage.routeName),
       getNavItem(Icons.transform, "Transform", TransformPage.routeName),
+      getNavItem(Icons.movie_creation, "Tween Animation Builder",
+          TweenAnimationBuilderPage.routeName),
       getNavItem(Icons.queue, "Value Listenable Builder",
           ValueListenableBuilderPage.routeName),
       getNavItem(Icons.wrap_text, "Wrap", WrapPage.routeName),

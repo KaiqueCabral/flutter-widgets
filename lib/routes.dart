@@ -11,6 +11,7 @@ import 'package:widget_tests/widgets/AnimationMotion/044_animated-positioned/ani
 import 'package:widget_tests/widgets/AnimationMotion/045_animated-padding/animated-padding.dart';
 import 'package:widget_tests/widgets/AnimationMotion/050_animated-opacity/animated-opacity.dart';
 import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
+import 'package:widget_tests/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
 import 'package:widget_tests/widgets/Async/006_future-builder/future-builder.dart';
 import 'package:widget_tests/widgets/Async/014_stream-builder/stream-builder.dart';
 import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
@@ -147,6 +148,8 @@ routes() {
     ToggleButtonsPage.routeName: (BuildContext context) => ToggleButtonsPage(),
     TooltipPage.routeName: (BuildContext context) => TooltipPage(),
     TransformPage.routeName: (BuildContext context) => TransformPage(),
+    TweenAnimationBuilderPage.routeName: (BuildContext context) =>
+        TweenAnimationBuilderPage(),
     ValueListenableBuilderPage.routeName: (BuildContext context) =>
         ValueListenableBuilderPage(),
     WrapPage.routeName: (BuildContext context) => WrapPage(),
