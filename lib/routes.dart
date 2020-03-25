@@ -12,6 +12,7 @@ import 'package:widget_tests/widgets/AnimationMotion/045_animated-padding/animat
 import 'package:widget_tests/widgets/AnimationMotion/050_animated-opacity/animated-opacity.dart';
 import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
 import 'package:widget_tests/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
+import 'package:widget_tests/widgets/AssetsImagesIcons/065_image/image.dart';
 import 'package:widget_tests/widgets/Async/006_future-builder/future-builder.dart';
 import 'package:widget_tests/widgets/Async/014_stream-builder/stream-builder.dart';
 import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
@@ -115,6 +116,7 @@ routes() {
     FutureBuilderPage.routeName: (BuildContext context) => FutureBuilderPage(),
     HeroPage.routeName: (BuildContext context) => HeroPage(),
     HeroDetailsPage.routeName: (BuildContext context) => HeroDetailsPage(),
+    ImagePage.routeName: (BuildContext context) => ImagePage(),
     IndexedStackPage.routeName: (BuildContext context) => IndexedStackPage(),
     InheritedModelPage.routeName: (BuildContext context) =>
         InheritedModelPage(),

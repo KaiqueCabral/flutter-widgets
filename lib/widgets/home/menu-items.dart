@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widget_tests/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
 import 'package:widget_tests/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
+import 'package:widget_tests/widgets/AssetsImagesIcons/065_image/image.dart';
 import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:widget_tests/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
@@ -148,6 +149,7 @@ class _MenuItems extends State<MenuItems> {
       getNavItem(Icons.arrow_forward_ios, "Future Builder",
           FutureBuilderPage.routeName),
       getNavItem(Icons.transit_enterexit, "Hero", HeroPage.routeName),
+      getNavItem(Icons.image, "Image", ImagePage.routeName),
       getNavItem(Icons.layers, "Indexed Stack", IndexedStackPage.routeName),
       getNavItem(Icons.add, "Inherited Model", InheritedModelPage.routeName),
       getNavItem(Icons.add, "Inherited Widget", InheritedWidgetPage.routeName),
