@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 class AlignPage extends StatelessWidget {
   static const String routeName = "/align";
 
+  static const double _sizeBoxWidth = 30;
+
+  double _widthContainer(BuildContext context) =>
+      (MediaQuery.of(context).size.width / 2.0) - _sizeBoxWidth;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,30 +21,24 @@ class AlignPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  height: 100.0,
-                  width: 200.0,
-                  color: Colors.blue[50],
-                  child: Align(
+                _container(
+                  Align(
                     alignment: Alignment.topLeft,
                     child: FlutterLogo(
                       size: 60,
                     ),
                   ),
+                  context,
                 ),
-                SizedBox(
-                  width: 30,
-                ),
-                Container(
-                  height: 100.0,
-                  width: 200.0,
-                  color: Colors.blue[50],
-                  child: Align(
+                _sizeBox(),
+                _container(
+                  Align(
                     alignment: Alignment.topRight,
                     child: FlutterLogo(
                       size: 60,
                     ),
                   ),
+                  context,
                 ),
               ],
             ),
@@ -48,16 +47,11 @@ class AlignPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   height: 130.0,
-                  width: 200.0,
+                  width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
                     children: <Widget>[
-                      Align(
-                        alignment: Alignment(-1, -1),
-                        child: FlutterLogo(
-                          size: 60,
-                        ),
-                      ),
+                      _alignFlutterLogoOnly(-1, -1),
                       Align(
                         alignment: Alignment(
                           -1,
@@ -76,21 +70,14 @@ class AlignPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  width: 30,
-                ),
+                _sizeBox(),
                 Container(
                   height: 130.0,
-                  width: 200.0,
+                  width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
                     children: <Widget>[
-                      Align(
-                        alignment: Alignment(1, -1),
-                        child: FlutterLogo(
-                          size: 60,
-                        ),
-                      ),
+                      _alignFlutterLogoOnly(1, -1),
                       Align(
                         alignment: Alignment(
                           1,
@@ -118,7 +105,7 @@ class AlignPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   height: 100.0,
-                  width: 200.0,
+                  width: _widthContainer(context),
                   color: Colors.blue[50],
                   child: Align(
                     alignment: Alignment.bottomLeft,
@@ -127,12 +114,10 @@ class AlignPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 30,
-                ),
+                _sizeBox(),
                 Container(
                   height: 100.0,
-                  width: 200.0,
+                  width: _widthContainer(context),
                   color: Colors.blue[50],
                   child: Align(
                     alignment: Alignment.bottomRight,
@@ -147,8 +132,8 @@ class AlignPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 130.0,
-                  width: 200.0,
+                  height: 150.0,
+                  width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
                     children: <Widget>[
@@ -176,12 +161,10 @@ class AlignPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  width: 30,
-                ),
+                _sizeBox(),
                 Container(
-                  height: 130.0,
-                  width: 200.0,
+                  height: 150.0,
+                  width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
                     children: <Widget>[
@@ -216,4 +199,22 @@ class AlignPage extends StatelessWidget {
       ),
     );
   }
+
+  _container(Align _align, BuildContext context) => Container(
+        height: 100.0,
+        width: _widthContainer(context),
+        color: Colors.blue[50],
+        child: _align,
+      );
+
+  _sizeBox() => const SizedBox(
+        width: _sizeBoxWidth,
+      );
+
+  _alignFlutterLogoOnly(double x, double y) => Align(
+        alignment: Alignment(x, y),
+        child: FlutterLogo(
+          size: 60,
+        ),
+      );
 }

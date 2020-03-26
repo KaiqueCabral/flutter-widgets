@@ -60,7 +60,7 @@ class Menu {
   static AboutListTile appAbout() {
     return AboutListTile(
       child: Text("About"),
-      applicationName: "Widgets Test",
+      applicationName: "App based on \"Widget of the Week\",",
       applicationVersion: "v1.0.0",
       applicationIcon: Icon(Icons.widgets),
       icon: Icon(Icons.info),

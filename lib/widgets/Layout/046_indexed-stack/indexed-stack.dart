@@ -21,56 +21,10 @@ class _IndexedStackPage extends State<IndexedStackPage> {
               index: _indexStack,
               sizing: StackFit.expand,
               children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 300,
-                  color: Colors.red,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Channel 0",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 300,
-                  color: Colors.orange,
-                  child: Text(
-                    "Channel 1",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 300,
-                  color: Colors.yellow,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Channel 2",
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 36,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 300,
-                  color: Colors.blue,
-                  child: Text(
-                    "Channel 3",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                    ),
-                  ),
-                ),
+                _containerChannel(Colors.red, "Channel 0"),
+                _containerChannel(Colors.orange, "Channel 1"),
+                _containerChannel(Colors.yellow, "Channel 2"),
+                _containerChannel(Colors.amber, "Channel 3"),
               ],
             ),
             Padding(
@@ -99,4 +53,18 @@ class _IndexedStackPage extends State<IndexedStackPage> {
       ),
     );
   }
+
+  _containerChannel(Color color, String channel) => Container(
+        width: MediaQuery.of(context).size.width,
+        height: 300,
+        color: color,
+        alignment: Alignment.center,
+        child: Text(
+          channel,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 36,
+          ),
+        ),
+      );
 }

@@ -31,7 +31,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
                   fadeInCurve: Curves.easeInToLinear,
                   placeholder: kTransparentImage,
                   image: _imageURL,
-                  height: 300,
+                  height: 250,
                 ),
               ),
               Container(
@@ -48,7 +48,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
                   image:
                       'https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=200',
                   //image has to be an URL
-                  height: 300,
+                  height: 200,
                 ),
               ),
             ],

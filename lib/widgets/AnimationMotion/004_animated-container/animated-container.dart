@@ -74,7 +74,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
               Row(
                 children: <Widget>[
                   Expanded(
-                    flex: 5,
+                    flex: 6,
                     child: Container(
                       height: 400,
                       color: Colors.blue,
@@ -113,7 +113,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
                                 "It cannot be a StatelessWidget because you need to change the Container's properties when you Tap the box.",
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   color: Colors.white,
                                 ),
                               ),

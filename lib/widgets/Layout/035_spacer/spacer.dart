@@ -27,8 +27,8 @@ class SpacerPage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  padding: EdgeInsets.all(25),
-                  width: MediaQuery.of(context).size.width / 2,
+                  padding: EdgeInsets.all(20),
+                  width: MediaQuery.of(context).size.width / 3,
                 ),
                 Spacer(
                   flex: 4,
@@ -42,7 +42,7 @@ class SpacerPage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  padding: EdgeInsets.all(25),
+                  padding: EdgeInsets.all(20),
                 ),
                 Spacer(
                   flex: 1,
@@ -56,7 +56,7 @@ class SpacerPage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  padding: EdgeInsets.all(25),
+                  padding: EdgeInsets.all(20),
                 ),
               ],
             ),

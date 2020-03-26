@@ -137,15 +137,17 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
             alignment: Alignment.center,
             color: Colors.grey,
             padding: EdgeInsets.all(20),
-            width: 225,
+            width: MediaQuery.of(context).size.width / 4.0,
           ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              "Click here! >>> ",
-              style: TextStyle(fontSize: 24, color: Colors.grey),
+          Expanded(
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                "Click here! >>> ",
+                style: TextStyle(fontSize: 24, color: Colors.grey),
+              ),
+              padding: EdgeInsets.all(25),
             ),
-            padding: EdgeInsets.all(25),
           ),
         ],
       ),

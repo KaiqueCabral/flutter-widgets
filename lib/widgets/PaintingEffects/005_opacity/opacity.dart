@@ -69,9 +69,21 @@ class OpacityPage extends StatelessWidget {
                       padding: EdgeInsets.all(5),
                       child: Opacity(
                         child: Image.network(
-                            'https://raw.githubusercontent.com/flutter/assets-for-api-docs/master/packages/diagrams/assets/blend_mode_destination.jpeg',
-                            colorBlendMode: BlendMode.modulate,
-                          ),
+                          'https://raw.githubusercontent.com/flutter/assets-for-api-docs/master/packages/diagrams/assets/blend_mode_destination.jpeg?V=1',
+                          colorBlendMode: BlendMode.modulate,
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent progress) {
+                            if (progress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: progress.expectedTotalBytes != null
+                                    ? progress.cumulativeBytesLoaded /
+                                        progress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                        ),
                         opacity: 0.75,
                       ),
                     ),
