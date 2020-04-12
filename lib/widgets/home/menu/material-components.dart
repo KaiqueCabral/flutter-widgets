@@ -6,6 +6,7 @@ import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
+import 'package:widget_tests/widgets/MaterialComponents/068_snackbar/snackbar.dart';
 
 class MenuMaterialComponents {
   final BuildContext context;
@@ -23,6 +24,8 @@ class MenuMaterialComponents {
       menu.getNavItem(Icons.slideshow, "Slider", SliderPage.routeName, context),
       menu.getNavItem(Icons.calendar_view_day, "Sliver App Bar",
           SliverAppBarPage.routeName, context),
+      menu.getNavItem(
+          Icons.message, "SnackBar", SnackBarPage.routeName, context),
       menu.getNavItem(Icons.title, "Tooltip", TooltipPage.routeName, context),
     ];
   }

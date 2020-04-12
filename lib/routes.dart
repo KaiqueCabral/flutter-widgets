@@ -53,6 +53,7 @@ import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.
 import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
+import 'package:widget_tests/widgets/MaterialComponents/068_snackbar/snackbar.dart';
 import 'package:widget_tests/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -144,6 +145,7 @@ routes() {
     SliverAppBarPage.routeName: (BuildContext context) => SliverAppBarPage(),
     SliverListGridPage.routeName: (BuildContext context) =>
         SliverListGridPage(),
+    SnackBarPage.routeName: (BuildContext context) => SnackBarPage(),
     SpacerPage.routeName: (BuildContext context) => SpacerPage(),
     StackPage.routeName: (BuildContext context) => StackPage(),
     StreamBuilderPage.routeName: (BuildContext context) => StreamBuilderPage(),
