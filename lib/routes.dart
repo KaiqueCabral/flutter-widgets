@@ -65,6 +65,7 @@ import 'package:widget_tests/widgets/PaintingEffects/070_shader-mask/shader-mask
 import 'package:widget_tests/widgets/Scrolling/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
+import 'package:widget_tests/widgets/Scrolling/071_notification-listener/notification-listener.dart';
 import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
 import 'package:widget_tests/widgets/Styling/061_color-filtered/color-filtered.dart';
 import 'package:widget_tests/widgets/Text/041_rich-text/rich-text.dart';
@@ -133,6 +134,8 @@ routes() {
     ListWheelScrollViewPage.routeName: (BuildContext context) =>
         ListWheelScrollViewPage(),
     MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),
+    NotificationListenerPage.routeName: (BuildContext context) =>
+        NotificationListenerPage(),
     OpacityPage.routeName: (BuildContext context) => OpacityPage(),
     PageViewPage.routeName: (BuildContext context) => PageViewPage(),
     PlaceHolderPage.routeName: (BuildContext context) => PlaceHolderPage(),
