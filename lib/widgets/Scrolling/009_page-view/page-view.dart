@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PageViewPage extends StatelessWidget {
+  PageController pageController = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
   static const String routeName = "/page-view";
 
   Widget containerColor(String _text, int _pageNumber, Color _color) {
@@ -24,6 +28,15 @@ class PageViewPage extends StatelessWidget {
               ),
             ),
           ),
+          RaisedButton(
+            onPressed: () {
+              pageController.animateToPage(
+                2,
+                duration: Duration(seconds: 1),
+                curve: Curves.easeInCirc,
+              );
+            },
+          ),
         ],
       ),
       color: _color,
@@ -41,18 +54,28 @@ class PageViewPage extends StatelessWidget {
               Icons.swap_horiz,
               color: Colors.white,
             ),
-            onPressed: null,
+            onPressed: () {},
           )
         ],
       ),
       body: PageView(
+        controller: pageController,
         children: <Widget>[
           containerColor(
-              "SWIPE to the left to see PageView working.", 1, Colors.pink),
-          containerColor("SWIPE to the left/right to see PageView working.", 2,
-              Colors.cyan),
-          containerColor("SWIPE to the right to see PageView working.", 3,
-              Colors.deepPurple),
+            "SWIPE to the left to see PageView working.",
+            1,
+            Colors.pink,
+          ),
+          containerColor(
+            "SWIPE to the left/right to see PageView working.",
+            2,
+            Colors.cyan,
+          ),
+          containerColor(
+            "SWIPE to the right to see PageView working.",
+            3,
+            Colors.deepPurple,
+          ),
         ],
       ),
     );

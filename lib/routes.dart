@@ -44,8 +44,10 @@ import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart
 import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
 import 'package:widget_tests/widgets/Layout/049_stack/stack.dart';
 import 'package:widget_tests/widgets/Layout/051_fractionally-sized-box/fractionally-sized-box.dart';
+import 'package:widget_tests/widgets/Layout/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/Layout/066_tab-bar/default-tab-controller.dart';
+import 'package:widget_tests/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
 import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -61,7 +63,6 @@ import 'package:widget_tests/widgets/PaintingEffects/023_transform/transform.dar
 import 'package:widget_tests/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
 import 'package:widget_tests/widgets/Scrolling/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
-import 'package:widget_tests/widgets/Scrolling/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
 import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
 import 'package:widget_tests/widgets/Styling/061_color-filtered/color-filtered.dart';
@@ -128,6 +129,8 @@ routes() {
     LimitedBoxPage.routeName: (BuildContext context) => LimitedBoxPage(),
     ListTilePage.routeName: (BuildContext context) => ListTilePage(),
     ListViewPage.routeName: (BuildContext context) => ListViewPage(),
+    ListWheelScrollViewPage.routeName: (BuildContext context) =>
+        ListWheelScrollViewPage(),
     MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),
     OpacityPage.routeName: (BuildContext context) => OpacityPage(),
     PageViewPage.routeName: (BuildContext context) => PageViewPage(),

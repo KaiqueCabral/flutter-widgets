@@ -18,8 +18,10 @@ import 'package:widget_tests/widgets/Layout/046_indexed-stack/indexed-stack.dart
 import 'package:widget_tests/widgets/Layout/048_constrained-box/constrained-box.dart';
 import 'package:widget_tests/widgets/Layout/049_stack/stack.dart';
 import 'package:widget_tests/widgets/Layout/051_fractionally-sized-box/fractionally-sized-box.dart';
+import 'package:widget_tests/widgets/Layout/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/Layout/066_tab-bar/default-tab-controller.dart';
+import 'package:widget_tests/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
 import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
 
 class MenuLayout {
@@ -49,6 +51,9 @@ class MenuLayout {
           Icons.layers, "Indexed Stack", IndexedStackPage.routeName, context),
       menu.getNavItem(
           Icons.pages, "Layout Builder", LayoutBuilderPage.routeName, context),
+      menu.getNavItem(Icons.list, "List View", ListViewPage.routeName, context),
+      menu.getNavItem(Icons.list, "List Wheel Scroll View",
+          ListWheelScrollViewPage.routeName, context),
       menu.getNavItem(
           Icons.crop_square, "Limited Box", LimitedBoxPage.routeName, context),
       menu.getNavItem(Icons.list, "List Tile", ListTilePage.routeName, context),
