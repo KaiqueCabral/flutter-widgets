@@ -19,6 +19,7 @@ import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-li
 import 'package:widget_tests/widgets/Basics/015_inherited-model/inherited-model.dart';
 import 'package:widget_tests/widgets/Basics/036_inherited-widget/inherited-widget.dart';
 import 'package:widget_tests/widgets/Basics/040_place-holder/place-holder.dart';
+import 'package:widget_tests/widgets/Basics/072_builder/builder.dart';
 import 'package:widget_tests/widgets/InteractionModels/017_hero/hero-details.dart';
 import 'package:widget_tests/widgets/InteractionModels/017_hero/hero.dart';
 import 'package:widget_tests/widgets/InteractionModels/022_absorb-pointer/absorb-pointer.dart';
@@ -95,6 +96,7 @@ routes() {
     AspectRatioPage.routeName: (BuildContext context) => AspectRatioPage(),
     BackdropFilterPage.routeName: (BuildContext context) =>
         BackdropFilterPage(),
+    BuilderPage.routeName: (BuildContext context) => BuilderPage(),
     ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
     ColorFilteredPage.routeName: (BuildContext context) => ColorFilteredPage(),
     ConstrainedBoxPage.routeName: (BuildContext context) =>
