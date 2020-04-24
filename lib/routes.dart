@@ -61,6 +61,7 @@ import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect
 import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
 import 'package:widget_tests/widgets/PaintingEffects/023_transform/transform.dart';
 import 'package:widget_tests/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
+import 'package:widget_tests/widgets/PaintingEffects/070_shader-mask/shader-mask.dart';
 import 'package:widget_tests/widgets/Scrolling/009_page-view/page-view.dart';
 import 'package:widget_tests/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:widget_tests/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
@@ -143,6 +144,7 @@ routes() {
     SelectableTextPage.routeName: (BuildContext context) =>
         SelectableTextPage(),
     SemanticsPage.routeName: (BuildContext context) => SemanticsPage(),
+    ShaderMaskPage.routeName: (BuildContext context) => ShaderMaskPage(),
     SizedBoxPage.routeName: (BuildContext context) => SizedBoxPage(),
     SliderPage.routeName: (BuildContext context) => SliderPage(),
     SliverAppBarPage.routeName: (BuildContext context) => SliverAppBarPage(),
