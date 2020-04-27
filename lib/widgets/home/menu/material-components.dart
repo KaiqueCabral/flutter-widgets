@@ -7,6 +7,7 @@ import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-tabl
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
 import 'package:widget_tests/widgets/MaterialComponents/068_snackbar/snackbar.dart';
+import 'package:widget_tests/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 
 class MenuMaterialComponents {
   final BuildContext context;
@@ -21,6 +22,8 @@ class MenuMaterialComponents {
           Icons.table_chart, "Data Table", DataTablePage.routeName, context),
       menu.getNavItem(Icons.touch_app, "Floating Action Button",
           FloatingActionButtonPage.routeName, context),
+      menu.getNavItem(Icons.linear_scale, "Linear & Circle Progress",
+          LinearCircularProgressPage.routeName, context),
       menu.getNavItem(Icons.slideshow, "Slider", SliderPage.routeName, context),
       menu.getNavItem(Icons.calendar_view_day, "Sliver App Bar",
           SliverAppBarPage.routeName, context),

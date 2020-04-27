@@ -57,6 +57,7 @@ import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-tabl
 import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
 import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
 import 'package:widget_tests/widgets/MaterialComponents/068_snackbar/snackbar.dart';
+import 'package:widget_tests/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 import 'package:widget_tests/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -133,6 +134,8 @@ routes() {
         InheritedWidgetPage(),
     LayoutBuilderPage.routeName: (BuildContext context) => LayoutBuilderPage(),
     LimitedBoxPage.routeName: (BuildContext context) => LimitedBoxPage(),
+    LinearCircularProgressPage.routeName: (BuildContext context) =>
+        LinearCircularProgressPage(),
     ListTilePage.routeName: (BuildContext context) => ListTilePage(),
     ListViewPage.routeName: (BuildContext context) => ListViewPage(),
     ListWheelScrollViewPage.routeName: (BuildContext context) =>
