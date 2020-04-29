@@ -1,6 +1,8 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_tests/model/future-builder.dart';
 import 'package:widget_tests/services/future-builder.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class FutureBuilderPage extends StatefulWidget {
   static const String routeName = "/future-builder";
@@ -14,6 +16,22 @@ class FutureBuilderPage extends StatefulWidget {
 
 class _FutureBuilderPage extends State<FutureBuilderPage> {
   int _post = 1;
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,101 +39,93 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
       appBar: AppBar(
         title: Text("Future Builder"),
       ),
-      body: Container(
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: FutureBuilder<FutureBuilderModel>(
-                future: getFutureResponse(_post),
-                builder: (context, snapshot) {
-                  List<Widget> children;
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: 70, bottom: 70),
+        child: Container(
+          alignment: Alignment.center,
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: FutureBuilder<FutureBuilderModel>(
+                  future: getFutureResponse(_post),
+                  builder: (context, snapshot) {
+                    List<Widget> children;
 
-                  if (snapshot.hasData) {
-                    children = <Widget>[
-                      Icon(
-                        Icons.check_circle_outline,
-                        color: Colors.green,
-                        size: 60,
-                      ),
-                      SafeArea(
-                        minimum: EdgeInsets.all(20),
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Expanded(
-                                  child: Text(
-                                    'ID: ${snapshot.data.id}',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    'User ID: ${snapshot.data.userId}',
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(),
-                            Container(
-                              child: Text(
-                                'Title: ${snapshot.data.title}',
-                                style: TextStyle(fontSize: 18),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Divider(),
-                            Container(
-                              child: Text(
-                                'Body: ${snapshot.data.body}',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 24),
-                              ),
-                            ),
-                          ],
+                    if (snapshot.hasData) {
+                      children = <Widget>[
+                        Icon(
+                          Icons.check_circle_outline,
+                          color: Colors.green,
+                          size: 60,
                         ),
-                      ),
-                    ];
-                  } else if (snapshot.hasError) {
-                    children = <Widget>[
-                      Icon(
-                        Icons.error_outline,
-                        color: Colors.red,
-                        size: 60,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: Text('Error: ${snapshot.error}'),
-                      ),
-                    ];
-                  } else {
-                    children = <Widget>[
-                      SizedBox(
-                        child: CircularProgressIndicator(),
-                        width: 60,
-                        height: 60,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 16),
-                        child: Text('Awaiting result...'),
-                      ),
-                    ];
-                  }
+                        SafeArea(
+                          minimum: EdgeInsets.all(20),
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  postInfo("ID: ${snapshot.data.id}"),
+                                  postInfo("User ID: ${snapshot.data.userId}"),
+                                ],
+                              ),
+                              Divider(),
+                              Container(
+                                child: Text(
+                                  'Title: ${snapshot.data.title}',
+                                  style: TextStyle(fontSize: 24),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Divider(),
+                              Container(
+                                child: Text(
+                                  'Body: ${snapshot.data.body} ${snapshot.data.body}',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ];
+                    } else if (snapshot.hasError) {
+                      children = <Widget>[
+                        Icon(
+                          Icons.error_outline,
+                          color: Colors.red,
+                          size: 60,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: Text('Error: ${snapshot.error}'),
+                        ),
+                      ];
+                    } else {
+                      children = <Widget>[
+                        SizedBox(
+                          child: CircularProgressIndicator(),
+                          width: 60,
+                          height: 60,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 16),
+                          child: Text('Awaiting result...'),
+                        ),
+                      ];
+                    }
 
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: children,
-                    ),
-                  );
-                },
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: children,
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -133,4 +143,12 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
       ),
     );
   }
+
+  postInfo(String text) => Expanded(
+        child: Text(
+          text,
+          textAlign: TextAlign.left,
+          style: TextStyle(fontSize: 18),
+        ),
+      );
 }

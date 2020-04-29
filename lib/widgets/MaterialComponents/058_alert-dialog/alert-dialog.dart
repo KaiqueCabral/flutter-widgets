@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class AlertDialogPage extends StatefulWidget {
   static const String routeName = "/alert-dialog";
@@ -9,6 +11,22 @@ class AlertDialogPage extends StatefulWidget {
 
 class _AlertDialogPageState extends State<AlertDialogPage> {
   String _text = "";
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   simpleDialog(BuildContext context) {
     AlertDialog _dialog = AlertDialog(
       content: Text("You can just click on the \"OK\" button."),
@@ -70,8 +88,10 @@ class _AlertDialogPageState extends State<AlertDialogPage> {
       body: Container(
         color: Colors.yellow[100],
         constraints: BoxConstraints.expand(),
+        padding: EdgeInsets.only(bottom: 55),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
               child: Text("Normal Alert Dialog"),

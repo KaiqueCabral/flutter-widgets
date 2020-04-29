@@ -16,7 +16,7 @@ class _HeroDetailsPage extends State<HeroDetailsPage> {
         title: Text("Hero Details"),
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

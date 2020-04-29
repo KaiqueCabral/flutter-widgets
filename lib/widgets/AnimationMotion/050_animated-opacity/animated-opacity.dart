@@ -1,4 +1,8 @@
+import 'package:admob_flutter/admob_flutter.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_admob.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class AnimatedOpacityPage extends StatefulWidget {
   static const String routeName = "/animated-opacity";
@@ -8,6 +12,22 @@ class AnimatedOpacityPage extends StatefulWidget {
 
 class _AnimatedOpacityPage extends State<AnimatedOpacityPage> {
   double opacityLevel = 1.0;
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   void _changeOpacity() {
     setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
@@ -23,7 +43,7 @@ class _AnimatedOpacityPage extends State<AnimatedOpacityPage> {
         color: Colors.orange[100],
         width: MediaQuery.of(context).size.width,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AnimatedOpacity(
@@ -33,14 +53,14 @@ class _AnimatedOpacityPage extends State<AnimatedOpacityPage> {
                 size: 100,
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
             RaisedButton(
               child: Text('Fade Logo'),
               onPressed: _changeOpacity,
               color: Colors.red,
               textColor: Colors.white,
+            ),
+            SizedBox(
+              height: 105, //Banner Ad
             ),
           ],
         ),

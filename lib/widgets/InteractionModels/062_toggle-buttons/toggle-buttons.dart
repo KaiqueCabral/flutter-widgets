@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class ToggleButtonsPage extends StatefulWidget {
   static const String routeName = "/toggle-buttons";
@@ -17,10 +19,21 @@ class _ToggleButtonsPageState extends State<ToggleButtonsPage> {
   List<bool> lstIsSelectedEC = List.generate(3, (_) => false);
   List<bool> lstIsSelectedECN = List.generate(3, (_) => false);
   List<bool> lstIsSelectedECO = List.generate(3, (index) => (index == 0));
+  BannerAd bannerAd;
 
   @override
   void initState() {
     super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
   }
 
   @override

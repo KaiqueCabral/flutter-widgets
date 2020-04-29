@@ -1,7 +1,30 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class SnackBarPage extends StatelessWidget {
+class SnackBarPage extends StatefulWidget {
   static const String routeName = "/snackbar";
+
+  @override
+  _SnackBarPageState createState() => _SnackBarPageState();
+}
+
+class _SnackBarPageState extends State<SnackBarPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +63,11 @@ class SnackBarPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     containerExplained(
-                      "Widget with button\nto activate the SnackBar",
+                      "Widget with\nbutton to activate\nthe SnackBar",
                       Colors.blue[200],
                     ),
                     containerExplained(
-                      "Widget with button\nto activate the SnackBar",
+                      "Widget with\nbutton to activate\nthe SnackBar",
                       Colors.blue[200],
                     ),
                   ],

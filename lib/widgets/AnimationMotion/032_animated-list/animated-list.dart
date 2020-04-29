@@ -1,5 +1,7 @@
 import 'dart:math';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class Item {
   Item({this.name});
@@ -16,6 +18,22 @@ class _AnimatedListPage extends State<AnimatedListPage> {
   List<Item> items = new List();
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   var rng = new Random();
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   Widget _itHasNoData() {
     if (items.length == 0) {
@@ -75,26 +93,10 @@ class _AnimatedListPage extends State<AnimatedListPage> {
             decoration: BoxDecoration(
               color: Colors.green[100],
               border: Border(
-                bottom: BorderSide(
-                  color: Colors.green[500],
-                  width: 1,
-                  style: BorderStyle.solid,
-                ),
-                top: BorderSide(
-                  color: Colors.green[500],
-                  width: 1,
-                  style: BorderStyle.solid,
-                ),
-                right: BorderSide(
-                  color: Colors.green[500],
-                  width: 1,
-                  style: BorderStyle.solid,
-                ),
-                left: BorderSide(
-                  color: Colors.green[900],
-                  width: 1,
-                  style: BorderStyle.solid,
-                ),
+                bottom: _borderGreen(),
+                top: _borderGreen(),
+                right: _borderGreen(),
+                left: _borderGreen(),
               ),
             ),
           ),
@@ -106,46 +108,52 @@ class _AnimatedListPage extends State<AnimatedListPage> {
 
   @override
   Widget build(BuildContext context) {
-    //final Map<int, Animation<double>> animations = <int, Animation<double>>{};
     return Scaffold(
       appBar: AppBar(
         title: Text("Animated List"),
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                IconButton(
-                  color: Colors.green,
-                  icon: const Icon(
-                    Icons.add,
+      body: SafeArea(
+        minimum: EdgeInsets.only(bottom: 55),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  IconButton(
+                    color: Colors.green,
+                    icon: const Icon(Icons.add),
+                    onPressed: _addItem,
                   ),
-                  onPressed: _addItem,
-                ),
-                IconButton(
-                  color: Colors.red,
-                  icon: const Icon(Icons.remove),
-                  onPressed: _removeItem,
-                )
-              ],
+                  IconButton(
+                    color: Colors.red,
+                    icon: const Icon(Icons.remove),
+                    onPressed: _removeItem,
+                  )
+                ],
+              ),
             ),
-          ),
-          _itHasNoData(),
-          Expanded(
-            child: AnimatedList(
-              key: listKey,
-              initialItemCount: 0,
-              padding: EdgeInsets.all(0),
-              itemBuilder: (context, index, animation) {
-                return buildItem(context, index, animation);
-              },
+            _itHasNoData(),
+            Expanded(
+              child: AnimatedList(
+                key: listKey,
+                initialItemCount: 0,
+                padding: EdgeInsets.all(0),
+                itemBuilder: (context, index, animation) {
+                  return buildItem(context, index, animation);
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
+
+_borderGreen() => BorderSide(
+      color: Colors.green[500],
+      width: 1,
+      style: BorderStyle.solid,
+    );

@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class AnimatedIconPage extends StatefulWidget {
   static const String routeName = "/animated-icon";
@@ -12,6 +14,7 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
   bool isMenuClosed = false;
   AnimationController _animationControllerPlay;
   AnimationController _animationControllerMenu;
+  BannerAd bannerAd;
 
   @override
   void initState() {
@@ -24,12 +27,18 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
       vsync: this,
       duration: Duration(seconds: 2),
     );
+
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
+      ..load()
+      ..show();
   }
 
   @override
   void dispose() {
     _animationControllerPlay.dispose();
     _animationControllerMenu.dispose();
+    bannerAd?.dispose();
     super.dispose();
   }
 
@@ -50,9 +59,9 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
         title: Text("Animated Icon"),
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        alignment: Alignment.topCenter,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             IconButton(
               iconSize: 100,

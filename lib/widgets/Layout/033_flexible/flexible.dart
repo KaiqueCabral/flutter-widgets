@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class FlexiblePage extends StatelessWidget {
+class FlexiblePage extends StatefulWidget {
   static const String routeName = "/flexible";
+
+  @override
+  _FlexiblePageState createState() => _FlexiblePageState();
+}
+
+class _FlexiblePageState extends State<FlexiblePage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +35,7 @@ class FlexiblePage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.deepOrange[200],
+        padding: EdgeInsets.only(bottom: 55),
         child: Column(
           children: <Widget>[
             Flexible(
@@ -20,36 +45,8 @@ class FlexiblePage extends StatelessWidget {
                 color: Colors.teal[100],
                 child: Row(
                   children: <Widget>[
-                    Flexible(
-                      fit: FlexFit.tight,
-                      child: Container(
-                        color: Colors.deepPurple,
-                        padding: EdgeInsets.all(20),
-                        margin: EdgeInsets.all(20),
-                        child: Text(
-                          "A",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      fit: FlexFit.tight,
-                      child: Container(
-                        color: Colors.red,
-                        padding: EdgeInsets.all(20),
-                        margin: EdgeInsets.all(20),
-                        child: Text(
-                          "B",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                    flexibleInside(Colors.deepPurple, "A"),
+                    flexibleInside(Colors.red, "B"),
                   ],
                 ),
               ),
@@ -59,18 +56,7 @@ class FlexiblePage extends StatelessWidget {
               fit: FlexFit.tight,
               child: Row(
                 children: <Widget>[
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Container(
-                      color: Colors.green[100],
-                      padding: EdgeInsets.all(30),
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "D",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
+                  flexibleInside(Colors.teal, "D"),
                   Container(
                     width: 200,
                     color: Colors.green[300],
@@ -81,21 +67,7 @@ class FlexiblePage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Container(
-                      color: Colors.green,
-                      padding: EdgeInsets.all(30),
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "F",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
+                  flexibleInside(Colors.green, "F"),
                 ],
               ),
             ),
@@ -114,6 +86,24 @@ class FlexiblePage extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Flexible flexibleInside(Color color, String text) {
+    return Flexible(
+      fit: FlexFit.tight,
+      child: Container(
+        color: color,
+        padding: EdgeInsets.all(20),
+        margin: EdgeInsets.all(20),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
     );

@@ -1,14 +1,35 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class LayoutBuilderPage extends StatelessWidget {
+class LayoutBuilderPage extends StatefulWidget {
   static const String routeName = "/layout-builder";
 
+  @override
+  _LayoutBuilderPageState createState() => _LayoutBuilderPageState();
+}
+
+class _LayoutBuilderPageState extends State<LayoutBuilderPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   _text(double maxHeight, double maxWidth) => Text(
-        "Height: " +
-            maxHeight.roundToDouble().toString() +
-            "\n"
-                "Width: " +
-            maxWidth.roundToDouble().toString(),
+        "Height: ${maxHeight.roundToDouble()}\n"
+        "Width: ${maxWidth.roundToDouble()}",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.white,

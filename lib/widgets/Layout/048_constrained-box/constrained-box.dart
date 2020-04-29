@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ConstrainedBoxPage extends StatelessWidget {
+class ConstrainedBoxPage extends StatefulWidget {
   static const String routeName = "/constrained-box";
+
+  @override
+  _ConstrainedBoxPageState createState() => _ConstrainedBoxPageState();
+}
+
+class _ConstrainedBoxPageState extends State<ConstrainedBoxPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +49,7 @@ class ConstrainedBoxPage extends StatelessWidget {
                 maxWidth: 150,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Container(

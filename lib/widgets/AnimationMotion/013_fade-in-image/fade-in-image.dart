@@ -1,5 +1,7 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class FadeInImagePage extends StatefulWidget {
   static const String routeName = "/fade-in-image";
@@ -8,6 +10,23 @@ class FadeInImagePage extends StatefulWidget {
 }
 
 class _FadeInImagePage extends State<FadeInImagePage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show(anchorOffset: 100);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   String _imageURL =
       'https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=200';
 
@@ -65,7 +84,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
           setState(
             () {
               _imageURL =
-                  "https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=400";
+                  "https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=300";
             },
           );
         },

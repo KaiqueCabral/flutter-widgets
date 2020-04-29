@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class FadeTransitionPage extends StatefulWidget {
   static const String routeName = "/fade-transition";
@@ -12,9 +14,11 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
   AnimationController _animationController;
   Animation _animation;
   CurvedAnimation _curvedAnimation;
+  BannerAd bannerAd;
 
   @override
   void initState() {
+    super.initState();
     _animationController = AnimationController(
       vsync: this,
       duration: Duration(seconds: 2),
@@ -36,12 +40,16 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
     //This command is here to start the animation when the page starts
     //_animationController.forward();
 
-    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
   }
 
   @override
   void dispose() {
     _animationController.dispose();
+    bannerAd?.dispose();
     super.dispose();
   }
 
@@ -52,12 +60,14 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
         title: Text('Fade Transition'),
       ),
       body: Center(
-        child: FadeTransition(
-          opacity: _animation,
-          child: Icon(
-            Icons.lightbulb_outline,
-            color: Colors.lightGreen,
-            size: 300,
+        child: SingleChildScrollView(
+          child: FadeTransition(
+            opacity: _animation,
+            child: Icon(
+              Icons.lightbulb_outline,
+              color: Colors.lightGreen,
+              size: 200,
+            ),
           ),
         ),
       ),

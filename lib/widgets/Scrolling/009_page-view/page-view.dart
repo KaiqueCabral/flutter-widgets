@@ -1,11 +1,35 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class PageViewPage extends StatelessWidget {
+class PageViewPage extends StatefulWidget {
+  static const String routeName = "/page-view";
+
+  @override
+  _PageViewPageState createState() => _PageViewPageState();
+}
+
+class _PageViewPageState extends State<PageViewPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   PageController pageController = PageController(
     initialPage: 0,
     keepPage: true,
   );
-  static const String routeName = "/page-view";
 
   Widget containerColor(String _text, int _pageNumber, Color _color) {
     return Container(
@@ -20,15 +44,8 @@ class PageViewPage extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: Center(
-              child: Text(
-                "This is PAGE " + _pageNumber.toString(),
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-            ),
-          ),
           RaisedButton(
+            child: Text("Go to Page 3"),
             onPressed: () {
               pageController.animateToPage(
                 2,
@@ -36,6 +53,14 @@ class PageViewPage extends StatelessWidget {
                 curve: Curves.easeInCirc,
               );
             },
+          ),
+          Expanded(
+            child: Center(
+              child: Text(
+                "This is PAGE " + _pageNumber.toString(),
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
           ),
         ],
       ),

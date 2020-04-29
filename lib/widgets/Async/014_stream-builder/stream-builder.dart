@@ -1,13 +1,37 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class StreamBuilderPage extends StatelessWidget {
+class StreamBuilderPage extends StatefulWidget {
   static const String routeName = "/stream-builder";
+
+  @override
+  _StreamBuilderPageState createState() => _StreamBuilderPageState();
+}
+
+class _StreamBuilderPageState extends State<StreamBuilderPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stream Demo'),
+        title: Text("Stream Builder"),
       ),
       body: Center(
         child: StreamBuilder(

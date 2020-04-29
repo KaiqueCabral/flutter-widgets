@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class LinearCircularProgressPage extends StatefulWidget {
   static const String routeName = "/linear-circular-progress";
@@ -9,6 +11,22 @@ class LinearCircularProgressPage extends StatefulWidget {
 
 class _LinearCircularProgressPageState
     extends State<LinearCircularProgressPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,14 +87,6 @@ class _LinearCircularProgressPageState
           ],
         ),
         minimum: EdgeInsets.all(30),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.lightBlue,
-        child: Icon(
-          Icons.refresh,
-          color: Colors.white,
-        ),
       ),
     );
   }

@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class ReordenableListViewPage extends StatefulWidget {
   static const String routeName = "/reordenable-list-view";
@@ -7,6 +9,22 @@ class ReordenableListViewPage extends StatefulWidget {
 }
 
 class _ReordenableListViewPage extends State<ReordenableListViewPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   List<Cars> _cars = <Cars>[
     Cars(1, "Ford", "New Fiesta", Colors.white),
     Cars(2, "Fiat", "500", Colors.red),

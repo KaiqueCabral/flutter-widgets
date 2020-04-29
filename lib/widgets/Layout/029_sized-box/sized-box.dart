@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class SizedBoxPage extends StatelessWidget {
+class SizedBoxPage extends StatefulWidget {
   static const String routeName = "/sized-box";
+
+  @override
+  _SizedBoxPageState createState() => _SizedBoxPageState();
+}
+
+class _SizedBoxPageState extends State<SizedBoxPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

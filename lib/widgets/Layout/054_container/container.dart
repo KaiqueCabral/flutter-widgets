@@ -1,9 +1,33 @@
 import 'dart:ui';
 
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ContainerPage extends StatelessWidget {
+class ContainerPage extends StatefulWidget {
   static const String routeName = "/container";
+
+  @override
+  _ContainerPageState createState() => _ContainerPageState();
+}
+
+class _ContainerPageState extends State<ContainerPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

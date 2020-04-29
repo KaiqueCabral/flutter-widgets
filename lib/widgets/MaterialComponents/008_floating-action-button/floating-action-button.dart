@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class FloatingActionButtonPage extends StatefulWidget {
   static const String routeName = "/floating-action-button";
@@ -22,6 +24,7 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
   String _text = "Testing Floating Action Button";
+  BannerAd bannerAd;
 
   @override
   void initState() {
@@ -46,12 +49,17 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
       ),
     );
 
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+
     super.initState();
   }
 
   @override
   void dispose() {
     _animationController.dispose();
+    bannerAd?.dispose();
     super.dispose();
   }
 

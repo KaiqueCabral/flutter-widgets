@@ -1,7 +1,30 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ListTilePage extends StatelessWidget {
+class ListTilePage extends StatefulWidget {
   static const String routeName = "/list-tile";
+
+  @override
+  _ListTilePageState createState() => _ListTilePageState();
+}
+
+class _ListTilePageState extends State<ListTilePage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

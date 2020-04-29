@@ -1,7 +1,30 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class TooltipPage extends StatelessWidget {
+class TooltipPage extends StatefulWidget {
   static const String routeName = "/tooltip";
+
+  @override
+  _TooltipPageState createState() => _TooltipPageState();
+}
+
+class _TooltipPageState extends State<TooltipPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

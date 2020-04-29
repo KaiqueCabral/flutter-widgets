@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class ValueListenableBuilderPage extends StatefulWidget {
   static const String routeName = "/value-listenable-builder";
@@ -10,6 +12,23 @@ class ValueListenableBuilderPage extends StatefulWidget {
 class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
   final ValueNotifier<int> _counter = ValueNotifier<int>(0);
   final Widget _text = const Text("ValueListenableBuilder!");
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +45,12 @@ class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Text("$value"),
+                    Text(
+                      "$value",
+                      style: TextStyle(
+                        fontSize: 36,
+                      ),
+                    ),
                     SizedBox(
                       height: 30,
                     ),

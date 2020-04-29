@@ -1,8 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ClipRRectPage extends StatelessWidget {
+class ClipRRectPage extends StatefulWidget {
   static const String routeName = "/clip-r-rect";
+
+  @override
+  _ClipRRectPageState createState() => _ClipRRectPageState();
+}
+
+class _ClipRRectPageState extends State<ClipRRectPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

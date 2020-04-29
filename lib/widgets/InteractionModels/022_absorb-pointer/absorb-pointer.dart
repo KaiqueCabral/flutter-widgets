@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class AbsorbPointerPage extends StatefulWidget {
   static const String routeName = "/absorb-pointer";
@@ -8,6 +10,22 @@ class AbsorbPointerPage extends StatefulWidget {
 
 class _AbsorbPointerPage extends State<AbsorbPointerPage> {
   String _text = "No button was clicked!";
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   _expanded(String _buttonText, Color _buttonColor) => Expanded(
         child: RaisedButton(

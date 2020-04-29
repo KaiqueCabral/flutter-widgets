@@ -1,5 +1,7 @@
 import 'dart:math' as math;
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class InheritedModelPage extends StatefulWidget {
   static const String routeName = "/inherited-model";
@@ -11,6 +13,22 @@ class _InheritedModelPage extends State<InheritedModelPage> {
   Color _colorOne = Colors.brown;
   Color _colorTwo = Colors.green;
   int _count = 0;
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
+      ..load()
+      ..show(anchorOffset: 20);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

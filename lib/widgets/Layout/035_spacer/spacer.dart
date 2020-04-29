@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class SpacerPage extends StatelessWidget {
+class SpacerPage extends StatefulWidget {
   static const String routeName = "/spacer";
+
+  @override
+  _SpacerPageState createState() => _SpacerPageState();
+}
+
+class _SpacerPageState extends State<SpacerPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +34,7 @@ class SpacerPage extends StatelessWidget {
         title: Text("Spacer"),
       ),
       body: SafeArea(
-        minimum: EdgeInsets.all(10),
+        minimum: EdgeInsets.symmetric(horizontal: 10, vertical: 55),
         child: Column(
           children: <Widget>[
             Spacer(
@@ -66,21 +90,9 @@ class SpacerPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("Using"),
-                  padding: EdgeInsets.all(25),
-                ),
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("Property:"),
-                  padding: EdgeInsets.all(25),
-                ),
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("spaceAround"),
-                  padding: EdgeInsets.all(25),
-                ),
+                finalContainer("Using"),
+                finalContainer("Property:"),
+                finalContainer("spaceAround"),
               ],
             ),
             Spacer(
@@ -89,21 +101,9 @@ class SpacerPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("Using"),
-                  padding: EdgeInsets.all(25),
-                ),
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("Property:"),
-                  padding: EdgeInsets.all(25),
-                ),
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("spaceBetween"),
-                  padding: EdgeInsets.all(25),
-                ),
+                finalContainer("Using"),
+                finalContainer("Property:"),
+                finalContainer("spaceAround"),
               ],
             ),
             Spacer(
@@ -112,26 +112,22 @@ class SpacerPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("Using"),
-                  padding: EdgeInsets.all(25),
-                ),
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("Property:"),
-                  padding: EdgeInsets.all(25),
-                ),
-                Container(
-                  color: Colors.tealAccent,
-                  child: Text("spaceAround"),
-                  padding: EdgeInsets.all(25),
-                ),
+                finalContainer("Using"),
+                finalContainer("Property:"),
+                finalContainer("spaceAround"),
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Container finalContainer(String text) {
+    return Container(
+      color: Colors.tealAccent,
+      child: Text(text),
+      padding: EdgeInsets.all(25),
     );
   }
 }

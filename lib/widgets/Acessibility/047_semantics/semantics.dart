@@ -1,4 +1,6 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_admob.dart';
 
 class SemanticsPage extends StatelessWidget {
   static const String routeName = "/semantics";
@@ -70,7 +72,16 @@ class SemanticsPage extends StatelessWidget {
                   child: Text("Semantics Test!"),
                 ),
               ],
-            )
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
+              child: AdmobBanner(
+                adUnitId: AdsAdmob.getBannerAdUnitId(),
+                adSize: AdmobBannerSize.MEDIUM_RECTANGLE,
+              ),
+            ),
           ],
         ),
         color: Colors.indigo[100],

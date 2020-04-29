@@ -1,4 +1,6 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_admob.dart';
 import 'package:widget_tests/widgets/home/menu-items.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,8 +18,23 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Text("Use the menu to check the widgets"),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Text(
+            "Use the menu on the TOP-LEFT to check the widgets",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          AdmobBanner(
+            adUnitId: AdsAdmob.getBannerAdUnitId(),
+            adSize: AdmobBannerSize.MEDIUM_RECTANGLE,
+          ),
+        ],
       ),
       drawer: MenuItems(),
     );

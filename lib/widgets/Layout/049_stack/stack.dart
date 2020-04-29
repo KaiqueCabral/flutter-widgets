@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class StackPage extends StatelessWidget {
+class StackPage extends StatefulWidget {
   static const String routeName = "/stack";
+
+  @override
+  _StackPageState createState() => _StackPageState();
+}
+
+class _StackPageState extends State<StackPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +35,7 @@ class StackPage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.red[100],
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.all(55),
         child: Stack(
           children: <Widget>[
             Container(
@@ -33,29 +57,24 @@ class StackPage extends StatelessWidget {
               color: Colors.blue[100],
               margin: EdgeInsets.all(120),
             ),
-            Positioned(
-              left: 130,
-              top: 130,
-              child: Text("Top Left"),
-            ),
-            Positioned(
-              right: 130,
-              top: 130,
-              child: Text("Top Right"),
-            ),
-            Positioned(
-              left: 130,
-              bottom: 130,
-              child: Text("Bottom Left"),
-            ),
-            Positioned(
-              right: 130,
-              bottom: 130,
-              child: Text("Bottom Right"),
-            ),
+            positionedText("Top Left", top: 130, left: 130),
+            positionedText("Top Right", top: 130, right: 130),
+            positionedText("Bottom Left", bottom: 130, left: 130),
+            positionedText("Bottom Right", bottom: 130, right: 130),
           ],
         ),
       ),
+    );
+  }
+
+  Positioned positionedText(String text,
+      {double left, double top, double right, double bottom}) {
+    return Positioned(
+      left: left,
+      top: top,
+      right: right,
+      bottom: bottom,
+      child: Text(text),
     );
   }
 }

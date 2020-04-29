@@ -1,7 +1,30 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ShaderMaskPage extends StatelessWidget {
+class ShaderMaskPage extends StatefulWidget {
   static const String routeName = "/shader-mask";
+
+  @override
+  _ShaderMaskPageState createState() => _ShaderMaskPageState();
+}
+
+class _ShaderMaskPageState extends State<ShaderMaskPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +41,7 @@ class ShaderMaskPage extends StatelessWidget {
                   child: listShaderItem(
                     index,
                     Text(
-                      'Item ${index + 1}',
+                      'Item ${(index + 1).toString().padLeft(2, '0')}',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

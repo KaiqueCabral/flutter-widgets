@@ -1,5 +1,7 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class Sky extends CustomPainter {
   @override
@@ -51,8 +53,29 @@ class Sky extends CustomPainter {
   bool shouldRebuildSemantics(Sky oldDelegate) => false;
 }
 
-class CustomPaintPage extends StatelessWidget {
+class CustomPaintPage extends StatefulWidget {
   static const String routeName = "/custom=paint";
+
+  @override
+  _CustomPaintPageState createState() => _CustomPaintPageState();
+}
+
+class _CustomPaintPageState extends State<CustomPaintPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

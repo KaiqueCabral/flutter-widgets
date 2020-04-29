@@ -1,7 +1,30 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class RichTextPage extends StatelessWidget {
+class RichTextPage extends StatefulWidget {
   static const String routeName = "/rich-text";
+
+  @override
+  _RichTextPageState createState() => _RichTextPageState();
+}
+
+class _RichTextPageState extends State<RichTextPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

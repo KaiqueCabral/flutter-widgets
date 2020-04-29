@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 import 'package:widget_tests/widgets/InteractionModels/017_hero/hero-details.dart';
 
 class HeroPage extends StatefulWidget {
@@ -8,6 +10,23 @@ class HeroPage extends StatefulWidget {
 }
 
 class _HeroPage extends State<HeroPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +34,7 @@ class _HeroPage extends State<HeroPage> {
         title: Text("Hero"),
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -46,17 +65,17 @@ class _HeroPage extends State<HeroPage> {
                       if (direction == HeroFlightDirection.push) {
                         return Icon(
                           Icons.flight_land,
-                          size: 70.0,
+                          size: 100.0,
                         );
                       } else if (direction == HeroFlightDirection.pop) {
                         return Icon(
                           Icons.flight_takeoff,
-                          size: 70.0,
+                          size: 100.0,
                         );
                       }
                       return Icon(
                         Icons.flight_land,
-                        size: 70.0,
+                        size: 100.0,
                       );
                     },
                     child: Icon(

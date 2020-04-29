@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class AnimatedContainerPage extends StatefulWidget {
   static const String routeName = "/animated-container";
@@ -12,130 +14,148 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   bool isSelected = false;
   String _textAnimCont = "Click Here!";
   Color _colorAnimCont = Colors.deepPurple;
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Animated Container")),
-      body: Container(
-        color: Colors.grey,
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Container(
-                    child: Center(
-                      child: Text(
-                        "Click Any\nPlace On\nPurple Box\nOn The Right",
-                        style: TextStyle(color: Colors.white),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.grey,
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Container(
+                      child: Center(
+                        child: Text(
+                          "Click Any\nPlace On\nPurple Box\nOn The Right",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
+                      height: 150,
+                      color: Colors.deepOrange,
+                      padding: EdgeInsets.all(10),
                     ),
-                    height: 150,
-                    color: Colors.deepOrange,
-                    padding: EdgeInsets.all(10),
-                  ),
-                  Expanded(
-                    child: Container(
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _textAnimCont = "Yeah! It works.\n" +
-                                "But only once.\n" +
-                                "You can't go back.";
-                            _colorAnimCont = Colors.blue[700];
-                          });
-                        },
-                        child: AnimatedContainer(
-                          alignment: Alignment.center,
-                          duration: Duration(milliseconds: 500),
-                          child: Text(
-                            _textAnimCont,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
+                    Expanded(
+                      child: Container(
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _textAnimCont = "Yeah! It works.\n" +
+                                  "But only once.\n" +
+                                  "You can't go back.";
+                              _colorAnimCont = Colors.blue[700];
+                            });
+                          },
+                          child: AnimatedContainer(
+                            alignment: Alignment.center,
+                            duration: Duration(milliseconds: 500),
+                            child: Text(
+                              _textAnimCont,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
                                 color: Colors.white60,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                          color: _colorAnimCont,
-                          curve: Curves.easeInOutSine,
-                          height: 40,
-                          padding: EdgeInsets.all(20),
-                        ),
-                      ),
-                      color: Colors.blueGrey,
-                      padding: EdgeInsets.all(20),
-                      height: 150,
-                    ),
-                    flex: 2,
-                  )
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 6,
-                    child: Container(
-                      height: 400,
-                      color: Colors.blue,
-                      alignment: Alignment.center,
-                      child: Center(
-                        child: SafeArea(
-                          minimum: EdgeInsets.all(20),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                "The blue box on the right is the real Widget \"Animated Container\".",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
+                                fontSize: 20,
                               ),
-                              Divider(
-                                color: Colors.white30,
-                                thickness: 1,
-                                height: 30,
-                              ),
-                              Text(
-                                "When you click on the box, it will change based on the setState function.",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Divider(
-                                color: Colors.white30,
-                                thickness: 1,
-                                height: 30,
-                              ),
-                              Text(
-                                "It cannot be a StatelessWidget because you need to change the Container's properties when you Tap the box.",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
+                            ),
+                            color: _colorAnimCont,
+                            curve: Curves.easeInOutSine,
+                            height: 40,
+                            padding: EdgeInsets.all(20),
                           ),
                         ),
+                        color: Colors.blueGrey,
+                        padding: EdgeInsets.all(20),
+                        height: 150,
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Container(
-                      height: 400,
-                      color: Colors.lightGreenAccent,
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isSelected = !isSelected;
-                          });
-                        },
+                      flex: 2,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 6,
+                      child: Container(
+                        height: 400,
+                        color: Colors.blue,
+                        alignment: Alignment.center,
                         child: Center(
-                          child: AnimatedContainer(
+                          child: SafeArea(
+                            minimum: EdgeInsets.all(20),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  "The blue box on the right is the real Widget \"Animated Container\".",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Divider(
+                                  color: Colors.white30,
+                                  thickness: 1,
+                                  height: 30,
+                                ),
+                                Text(
+                                  "When you click on the box, it will change based on the setState function.",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Divider(
+                                  color: Colors.white30,
+                                  thickness: 1,
+                                  height: 30,
+                                ),
+                                Text(
+                                  "It cannot be a StatelessWidget because you need to change the Container's properties when you Tap the box.",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        height: 400,
+                        color: Colors.lightGreenAccent,
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSelected = !isSelected;
+                            });
+                          },
+                          child: Center(
+                            child: AnimatedContainer(
                               child: Center(
                                 child: Text(
                                   "CLICK HERE!\n\n" +
@@ -157,14 +177,16 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
                                   ? Alignment.center
                                   : AlignmentDirectional.topCenter,
                               duration: Duration(seconds: 2),
-                              curve: Curves.fastOutSlowIn),
+                              curve: Curves.fastOutSlowIn,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

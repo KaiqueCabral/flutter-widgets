@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class TweenAnimationBuilderPage extends StatefulWidget {
   static const String routeName = "/tween-animation-builder";
@@ -9,6 +11,23 @@ class TweenAnimationBuilderPage extends StatefulWidget {
 
 class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
   Color finalColor = Colors.red[900];
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

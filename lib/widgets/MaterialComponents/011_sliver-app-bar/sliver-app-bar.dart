@@ -1,61 +1,72 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class SliverAppBarPage extends StatelessWidget {
+class SliverAppBarPage extends StatefulWidget {
   static const String routeName = "/sliver-app-bar";
+
+  @override
+  _SliverAppBarPageState createState() => _SliverAppBarPageState();
+}
+
+class _SliverAppBarPageState extends State<SliverAppBarPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            backgroundColor: Colors.blue,
-            floating: false,
-            pinned: true,
-            expandedHeight: 200.0,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              title: Text(
-                "Sliver App Bar",
-                style: TextStyle(color: Colors.white),
-              ),
-              background: Container(
-                color: Colors.lightBlue,
+      body: Container(
+        padding: EdgeInsets.only(bottom: 55),
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              backgroundColor: Colors.blue,
+              floating: false,
+              pinned: true,
+              expandedHeight: 200.0,
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: true,
+                title: Text(
+                  "Sliver App Bar",
+                  style: TextStyle(color: Colors.white),
+                ),
+                background: Container(
+                  color: Colors.lightBlue,
+                ),
               ),
             ),
-          ),
-          SliverFixedExtentList(
-            itemExtent: 100.0,
-            delegate: SliverChildListDelegate([
-              listItem(Colors.white, "Item 01"),
-              listItem(Colors.white, "Item 02"),
-              listItem(Colors.white, "Item 03"),
-              listItem(Colors.white, "Item 04"),
-              listItem(Colors.white, "Item 05"),
-              listItem(Colors.white, "Item 06"),
-              listItem(Colors.white, "Item 07"),
-              listItem(Colors.white, "Item 08"),
-              listItem(Colors.white, "Item 09"),
-              listItem(Colors.white, "Item 10"),
-              listItem(Colors.white, "Item 11"),
-              listItem(Colors.white, "Item 12"),
-              listItem(Colors.white, "Item 13"),
-              listItem(Colors.white, "Item 14"),
-              listItem(Colors.white, "Item 15"),
-              listItem(Colors.white, "Item 16"),
-              listItem(Colors.white, "Item 17"),
-              listItem(Colors.white, "Item 18"),
-              listItem(Colors.white, "Item 19"),
-              listItem(Colors.white, "Item 20"),
-            ]),
-          ),
-        ],
+            SliverFixedExtentList(
+              itemExtent: 100.0,
+              delegate: SliverChildListDelegate(
+                List.generate(
+                  20,
+                  (index) => listItem(
+                      Colors.white, "Item ${index.toString().padLeft(2, '0')}"),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget listItem(Color color, String title) => Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           border: Border(
             top: BorderSide(
               color: Colors.black26,
@@ -67,7 +78,7 @@ class SliverAppBarPage extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black87,
               fontSize: 14.0,
               fontWeight: FontWeight.bold,

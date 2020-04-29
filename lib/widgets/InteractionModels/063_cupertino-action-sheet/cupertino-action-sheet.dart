@@ -1,5 +1,7 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class CupertinoActionSheetPage extends StatefulWidget {
   static const String routeName = "/cupertino-action-sheet";
@@ -12,6 +14,22 @@ class CupertinoActionSheetPage extends StatefulWidget {
 class _CupertinoActionSheetPageState extends State<CupertinoActionSheetPage> {
   String _choice = "Click on the button above and choose an option!";
   String _option = "";
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

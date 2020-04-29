@@ -1,9 +1,32 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class TablePage extends StatelessWidget {
+class TablePage extends StatefulWidget {
   static const String routeName = "/table";
-  //The part inside of the FB will just fit
-  //For example, as you can see, the FONTSIZE ajust according to the FittedBox
+
+  @override
+  _TablePageState createState() => _TablePageState();
+}
+
+class _TablePageState extends State<TablePage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   Widget fittedBox(Color _bgColor) => FittedBox(
         fit: BoxFit.contain,
         child: Container(
@@ -18,7 +41,6 @@ class TablePage extends StatelessWidget {
         ),
       );
 
-  //TableCell you can define the height, fontSize and other properties
   Widget tableCell(double _height) => TableCell(
         verticalAlignment: TableCellVerticalAlignment.middle,
         child: Container(

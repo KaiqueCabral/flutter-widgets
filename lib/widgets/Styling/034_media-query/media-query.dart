@@ -1,7 +1,30 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class MediaQueryPage extends StatelessWidget {
+class MediaQueryPage extends StatefulWidget {
   static const String routeName = "/media-query";
+
+  @override
+  _MediaQueryPageState createState() => _MediaQueryPageState();
+}
+
+class _MediaQueryPageState extends State<MediaQueryPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   _mutualExpanded(String _text) => Expanded(
         child: Container(
@@ -21,6 +44,7 @@ class MediaQueryPage extends StatelessWidget {
         ),
         flex: 1,
       );
+
   _footerExpanded(String _text, Color _color, int _flex) => Expanded(
         flex: _flex,
         child: Container(

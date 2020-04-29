@@ -1,7 +1,30 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ClipPathPage extends StatelessWidget {
+class ClipPathPage extends StatefulWidget {
   static const String routeName = "/clip-path";
+
+  @override
+  _ClipPathPageState createState() => _ClipPathPageState();
+}
+
+class _ClipPathPageState extends State<ClipPathPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

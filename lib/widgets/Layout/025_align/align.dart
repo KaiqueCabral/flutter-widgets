@@ -1,12 +1,34 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class AlignPage extends StatelessWidget {
+class AlignPage extends StatefulWidget {
   static const String routeName = "/align";
-
   static const double _sizeBoxWidth = 30;
 
+  @override
+  _AlignPageState createState() => _AlignPageState();
+}
+
+class _AlignPageState extends State<AlignPage> {
   double _widthContainer(BuildContext context) =>
-      (MediaQuery.of(context).size.width / 2.0) - _sizeBoxWidth;
+      (MediaQuery.of(context).size.width / 2.0) - AlignPage._sizeBoxWidth;
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +36,8 @@ class AlignPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Align"),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(vertical: 55),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -46,7 +69,7 @@ class AlignPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 130.0,
+                  height: 150.0,
                   width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
@@ -72,7 +95,7 @@ class AlignPage extends StatelessWidget {
                 ),
                 _sizeBox(),
                 Container(
-                  height: 130.0,
+                  height: 150.0,
                   width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
@@ -132,7 +155,7 @@ class AlignPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 150.0,
+                  height: 170.0,
                   width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
@@ -163,7 +186,7 @@ class AlignPage extends StatelessWidget {
                 ),
                 _sizeBox(),
                 Container(
-                  height: 150.0,
+                  height: 170.0,
                   width: _widthContainer(context),
                   color: Colors.red[50],
                   child: Column(
@@ -208,7 +231,7 @@ class AlignPage extends StatelessWidget {
       );
 
   _sizeBox() => const SizedBox(
-        width: _sizeBoxWidth,
+        width: AlignPage._sizeBoxWidth,
       );
 
   _alignFlutterLogoOnly(double x, double y) => Align(

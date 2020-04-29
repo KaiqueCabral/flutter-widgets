@@ -22,7 +22,7 @@ import 'package:widget_tests/widgets/Layout/052_list-view/list-view.dart';
 import 'package:widget_tests/widgets/Layout/054_container/container.dart';
 import 'package:widget_tests/widgets/Layout/066_tab-bar/default-tab-controller.dart';
 import 'package:widget_tests/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
-import 'package:widget_tests/widgets/MaterialComponents/053_list-tile/list-tile.dart';
+import 'package:widget_tests/widgets/Layout/053_list-tile/list-tile.dart';
 
 class MenuLayout {
   final BuildContext context;

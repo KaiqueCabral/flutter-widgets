@@ -1,7 +1,32 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class DraggableScrollableSheetPage extends StatelessWidget {
+class DraggableScrollableSheetPage extends StatefulWidget {
   static const String routeName = "/draggable-scrollable-sheet";
+
+  @override
+  _DraggableScrollableSheetPageState createState() =>
+      _DraggableScrollableSheetPageState();
+}
+
+class _DraggableScrollableSheetPageState
+    extends State<DraggableScrollableSheetPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

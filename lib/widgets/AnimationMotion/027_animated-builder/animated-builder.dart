@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class AnimatedBuilderPage extends StatefulWidget {
   static const String routeName = "/animated-builder";
@@ -9,6 +11,7 @@ class AnimatedBuilderPage extends StatefulWidget {
 class _AnimatedBuilderPage extends State<AnimatedBuilderPage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
+  BannerAd bannerAd;
 
   @override
   void initState() {
@@ -19,11 +22,17 @@ class _AnimatedBuilderPage extends State<AnimatedBuilderPage>
       reverseDuration: Duration(seconds: 2),
       upperBound: 2,
     )..repeat(reverse: true);
+
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    bannerAd?.dispose();
     super.dispose();
   }
 
@@ -33,10 +42,15 @@ class _AnimatedBuilderPage extends State<AnimatedBuilderPage>
       appBar: AppBar(
         title: Text("Animated Builder"),
       ),
-      body: Container(
-        alignment: Alignment.center,
+      body: Center(
         child: AnimatedBuilder(
           animation: _controller,
+          builder: (BuildContext context, Widget child) {
+            return Transform.rotate(
+              angle: _controller.value * 2.0 * 3.1415,
+              child: child,
+            );
+          },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: Container(
@@ -54,12 +68,6 @@ class _AnimatedBuilderPage extends State<AnimatedBuilderPage>
               ),
             ),
           ),
-          builder: (BuildContext context, Widget child) {
-            return Transform.rotate(
-              angle: _controller.value * 2.0 * 3.1415,
-              child: child,
-            );
-          },
         ),
       ),
     );

@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ListWheelScrollViewPage extends StatelessWidget {
+class ListWheelScrollViewPage extends StatefulWidget {
   static const String routeName = "/list-wheel-scroll-view";
+
+  @override
+  _ListWheelScrollViewPageState createState() =>
+      _ListWheelScrollViewPageState();
+}
+
+class _ListWheelScrollViewPageState extends State<ListWheelScrollViewPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

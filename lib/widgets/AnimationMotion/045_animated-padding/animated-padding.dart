@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class AnimatedPaddingPage extends StatefulWidget {
   static const String routeName = "/animated-padding";
@@ -7,7 +9,24 @@ class AnimatedPaddingPage extends StatefulWidget {
 }
 
 class _AnimatedPaddingPage extends State<AnimatedPaddingPage> {
-  var _padding = EdgeInsets.zero;
+  EdgeInsets _padding = EdgeInsets.zero;
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   void _changePadding() {
     setState(() {
       if (_padding.left == 100) {
@@ -25,7 +44,7 @@ class _AnimatedPaddingPage extends State<AnimatedPaddingPage> {
         title: Text("Animated Padding"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           RaisedButton(
@@ -41,7 +60,7 @@ class _AnimatedPaddingPage extends State<AnimatedPaddingPage> {
             ),
           ),
           Container(
-            height: 300.0,
+            height: MediaQuery.of(context).size.height * 0.5,
             width: MediaQuery.of(context).size.width * 0.8,
             margin: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * 0.1,
@@ -54,6 +73,9 @@ class _AnimatedPaddingPage extends State<AnimatedPaddingPage> {
                 color: Colors.blue,
               ),
             ),
+          ),
+          SizedBox(
+            height: 55,
           ),
         ],
       ),

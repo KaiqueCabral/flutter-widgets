@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class PlaceHolderPage extends StatelessWidget {
+class PlaceHolderPage extends StatefulWidget {
   static const String routeName = "/place-holder";
+
+  @override
+  _PlaceHolderPageState createState() => _PlaceHolderPageState();
+}
+
+class _PlaceHolderPageState extends State<PlaceHolderPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

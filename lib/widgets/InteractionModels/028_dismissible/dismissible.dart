@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class DismissiblePage extends StatefulWidget {
   static const String routeName = "/dismissible";
@@ -9,6 +11,22 @@ class DismissiblePage extends StatefulWidget {
 class _DismissiblePage extends State<DismissiblePage> {
   final _items = List<String>.generate(20, (i) => "Item ${i + 1}");
   String _text = "";
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +35,7 @@ class _DismissiblePage extends State<DismissiblePage> {
         title: Text("Dismissible"),
       ),
       body: ListView.builder(
+        padding: EdgeInsets.only(top: 55),
         itemCount: _items.length,
         itemBuilder: (context, index) {
           final item = _items[index];

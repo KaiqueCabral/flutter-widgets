@@ -1,7 +1,31 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
-class ListViewPage extends StatelessWidget {
+class ListViewPage extends StatefulWidget {
   static const String routeName = "/list-view";
+
+  @override
+  _ListViewPageState createState() => _ListViewPageState();
+}
+
+class _ListViewPageState extends State<ListViewPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +38,9 @@ class ListViewPage extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
-            Container(
-              height: 50,
-              color: Colors.amber[600],
-              child: const Center(child: Text('Entry A')),
-            ),
-            Container(
-              height: 50,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
-            ),
-            Container(
-              height: 50,
-              color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
-            ),
+            container(Colors.amber[600], "Entry A"),
+            container(Colors.amber[500], "Entry B"),
+            container(Colors.amber[100], "Entry C"),
             Container(
               color: Colors.orange,
               child: ListTile(
@@ -55,6 +67,16 @@ class ListViewPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Container container(Color color, String text) {
+    return Container(
+      height: 50,
+      color: color,
+      child: Center(
+        child: Text(text),
       ),
     );
   }

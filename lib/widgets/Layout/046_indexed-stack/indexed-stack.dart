@@ -1,4 +1,6 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_tests/shared/ads/ads_standard.dart';
 
 class IndexedStackPage extends StatefulWidget {
   static const String routeName = "/indexed-stack";
@@ -8,6 +10,23 @@ class IndexedStackPage extends StatefulWidget {
 
 class _IndexedStackPage extends State<IndexedStackPage> {
   int _indexStack = 0;
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,18 +55,18 @@ class _IndexedStackPage extends State<IndexedStackPage> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                for (int i = 0; i < 4; i++)
-                  RaisedButton(
-                    child: Text("$i"),
-                    onPressed: () {
-                      setState(() {
-                        _indexStack = i;
-                      });
-                    },
-                  ),
-              ],
-            )
+              children: List.generate(
+                4,
+                (index) => RaisedButton(
+                  child: Text("$index"),
+                  onPressed: () {
+                    setState(() {
+                      _indexStack = index;
+                    });
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
