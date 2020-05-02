@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
-import 'package:widget_tests/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
-import 'package:widget_tests/widgets/MaterialComponents/019_tooltip/tooltip.dart';
-import 'package:widget_tests/widgets/MaterialComponents/056_data-table/data-table.dart';
-import 'package:widget_tests/widgets/MaterialComponents/057_slider/slider.dart';
-import 'package:widget_tests/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
-import 'package:widget_tests/widgets/MaterialComponents/068_snackbar/snackbar.dart';
-import 'package:widget_tests/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/019_tooltip/tooltip.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/056_data-table/data-table.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/057_slider/slider.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/068_snackbar/snackbar.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 
 class MenuMaterialComponents {
   final BuildContext context;

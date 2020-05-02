@@ -1,6 +1,6 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/ads/ads_admob.dart';
+import 'package:flutter_widgets/shared/ads/ads_admob.dart';
 
 class SemanticsPage extends StatelessWidget {
   static const String routeName = "/semantics";

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/Async/006_future-builder/future-builder.dart';
-import 'package:widget_tests/widgets/Async/014_stream-builder/stream-builder.dart';
-import 'package:widget_tests/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/Async/006_future-builder/future-builder.dart';
+import 'package:flutter_widgets/widgets/Async/014_stream-builder/stream-builder.dart';
+import 'package:flutter_widgets/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
 
 class MenuAsync {
   final BuildContext context;

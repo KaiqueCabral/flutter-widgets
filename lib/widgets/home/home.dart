@@ -1,7 +1,8 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/ads/ads_admob.dart';
-import 'package:widget_tests/widgets/home/menu-items.dart';
+import 'package:flutter_widgets/shared/ads/ads_admob.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/home/menu-items.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -18,25 +19,70 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      drawer: MenuItems(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(
-            "Use the menu on the TOP-LEFT to check the widgets",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+          Wrap(
+            direction: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.topLeft,
+                child: Icon(
+                  Icons.arrow_upward,
+                  size: 55,
+                  color: Colors.red[600],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  "Use the menu to check the widgets",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
-          AdmobBanner(
-            adUnitId: AdsAdmob.getBannerAdUnitId(),
-            adSize: AdmobBannerSize.MEDIUM_RECTANGLE,
+          Flex(
+            direction: Axis.vertical,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+                child: Text(
+                  "If my code or my app helped you somehow, feel free to buy me a coffee. :)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: InkWell(
+                  onTap: () => Menu.launchInWebViewOrVC(
+                      "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X5FNNUEWVNALQ&source=url"),
+                  child: Image.network(
+                    "https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif",
+                  ),
+                ),
+              ),
+              Text(
+                "Thank you!",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ],
           ),
+          MediaQuery.of(context).orientation == Orientation.portrait
+              ? AdmobBanner(
+                  adUnitId: AdsAdmob.getBannerAdUnitId(),
+                  adSize: AdmobBannerSize.BANNER,
+                )
+              : Container(),
         ],
       ),
-      drawer: MenuItems(),
     );
   }
 }

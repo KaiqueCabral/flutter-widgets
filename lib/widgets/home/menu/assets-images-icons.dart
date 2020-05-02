@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/AssetsImagesIcons/065_image/image.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/AssetsImagesIcons/065_image/image.dart';
 
 class MenuAssetsImagesIcons {
   final BuildContext context;

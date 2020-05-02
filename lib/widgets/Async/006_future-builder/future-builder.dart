@@ -1,8 +1,8 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
-import 'package:widget_tests/model/future-builder.dart';
-import 'package:widget_tests/services/future-builder.dart';
-import 'package:widget_tests/shared/ads/ads_standard.dart';
+import 'package:flutter_widgets/model/future-builder.dart';
+import 'package:flutter_widgets/services/future-builder.dart';
+import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class FutureBuilderPage extends StatefulWidget {
   static const String routeName = "/future-builder";

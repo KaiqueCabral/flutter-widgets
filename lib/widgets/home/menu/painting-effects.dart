@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/PaintingEffects/005_opacity/opacity.dart';
-import 'package:widget_tests/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
-import 'package:widget_tests/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
-import 'package:widget_tests/widgets/PaintingEffects/023_transform/transform.dart';
-import 'package:widget_tests/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
-import 'package:widget_tests/widgets/PaintingEffects/070_shader-mask/shader-mask.dart';
-import 'package:widget_tests/widgets/PaintingEffects/073_clip-path/clip-path.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/005_opacity/opacity.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/023_transform/transform.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/070_shader-mask/shader-mask.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/073_clip-path/clip-path.dart';
 
 class MenuPaintingEffects {
   final BuildContext context;

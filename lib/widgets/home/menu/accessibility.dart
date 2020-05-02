@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/Acessibility/047_semantics/semantics.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/Acessibility/047_semantics/semantics.dart';
 
 class MenuAccessibility {
   final BuildContext context;

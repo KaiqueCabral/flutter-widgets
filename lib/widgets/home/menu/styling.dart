@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/Styling/034_media-query/media-query.dart';
-import 'package:widget_tests/widgets/Styling/061_color-filtered/color-filtered.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/Styling/034_media-query/media-query.dart';
+import 'package:flutter_widgets/widgets/Styling/061_color-filtered/color-filtered.dart';
 
 class MenuStyling {
   final BuildContext context;

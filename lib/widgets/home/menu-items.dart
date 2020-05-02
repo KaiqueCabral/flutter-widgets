@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/home/menu/accessibility.dart';
-import 'package:widget_tests/widgets/home/menu/animationn-motion.dart';
-import 'package:widget_tests/widgets/home/menu/assets-images-icons.dart';
-import 'package:widget_tests/widgets/home/menu/async.dart';
-import 'package:widget_tests/widgets/home/menu/basics.dart';
-import 'package:widget_tests/widgets/home/menu/interaction-models.dart';
-import 'package:widget_tests/widgets/home/menu/layout.dart';
-import 'package:widget_tests/widgets/home/menu/material-components.dart';
-import 'package:widget_tests/widgets/home/menu/painting-effects.dart';
-import 'package:widget_tests/widgets/home/menu/scrolling.dart';
-import 'package:widget_tests/widgets/home/menu/styling.dart';
-import 'package:widget_tests/widgets/home/menu/text.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/home/menu/accessibility.dart';
+import 'package:flutter_widgets/widgets/home/menu/animationn-motion.dart';
+import 'package:flutter_widgets/widgets/home/menu/assets-images-icons.dart';
+import 'package:flutter_widgets/widgets/home/menu/async.dart';
+import 'package:flutter_widgets/widgets/home/menu/basics.dart';
+import 'package:flutter_widgets/widgets/home/menu/interaction-models.dart';
+import 'package:flutter_widgets/widgets/home/menu/layout.dart';
+import 'package:flutter_widgets/widgets/home/menu/material-components.dart';
+import 'package:flutter_widgets/widgets/home/menu/painting-effects.dart';
+import 'package:flutter_widgets/widgets/home/menu/scrolling.dart';
+import 'package:flutter_widgets/widgets/home/menu/styling.dart';
+import 'package:flutter_widgets/widgets/home/menu/text.dart';
 
 class MenuItems extends StatefulWidget {
   @override

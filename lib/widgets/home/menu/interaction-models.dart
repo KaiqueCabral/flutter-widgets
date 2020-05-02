@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/menu.dart';
-import 'package:widget_tests/widgets/InteractionModels/017_hero/hero.dart';
-import 'package:widget_tests/widgets/InteractionModels/022_absorb-pointer/absorb-pointer.dart';
-import 'package:widget_tests/widgets/InteractionModels/028_dismissible/dismissible.dart';
-import 'package:widget_tests/widgets/InteractionModels/031_draggable/draggable.dart';
-import 'package:widget_tests/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
-import 'package:widget_tests/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
+import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/017_hero/hero.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/022_absorb-pointer/absorb-pointer.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/028_dismissible/dismissible.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/031_draggable/draggable.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
 
 class MenuInteractionModels {
   final BuildContext context;

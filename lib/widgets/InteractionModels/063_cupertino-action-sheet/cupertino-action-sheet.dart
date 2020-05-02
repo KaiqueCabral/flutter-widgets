@@ -1,7 +1,7 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:widget_tests/shared/ads/ads_standard.dart';
+import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class CupertinoActionSheetPage extends StatefulWidget {
   static const String routeName = "/cupertino-action-sheet";
