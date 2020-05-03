@@ -1,6 +1,7 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ads_standard.dart';
+import 'package:flutter_widgets/shared/settings.dart';
 
 class OpacityPage extends StatefulWidget {
   static const String routeName = "/opacity";
@@ -92,7 +93,7 @@ class _OpacityPageState extends State<OpacityPage> {
                       padding: EdgeInsets.all(5),
                       child: Opacity(
                         child: Image.network(
-                          'https://raw.githubusercontent.com/flutter/assets-for-api-docs/master/packages/diagrams/assets/blend_mode_destination.jpeg?V=1',
+                          "${Settings.apiURL}/images/landscape-city.jpg",
                           colorBlendMode: BlendMode.modulate,
                           loadingBuilder: (BuildContext context, Widget child,
                               ImageChunkEvent progress) {

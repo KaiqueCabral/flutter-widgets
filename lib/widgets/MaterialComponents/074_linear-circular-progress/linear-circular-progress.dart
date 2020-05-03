@@ -1,6 +1,7 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ads_standard.dart';
+import 'package:flutter_widgets/shared/settings.dart';
 
 class LinearCircularProgressPage extends StatefulWidget {
   static const String routeName = "/linear-circular-progress";
@@ -51,7 +52,7 @@ class _LinearCircularProgressPageState
               valueColor: AlwaysStoppedAnimation<Color>(Colors.amber),
             ),
             Image.network(
-              'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+              "${Settings.apiURL}/images/white-owl.jpg",
               height: 100,
               fit: BoxFit.cover,
               loadingBuilder: (BuildContext context, Widget child,

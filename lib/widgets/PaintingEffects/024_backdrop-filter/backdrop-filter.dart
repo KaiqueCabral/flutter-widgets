@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ads_standard.dart';
+import 'package:flutter_widgets/shared/settings.dart';
 
 class BackdropFilterPage extends StatefulWidget {
   static const String routeName = "/backdrop-filter";
@@ -37,7 +38,7 @@ class _BackdropFilterPageState extends State<BackdropFilterPage> {
         children: <Widget>[
           ConstrainedBox(
             child: Image.network(
-              "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+              "${Settings.apiURL}/images/landscape.jpg",
             ),
             constraints: BoxConstraints.expand(),
           ),

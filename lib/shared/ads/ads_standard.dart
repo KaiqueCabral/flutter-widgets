@@ -6,11 +6,20 @@ class AdsStandard {
   }
 
   static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    testDevices: <String>["testDevice"],
-    keywords: <String>['foo', 'bar'],
-    contentUrl: 'http://foo.com/bar.html',
+    //testDevices: <String>["testDevice"],
+    keywords: <String>[
+      'Flutter',
+      'Widgets',
+      'Programming',
+      'Developer',
+      'Code',
+      'Programmer',
+      'Mobile',
+      'Application',
+    ],
+    contentUrl: 'https://github.com/kaiquecabral/',
     childDirected: true,
-    nonPersonalizedAds: true,
+    nonPersonalizedAds: false,
   );
 
   BannerAd createBannerAd(AdSize adSize) {

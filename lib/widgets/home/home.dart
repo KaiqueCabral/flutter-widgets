@@ -13,6 +13,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AdmobBanner bannerAd;
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdmobBanner(
+      adUnitId: AdsAdmob.getBannerAdUnitId(),
+      adSize: AdmobBannerSize.BANNER,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,10 +86,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           MediaQuery.of(context).orientation == Orientation.portrait
-              ? AdmobBanner(
-                  adUnitId: AdsAdmob.getBannerAdUnitId(),
-                  adSize: AdmobBannerSize.BANNER,
-                )
+              ? bannerAd
               : Container(),
         ],
       ),

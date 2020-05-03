@@ -1,6 +1,7 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ads_standard.dart';
+import 'package:flutter_widgets/shared/settings.dart';
 
 class ImagePage extends StatefulWidget {
   static const String routeName = "/image";
@@ -51,7 +52,7 @@ class _ImagePageState extends State<ImagePage> {
                 ),
                 listItem(
                   Image.network(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+                    "${Settings.apiURL}/images/white-owl.jpg",
                     loadingBuilder: (BuildContext context, Widget child,
                         ImageChunkEvent loadingProgress) {
                       if (loadingProgress == null) return child;
@@ -70,7 +71,7 @@ class _ImagePageState extends State<ImagePage> {
                 ),
                 listItem(
                   Image.network(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-3.jpg?v=5',
+                    "${Settings.apiURL}/images/barn-owl.jpg",
                     fit: BoxFit.cover,
                     width: 300,
                     semanticLabel: "Image of an owl from the internet",

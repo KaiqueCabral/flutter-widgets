@@ -1,5 +1,6 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/settings.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
@@ -27,8 +28,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
     super.dispose();
   }
 
-  String _imageURL =
-      'https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=200';
+  String _imageURL = "${Settings.apiURL}/images/flutter-small.jpg";
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +63,8 @@ class _FadeInImagePage extends State<FadeInImagePage> {
                     seconds: 1,
                   ),
                   fadeInCurve: Curves.easeInToLinear,
-                  placeholder: 'assets/images/loading.gif',
-                  image:
-                      'https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=200',
+                  placeholder: "assets/images/loading.gif",
+                  image: _imageURL,
                   //image has to be an URL
                   height: 200,
                 ),
@@ -83,8 +82,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
         onPressed: () {
           setState(
             () {
-              _imageURL =
-                  "https://img.ibxk.com.br/2019/10/29/flutter-29101357380259.jpg?w=300";
+              _imageURL = "${Settings.apiURL}/images/flutter-big.jpg";
             },
           );
         },
