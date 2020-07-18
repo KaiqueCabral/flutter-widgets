@@ -2,9 +2,9 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
-class User {
-  String name;
-  User(this.name);
+class Check {
+  bool isLoading;
+  Check(this.isLoading);
 }
 
 class InheritedWidgetPage extends StatelessWidget {
@@ -13,15 +13,15 @@ class InheritedWidgetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AncestorWidget(
-      user: User("[USER NAME]"),
+      check: Check(false),
       child: _AncestorWidget(),
     );
   }
 }
 
 class AncestorWidget extends InheritedWidget {
-  final User user;
-  AncestorWidget({Key key, this.user, Widget child})
+  final Check check;
+  AncestorWidget({Key key, this.check, Widget child})
       : super(key: key, child: child);
 
   static AncestorWidget of(BuildContext context) {
@@ -46,7 +46,7 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
   void initState() {
     super.initState();
     FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
       ..load()
       ..show();
   }
@@ -60,50 +60,65 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
   @override
   Widget build(BuildContext context) {
     var ancestorWidget = AncestorWidget.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Inherited Widget"),
       ),
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: Text("Username: ${ancestorWidget.user.name}"),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    "CLICK HERE >>>",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 0,
-                  ),
-                ),
-                RaisedButton(
-                  child: Text("OK"),
-                  onPressed: () {
-                    setState(() {
-                      if (ancestorWidget.user != null) {
-                        ancestorWidget.user.name = "kaiquecabral";
-                      }
-                    });
-                  },
-                ),
-              ],
-            ),
-          ],
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Visibility(
+        visible: !ancestorWidget.check.isLoading,
+        child: FloatingActionButton(
+          child: Icon(Icons.ac_unit),
+          onPressed: () {},
         ),
       ),
+      body: ancestorWidget.check.isLoading
+          ? CircularProgressIndicator()
+          : Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Text("Username: ${ancestorWidget.check.isLoading}"),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          "CLICK HERE >>>",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 0,
+                        ),
+                      ),
+                      RaisedButton(
+                        child: Text("OK"),
+                        onPressed: () async {
+                          setState(() {
+                            ancestorWidget.check.isLoading = true;
+                          });
+
+                          await Future.delayed(Duration(seconds: 2));
+
+                          setState(() {
+                            ancestorWidget.check.isLoading = false;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }

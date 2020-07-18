@@ -112,7 +112,7 @@ class Menu {
             ),
             children: <TextSpan>[
               TextSpan(
-                text: "App based on \"Widgets of the week\" from ",
+                text: "App based on \"Widget of the week\" from ",
               ),
               TextSpan(
                 text: "Flutter Channel (YouTube)",

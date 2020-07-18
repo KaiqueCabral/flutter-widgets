@@ -153,7 +153,7 @@ class FirstDependent extends StatelessWidget {
 class SecondDependent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ancestor = AncestorModelWidget.of(context, 'one');
+    final ancestor = AncestorModelWidget.of(context, 'two');
     //AncestorModelWidget.of(context, 'two');
     print("Second");
 

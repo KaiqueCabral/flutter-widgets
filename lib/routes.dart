@@ -58,6 +58,7 @@ import 'package:flutter_widgets/widgets/MaterialComponents/057_slider/slider.dar
 import 'package:flutter_widgets/widgets/MaterialComponents/058_alert-dialog/alert-dialog.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/068_snackbar/snackbar.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/075_divider/divider.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -109,6 +110,7 @@ routes() {
         CupertinoActionSheetPage(),
     CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
     DataTablePage.routeName: (BuildContext context) => DataTablePage(),
+    DividerPage.routeName: (BuildContext context) => DividerPage(),
     DraggablePage.routeName: (BuildContext context) => DraggablePage(),
     DraggableScrollableSheetPage.routeName: (BuildContext context) =>
         DraggableScrollableSheetPage(),

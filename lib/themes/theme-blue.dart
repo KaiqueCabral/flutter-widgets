@@ -3,5 +3,12 @@ import 'package:flutter/material.dart';
 appTheme(Color themeColor) {
   return ThemeData(
     primarySwatch: themeColor,
+    dividerTheme: DividerThemeData(
+      color: Colors.red[200],
+      space: 20,
+      thickness: 5,
+      indent: 20,
+      endIndent: 0,
+    ),
   );
 }
