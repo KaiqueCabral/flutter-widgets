@@ -4,7 +4,7 @@ appTheme(Color themeColor) {
   return ThemeData(
     primarySwatch: themeColor,
     dividerTheme: DividerThemeData(
-      color: Colors.red[200],
+      color: Colors.blue[100],
       space: 20,
       thickness: 5,
       indent: 20,

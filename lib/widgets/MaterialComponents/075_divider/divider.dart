@@ -41,7 +41,10 @@ class _DividerPageState extends State<DividerPage> {
                 child: const Center(
                   child: Text(
                     "As you can see below, there are two lines (DIVIDER).\n"
-                    "The first DIVIDER is defined in the Material App.",
+                    "The first DIVIDER is defined in the Material App."
+                    "\n"
+                    "\n"
+                    "The list right after is using ListView.separated().",
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -56,7 +59,24 @@ class _DividerPageState extends State<DividerPage> {
               thickness: 5,
             ),
             Expanded(
-              child: Container(),
+              flex: 4,
+              child: Container(
+                child: ListView.separated(
+                  padding: const EdgeInsets.only(bottom: 110),
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text("Item ${index + 1}"),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      endIndent: 10,
+                      indent: 10,
+                    );
+                  },
+                  itemCount: 10,
+                ),
+              ),
             ),
           ],
         ),

@@ -6,6 +6,7 @@ import 'package:flutter_widgets/widgets/InteractionModels/028_dismissible/dismis
 import 'package:flutter_widgets/widgets/InteractionModels/031_draggable/draggable.dart';
 import 'package:flutter_widgets/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:flutter_widgets/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/076_ignore-pointer/ignore-pointer.dart';
 
 class MenuInteractionModels {
   final BuildContext context;
@@ -24,6 +25,8 @@ class MenuInteractionModels {
           Icons.drag_handle, "Draggable", DraggablePage.routeName, context),
       menu.getNavItem(
           Icons.transit_enterexit, "Hero", HeroPage.routeName, context),
+      menu.getNavItem(
+          Icons.mouse, "Ignore Pointer", IgnorePointerPage.routeName, context),
       menu.getNavItem(
           Icons.sync, "Toggle Buttons", ToggleButtonsPage.routeName, context),
     ];

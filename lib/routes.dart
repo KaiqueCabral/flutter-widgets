@@ -27,6 +27,7 @@ import 'package:flutter_widgets/widgets/InteractionModels/028_dismissible/dismis
 import 'package:flutter_widgets/widgets/InteractionModels/031_draggable/draggable.dart';
 import 'package:flutter_widgets/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:flutter_widgets/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/076_ignore-pointer/ignore-pointer.dart';
 import 'package:flutter_widgets/widgets/Layout/001_safe-area/safe-area.dart';
 import 'package:flutter_widgets/widgets/Layout/002_expanded/expanded.dart';
 import 'package:flutter_widgets/widgets/Layout/003_wrap/wrap.dart';
@@ -128,6 +129,7 @@ routes() {
     FutureBuilderPage.routeName: (BuildContext context) => FutureBuilderPage(),
     HeroPage.routeName: (BuildContext context) => HeroPage(),
     HeroDetailsPage.routeName: (BuildContext context) => HeroDetailsPage(),
+    IgnorePointerPage.routeName: (BuildContext context) => IgnorePointerPage(),
     ImagePage.routeName: (BuildContext context) => ImagePage(),
     IndexedStackPage.routeName: (BuildContext context) => IndexedStackPage(),
     InheritedModelPage.routeName: (BuildContext context) =>
