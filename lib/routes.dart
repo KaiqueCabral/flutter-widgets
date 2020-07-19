@@ -60,6 +60,7 @@ import 'package:flutter_widgets/widgets/MaterialComponents/058_alert-dialog/aler
 import 'package:flutter_widgets/widgets/MaterialComponents/068_snackbar/snackbar.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/075_divider/divider.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/077_cupertino-activity-indicator/cupertino-activity-indicator.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -109,6 +110,8 @@ routes() {
     ContainerPage.routeName: (BuildContext context) => ContainerPage(),
     CupertinoActionSheetPage.routeName: (BuildContext context) =>
         CupertinoActionSheetPage(),
+    CupertinoActivityIndicatorPage.routeName: (BuildContext context) =>
+        CupertinoActivityIndicatorPage(),
     CustomPaintPage.routeName: (BuildContext context) => CustomPaintPage(),
     DataTablePage.routeName: (BuildContext context) => DataTablePage(),
     DividerPage.routeName: (BuildContext context) => DividerPage(),

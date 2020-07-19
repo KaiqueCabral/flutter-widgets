@@ -9,6 +9,7 @@ import 'package:flutter_widgets/widgets/MaterialComponents/058_alert-dialog/aler
 import 'package:flutter_widgets/widgets/MaterialComponents/068_snackbar/snackbar.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/075_divider/divider.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/077_cupertino-activity-indicator/cupertino-activity-indicator.dart';
 
 class MenuMaterialComponents {
   final BuildContext context;
@@ -19,6 +20,8 @@ class MenuMaterialComponents {
     subItems = <Widget>[
       menu.getNavItem(
           Icons.add_alert, "Alert Dialog", AlertDialogPage.routeName, context),
+      menu.getNavItem(Icons.linear_scale, "Cupertino Activity Indicator",
+          CupertinoActivityIndicatorPage.routeName, context),
       menu.getNavItem(
           Icons.table_chart, "Data Table", DataTablePage.routeName, context),
       menu.getNavItem(
