@@ -7,6 +7,7 @@ import 'package:flutter_widgets/widgets/PaintingEffects/023_transform/transform.
 import 'package:flutter_widgets/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/070_shader-mask/shader-mask.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/073_clip-path/clip-path.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/078_clip-oval/clip-oval.dart';
 
 class MenuPaintingEffects {
   final BuildContext context;
@@ -19,6 +20,8 @@ class MenuPaintingEffects {
           BackdropFilterPage.routeName, context),
       menu.getNavItem(
           Icons.format_shapes, "ClipPath", ClipPathPage.routeName, context),
+      menu.getNavItem(
+          Icons.rounded_corner, "ClipOval", ClipOvalPage.routeName, context),
       menu.getNavItem(
           Icons.rounded_corner, "ClipRRect", ClipRRectPage.routeName, context),
       menu.getNavItem(Icons.format_paint, "Custom Paint",

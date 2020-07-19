@@ -68,6 +68,7 @@ import 'package:flutter_widgets/widgets/PaintingEffects/023_transform/transform.
 import 'package:flutter_widgets/widgets/PaintingEffects/024_backdrop-filter/backdrop-filter.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/070_shader-mask/shader-mask.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/073_clip-path/clip-path.dart';
+import 'package:flutter_widgets/widgets/PaintingEffects/078_clip-oval/clip-oval.dart';
 import 'package:flutter_widgets/widgets/Scrolling/009_page-view/page-view.dart';
 import 'package:flutter_widgets/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
 import 'package:flutter_widgets/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
@@ -103,6 +104,7 @@ routes() {
         BackdropFilterPage(),
     BuilderPage.routeName: (BuildContext context) => BuilderPage(),
     ClipPathPage.routeName: (BuildContext context) => ClipPathPage(),
+    ClipOvalPage.routeName: (BuildContext context) => ClipOvalPage(),
     ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),
     ColorFilteredPage.routeName: (BuildContext context) => ColorFilteredPage(),
     ConstrainedBoxPage.routeName: (BuildContext context) =>

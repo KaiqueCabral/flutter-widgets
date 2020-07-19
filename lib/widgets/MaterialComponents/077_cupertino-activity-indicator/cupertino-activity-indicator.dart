@@ -1,5 +1,7 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 import 'package:flutter_widgets/shared/settings.dart';
 
 class CupertinoActivityIndicatorPage extends StatefulWidget {
@@ -12,6 +14,22 @@ class CupertinoActivityIndicatorPage extends StatefulWidget {
 
 class _CupertinoActivityIndicatorPageState
     extends State<CupertinoActivityIndicatorPage> {
+  BannerAd bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+      ..load()
+      ..show();
+  }
+
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
