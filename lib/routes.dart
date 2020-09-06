@@ -53,6 +53,7 @@ import 'package:flutter_widgets/widgets/Layout/054_container/container.dart';
 import 'package:flutter_widgets/widgets/Layout/066_tab-bar/default-tab-controller.dart';
 import 'package:flutter_widgets/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
 import 'package:flutter_widgets/widgets/Layout/080_padding/padding.dart';
+import 'package:flutter_widgets/widgets/Layout/081_checkbox-list-tile/checkbox-list-tile.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -107,6 +108,8 @@ routes() {
     BackdropFilterPage.routeName: (BuildContext context) =>
         BackdropFilterPage(),
     BuilderPage.routeName: (BuildContext context) => BuilderPage(),
+    CheckboxListTilePage.routeName: (BuildContext context) =>
+        CheckboxListTilePage(),
     ClipPathPage.routeName: (BuildContext context) => ClipPathPage(),
     ClipOvalPage.routeName: (BuildContext context) => ClipOvalPage(),
     ClipRRectPage.routeName: (BuildContext context) => ClipRRectPage(),

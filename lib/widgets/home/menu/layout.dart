@@ -24,6 +24,7 @@ import 'package:flutter_widgets/widgets/Layout/066_tab-bar/default-tab-controlle
 import 'package:flutter_widgets/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
 import 'package:flutter_widgets/widgets/Layout/053_list-tile/list-tile.dart';
 import 'package:flutter_widgets/widgets/Layout/080_padding/padding.dart';
+import 'package:flutter_widgets/widgets/Layout/081_checkbox-list-tile/checkbox-list-tile.dart';
 
 class MenuLayout {
   final BuildContext context;
@@ -36,6 +37,8 @@ class MenuLayout {
           Icons.vertical_align_bottom, "Align", AlignPage.routeName, context),
       menu.getNavItem(Icons.aspect_ratio, "Aspect Ratio",
           AspectRatioPage.routeName, context),
+      menu.getNavItem(Icons.check_box, "Checkbox List Tile",
+          CheckboxListTilePage.routeName, context),
       menu.getNavItem(Icons.add_box, "Constrained Box",
           ConstrainedBoxPage.routeName, context),
       menu.getNavItem(Icons.indeterminate_check_box, "Container",
