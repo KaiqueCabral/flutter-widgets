@@ -12,6 +12,7 @@ import 'package:flutter_widgets/widgets/AnimationMotion/045_animated-padding/ani
 import 'package:flutter_widgets/widgets/AnimationMotion/050_animated-opacity/animated-opacity.dart';
 import 'package:flutter_widgets/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
 import 'package:flutter_widgets/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
+import 'package:flutter_widgets/widgets/AnimationMotion/079_animated-widget/animated-widget.dart';
 import 'package:flutter_widgets/widgets/AssetsImagesIcons/065_image/image.dart';
 import 'package:flutter_widgets/widgets/Async/006_future-builder/future-builder.dart';
 import 'package:flutter_widgets/widgets/Async/014_stream-builder/stream-builder.dart';
@@ -99,6 +100,8 @@ routes() {
         AnimatedPositionedPage(),
     AnimatedSwitcherPage.routeName: (BuildContext context) =>
         AnimatedSwitcherPage(),
+    AnimatedWidgetPage.routeName: (BuildContext context) =>
+        AnimatedWidgetPage(),
     AspectRatioPage.routeName: (BuildContext context) => AspectRatioPage(),
     BackdropFilterPage.routeName: (BuildContext context) =>
         BackdropFilterPage(),

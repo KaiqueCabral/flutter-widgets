@@ -12,6 +12,7 @@ import 'package:flutter_widgets/widgets/AnimationMotion/045_animated-padding/ani
 import 'package:flutter_widgets/widgets/AnimationMotion/050_animated-opacity/animated-opacity.dart';
 import 'package:flutter_widgets/widgets/AnimationMotion/059_animation-cross-fade/animated-cross-fade.dart';
 import 'package:flutter_widgets/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
+import 'package:flutter_widgets/widgets/AnimationMotion/079_animated-widget/animated-widget.dart';
 
 class MenuAnimationMotion {
   final BuildContext context;
@@ -38,6 +39,8 @@ class MenuAnimationMotion {
           AnimatedPositionedPage.routeName, context),
       menu.getNavItem(Icons.swap_horizontal_circle, "Animated Switcher",
           AnimatedSwitcherPage.routeName, context),
+      menu.getNavItem(Icons.swap_calls, "Animated Widget",
+          AnimatedWidgetPage.routeName, context),
       menu.getNavItem(Icons.image_aspect_ratio, "Fade In Image",
           FadeInImagePage.routeName, context),
       menu.getNavItem(
