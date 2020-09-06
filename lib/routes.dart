@@ -52,6 +52,7 @@ import 'package:flutter_widgets/widgets/Layout/053_list-tile/list-tile.dart';
 import 'package:flutter_widgets/widgets/Layout/054_container/container.dart';
 import 'package:flutter_widgets/widgets/Layout/066_tab-bar/default-tab-controller.dart';
 import 'package:flutter_widgets/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
+import 'package:flutter_widgets/widgets/Layout/080_padding/padding.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -156,6 +157,7 @@ routes() {
     NotificationListenerPage.routeName: (BuildContext context) =>
         NotificationListenerPage(),
     OpacityPage.routeName: (BuildContext context) => OpacityPage(),
+    PaddingPage.routeName: (BuildContext context) => PaddingPage(),
     PageViewPage.routeName: (BuildContext context) => PageViewPage(),
     PlaceHolderPage.routeName: (BuildContext context) => PlaceHolderPage(),
     PositionedPage.routeName: (BuildContext context) => PositionedPage(),

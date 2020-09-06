@@ -23,6 +23,7 @@ import 'package:flutter_widgets/widgets/Layout/054_container/container.dart';
 import 'package:flutter_widgets/widgets/Layout/066_tab-bar/default-tab-controller.dart';
 import 'package:flutter_widgets/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
 import 'package:flutter_widgets/widgets/Layout/053_list-tile/list-tile.dart';
+import 'package:flutter_widgets/widgets/Layout/080_padding/padding.dart';
 
 class MenuLayout {
   final BuildContext context;
@@ -57,6 +58,8 @@ class MenuLayout {
       menu.getNavItem(
           Icons.crop_square, "Limited Box", LimitedBoxPage.routeName, context),
       menu.getNavItem(Icons.list, "List Tile", ListTilePage.routeName, context),
+      menu.getNavItem(
+          Icons.unfold_more, "Padding", PaddingPage.routeName, context),
       menu.getNavItem(Icons.vertical_align_top, "Positioned",
           PositionedPage.routeName, context),
       menu.getNavItem(
