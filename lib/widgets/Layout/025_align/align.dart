@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AlignPage extends StatefulWidget {
   static const String routeName = "/align";
@@ -12,20 +13,29 @@ class AlignPage extends StatefulWidget {
 class _AlignPageState extends State<AlignPage> {
   double _widthContainer(BuildContext context) =>
       (MediaQuery.of(context).size.width / 2.0) - AlignPage._sizeBoxWidth;
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-    //..load()
-    //..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.fullBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -34,6 +44,10 @@ class _AlignPageState extends State<AlignPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Align"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 55),

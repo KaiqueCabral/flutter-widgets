@@ -1,23 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class WrapPage extends StatelessWidget {
+class WrapPage extends StatefulWidget {
   static const String routeName = "/wrap";
+
+  @override
+  _WrapPageState createState() => _WrapPageState();
+}
+
+class _WrapPageState extends State<WrapPage> {
+  BannerAd _ad;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.fullBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
+  }
+
+  @override
+  void dispose() {
+    _ad?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Wrap")),
+      appBar: AppBar(
+        title: Text("Wrap"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
+      ),
       body: SingleChildScrollView(
         child: Wrap(
-          spacing: 10.0, // gap between adjacent chips
-          runSpacing: 10.0, // gap between lines
+          spacing: 10.0,
+          runSpacing: 10.0,
           alignment: WrapAlignment.start,
           direction: Axis.horizontal,
           children: <Widget>[
             Container(
               child: Text(
                 "Wrap works like a Row, but with this Widget the elements will NOT reach the edge.",
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
               color: Colors.lightBlue,
               width: 450,
@@ -34,6 +76,9 @@ class WrapPage extends StatelessWidget {
             container(Colors.greenAccent),
             container(Colors.orangeAccent),
             container(Colors.orangeAccent),
+            SizedBox(
+              height: 180,
+            ),
           ],
         ),
       ),
