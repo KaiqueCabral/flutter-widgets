@@ -1,7 +1,8 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/model/future-builder.dart';
 import 'package:flutter_widgets/services/future-builder.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class FutureBuilderPage extends StatefulWidget {
   static const String routeName = "/future-builder";
@@ -15,20 +16,29 @@ class FutureBuilderPage extends StatefulWidget {
 
 class _FutureBuilderPage extends State<FutureBuilderPage> {
   int _post = 1;
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-      //..load()
-      //..show(anchorType: AnchorType.top, anchorOffset: 90);
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -38,94 +48,110 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
       appBar: AppBar(
         title: Text("Future Builder"),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 70, bottom: 70),
-        child: Container(
-          alignment: Alignment.center,
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: FutureBuilder<FutureBuilderModel>(
-                  future: getFutureResponse(_post),
-                  builder: (context, snapshot) {
-                    List<Widget> children;
-
-                    if (snapshot.hasData) {
-                      children = <Widget>[
-                        Icon(
-                          Icons.check_circle_outline,
-                          color: Colors.green,
-                          size: 60,
-                        ),
-                        SafeArea(
-                          minimum: EdgeInsets.all(20),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  postInfo("ID: ${snapshot.data.id}"),
-                                  postInfo("User ID: ${snapshot.data.userId}"),
-                                ],
-                              ),
-                              Divider(),
-                              Container(
-                                child: Text(
-                                  'Title: ${snapshot.data.title}',
-                                  style: TextStyle(fontSize: 24),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              Divider(),
-                              Container(
-                                child: Text(
-                                  'Body: ${snapshot.data.body} ${snapshot.data.body}',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ];
-                    } else if (snapshot.hasError) {
-                      children = <Widget>[
-                        Icon(
-                          Icons.error_outline,
-                          color: Colors.red,
-                          size: 60,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 16),
-                          child: Text('Error: ${snapshot.error}'),
-                        ),
-                      ];
-                    } else {
-                      children = <Widget>[
-                        SizedBox(
-                          child: CircularProgressIndicator(),
-                          width: 60,
-                          height: 60,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 16),
-                          child: Text('Awaiting result...'),
-                        ),
-                      ];
-                    }
-
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: children,
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
+      body: Flex(
+        direction: Axis.vertical,
+        children: [
+          Container(
+            child: AdWidget(ad: _ad),
+            height: _ad.size.height.toDouble(),
+            margin: const EdgeInsets.only(top: 10),
           ),
-        ),
+          SingleChildScrollView(
+            padding: EdgeInsets.only(
+              top: 70,
+              bottom: 70,
+            ),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: FutureBuilder<FutureBuilderModel>(
+                    future: getFutureResponse(_post),
+                    builder: (context, snapshot) {
+                      List<Widget> children;
+
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.done:
+                          if (snapshot.hasData) {
+                            children = <Widget>[
+                              Icon(
+                                Icons.check_circle_outline,
+                                color: Colors.green,
+                                size: 60,
+                              ),
+                              SafeArea(
+                                minimum: EdgeInsets.all(20),
+                                child: Column(
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        postInfo("ID: ${snapshot.data.id}"),
+                                        postInfo(
+                                            "User ID: ${snapshot.data.userId}"),
+                                      ],
+                                    ),
+                                    Divider(),
+                                    Container(
+                                      child: Text(
+                                        'Title: ${snapshot.data.title}',
+                                        style: TextStyle(fontSize: 24),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Container(
+                                      child: Text(
+                                        'Body: ${snapshot.data.body} ${snapshot.data.body}',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ];
+                          } else if (snapshot.hasError) {
+                            children = <Widget>[
+                              Icon(
+                                Icons.error_outline,
+                                color: Colors.red,
+                                size: 60,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16),
+                                child: Text('Error: ${snapshot.error}'),
+                              ),
+                            ];
+                          }
+                          break;
+                        default:
+                          children = <Widget>[
+                            SizedBox(
+                              child: CircularProgressIndicator(),
+                              width: 60,
+                              height: 60,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 16),
+                              child: Text('Awaiting result...'),
+                            ),
+                          ];
+                          break;
+                      }
+
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: children,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(

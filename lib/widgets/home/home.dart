@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/menu.dart';
-import 'package:flutter_widgets/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
+import 'package:flutter_widgets/widgets/Async/006_future-builder/future-builder.dart';
+import 'package:flutter_widgets/widgets/Async/014_stream-builder/stream-builder.dart';
+import 'package:flutter_widgets/widgets/Async/030_value-listenable-builder/value-listenable-builder.dart';
 import 'package:flutter_widgets/widgets/home/menu-items.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -13,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //AdmobBanner bannerAd;
   @override
   void initState() {
     super.initState();
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             child: getNavItem(Icons.view_carousel, "GO! GO! GO!",
-                TweenAnimationBuilderPage.routeName, context),
+                ValueListenableBuilderPage.routeName, context),
           ),
           Flex(
             direction: Axis.vertical,

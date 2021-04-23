@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class ValueListenableBuilderPage extends StatefulWidget {
   static const String routeName = "/value-listenable-builder";
@@ -11,39 +12,54 @@ class ValueListenableBuilderPage extends StatefulWidget {
 class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
   final ValueNotifier<int> _counter = ValueNotifier<int>(0);
   final Widget _text = const Text("ValueListenableBuilder!");
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-    //..load()
-    //..show(anchorType: AnchorType.top, anchorOffset: 90);
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Value Listenable Builder")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("You have pushed the button this many times:"),
-            ValueListenableBuilder(
+      appBar: AppBar(
+        title: Text("Value Listenable Builder"),
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            child: AdWidget(ad: _ad),
+            height: _ad.size.height.toDouble(),
+            margin: const EdgeInsets.only(top: 10),
+          ),
+          Expanded(
+            child: ValueListenableBuilder(
               builder: (BuildContext context, int value, Widget child) {
                 // This builder will only get called when the _counter
                 // is updated.
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
+                    Text("You have pushed the button this many times:"),
                     Text(
                       "$value",
                       style: TextStyle(
@@ -62,9 +78,9 @@ class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
               // expensive to build and does not depend on the value from
               // the notifier.
               child: _text,
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.plus_one),
