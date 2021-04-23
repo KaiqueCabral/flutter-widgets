@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class DismissiblePage extends StatefulWidget {
   static const String routeName = "/dismissible";
@@ -16,10 +15,10 @@ class _DismissiblePage extends State<DismissiblePage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+    //..load()
+    //..show(anchorType: AnchorType.top, anchorOffset: 90);
   }
 
   @override
@@ -62,7 +61,7 @@ class _DismissiblePage extends State<DismissiblePage> {
                     _text = " (Confirmed)";
                   }
 
-                  Scaffold.of(context).showSnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
                         "$item $_text",

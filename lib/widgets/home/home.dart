@@ -1,8 +1,8 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_admob.dart';
 import 'package:flutter_widgets/shared/menu.dart';
+import 'package:flutter_widgets/widgets/AnimationMotion/064_tween-animation-builder/tween-animation-builder.dart';
 import 'package:flutter_widgets/widgets/home/menu-items.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -13,14 +13,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  AdmobBanner bannerAd;
+  //AdmobBanner bannerAd;
   @override
   void initState() {
     super.initState();
-    bannerAd = AdmobBanner(
-      adUnitId: AdsAdmob.getBannerAdUnitId(),
-      adSize: AdmobBannerSize.BANNER,
-    );
+    MobileAds.instance.initialize();
   }
 
   @override
@@ -58,6 +55,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          Container(
+            child: getNavItem(Icons.view_carousel, "GO! GO! GO!",
+                TweenAnimationBuilderPage.routeName, context),
+          ),
           Flex(
             direction: Axis.vertical,
             children: <Widget>[
@@ -85,11 +86,28 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          MediaQuery.of(context).orientation == Orientation.portrait
-              ? bannerAd
-              : Container(),
         ],
       ),
+    );
+  }
+
+  ListTile getNavItem(
+      IconData icon, String title, String routeName, BuildContext context) {
+    return ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
+      leading: Icon(
+        icon,
+        color: Colors.red,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: Colors.grey[900],
+        ),
+      ),
+      onTap: () {
+        Navigator.pushNamed(context, routeName);
+      },
     );
   }
 }

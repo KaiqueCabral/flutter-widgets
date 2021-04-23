@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class BuilderPage extends StatefulWidget {
   static const String routeName = "/builder";
@@ -14,10 +13,10 @@ class _BuilderPageState extends State<BuilderPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 120);
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+    //..load()
+    //..show(anchorType: AnchorType.top, anchorOffset: 120);
   }
 
   @override
@@ -38,7 +37,7 @@ class _BuilderPageState extends State<BuilderPage> {
           return FloatingActionButton(
             child: Icon(Icons.message),
             onPressed: () {
-              Scaffold.of(context).showSnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   backgroundColor: Colors.blue,
                   duration: Duration(seconds: 15),

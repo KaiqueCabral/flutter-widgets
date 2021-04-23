@@ -1,8 +1,7 @@
 import 'dart:ui';
 
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class ContainerPage extends StatefulWidget {
   static const String routeName = "/container";
@@ -17,10 +16,10 @@ class _ContainerPageState extends State<ContainerPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
-      ..load()
-      ..show();
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
+    //..load()
+    //..show();
   }
 
   @override

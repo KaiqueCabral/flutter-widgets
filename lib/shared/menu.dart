@@ -66,7 +66,7 @@ class Menu {
               direction: Axis.vertical,
               children: <Widget>[
                 Image.asset(
-                  "assets/images/GitHub_Logo.png",
+                  "assets/images/github_Logo.png",
                   width: 100,
                   color: Colors.white,
                 ),

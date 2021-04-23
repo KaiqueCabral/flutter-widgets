@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class Check {
   bool isLoading;
@@ -25,8 +24,7 @@ class AncestorWidget extends InheritedWidget {
       : super(key: key, child: child);
 
   static AncestorWidget of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(AncestorWidget)
-        as AncestorWidget);
+    return context.dependOnInheritedWidgetOfExactType<AncestorWidget>();
   }
 
   @override
@@ -45,10 +43,10 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-      ..load()
-      ..show();
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+    //..load()
+    //..show();
   }
 
   @override
@@ -100,7 +98,7 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
                           vertical: 0,
                         ),
                       ),
-                      RaisedButton(
+                      ElevatedButton(
                         child: Text("OK"),
                         onPressed: () async {
                           setState(() {

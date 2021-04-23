@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class AbsorbPointerPage extends StatefulWidget {
   static const String routeName = "/absorb-pointer";
@@ -15,10 +14,10 @@ class _AbsorbPointerPage extends State<AbsorbPointerPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show();
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+    //..load()
+    //..show();
   }
 
   @override
@@ -28,14 +27,14 @@ class _AbsorbPointerPage extends State<AbsorbPointerPage> {
   }
 
   _expanded(String _buttonText, Color _buttonColor) => Expanded(
-        child: RaisedButton(
-          color: _buttonColor,
-          child: Text(
-            _buttonText,
-            style: TextStyle(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: _buttonColor,
+            textStyle: TextStyle(
               color: Colors.white,
             ),
           ),
+          child: Text(_buttonText),
           onPressed: () {
             setState(
               () {
@@ -104,7 +103,7 @@ class _AbsorbPointerPage extends State<AbsorbPointerPage> {
               children: <Widget>[
                 Expanded(
                   child: AbsorbPointer(
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       child: RichText(
                         text: TextSpan(
                           children: <TextSpan>[
@@ -140,7 +139,7 @@ class _AbsorbPointerPage extends State<AbsorbPointerPage> {
                 ),
                 Expanded(
                   child: AbsorbPointer(
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       child: RichText(
                         text: TextSpan(
                           children: <TextSpan>[

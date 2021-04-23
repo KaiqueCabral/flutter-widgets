@@ -1,9 +1,40 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_admob.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class SemanticsPage extends StatelessWidget {
+class SemanticsPage extends StatefulWidget {
   static const String routeName = "/semantics";
+
+  @override
+  _SemanticsPageState createState() => _SemanticsPageState();
+}
+
+class _SemanticsPageState extends State<SemanticsPage> {
+  BannerAd _ad;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
+  }
+
+  @override
+  void dispose() {
+    _ad?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +43,7 @@ class SemanticsPage extends StatelessWidget {
         title: Text("Semantics"),
       ),
       body: Container(
-        padding: EdgeInsets.all(25),
+        padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             Row(
@@ -25,7 +56,7 @@ class SemanticsPage extends StatelessWidget {
                   onTap: () {
                     print("Button click!");
                   },
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     child: Text("Teste"),
                     onPressed: () {},
                   ),
@@ -54,7 +85,7 @@ class SemanticsPage extends StatelessWidget {
                   onTap: () {
                     print("Button click!");
                   },
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     child: Text("Teste"),
                     onPressed: () {},
                   ),
@@ -73,14 +104,13 @@ class SemanticsPage extends StatelessWidget {
                 ),
               ],
             ),
+            Expanded(
+              child: SizedBox(),
+            ),
             Container(
-              margin: EdgeInsets.only(top: 20),
-              width: MediaQuery.of(context).size.width,
-              alignment: Alignment.center,
-              child: AdmobBanner(
-                adUnitId: AdsAdmob.getBannerAdUnitId(),
-                adSize: AdmobBannerSize.MEDIUM_RECTANGLE,
-              ),
+              child: AdWidget(ad: _ad),
+              width: _ad.size.width.toDouble(),
+              height: _ad.size.height.toDouble(),
             ),
           ],
         ),

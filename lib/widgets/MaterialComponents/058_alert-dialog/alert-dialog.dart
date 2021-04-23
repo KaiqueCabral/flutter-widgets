@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class AlertDialogPage extends StatefulWidget {
   static const String routeName = "/alert-dialog";
@@ -16,9 +15,9 @@ class _AlertDialogPageState extends State<AlertDialogPage> {
   @override
   void initState() {
     super.initState();
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show();
+    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+    //..load()
+    //..show();
   }
 
   @override
@@ -31,7 +30,7 @@ class _AlertDialogPageState extends State<AlertDialogPage> {
     AlertDialog _dialog = AlertDialog(
       content: Text("You can just click on the \"OK\" button."),
       actions: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           child: Text("OK"),
           onPressed: () {
             Navigator.of(context).pop();
@@ -53,7 +52,7 @@ class _AlertDialogPageState extends State<AlertDialogPage> {
       title: Text("Alert Dialog"),
       content: Text("You can just click on the \"OK\" button or \"Cancel\"."),
       actions: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           child: Text("OK"),
           onPressed: () {
             setState(() {
@@ -62,7 +61,7 @@ class _AlertDialogPageState extends State<AlertDialogPage> {
             Navigator.of(context).pop();
           },
         ),
-        RaisedButton(
+        ElevatedButton(
           child: Text("Cancel"),
           onPressed: () {
             Navigator.of(context).pop();
@@ -93,14 +92,14 @@ class _AlertDialogPageState extends State<AlertDialogPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
+            ElevatedButton(
               child: Text("Normal Alert Dialog"),
               onPressed: () {
                 simpleDialog(context);
               },
             ),
             Text(_text),
-            RaisedButton(
+            ElevatedButton(
               child: Text("Alert Dialog with Two Buttons"),
               onPressed: () {
                 twoButtonsDialog(context);

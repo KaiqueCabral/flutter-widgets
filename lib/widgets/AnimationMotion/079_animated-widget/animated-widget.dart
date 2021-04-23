@@ -1,6 +1,6 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class AnimatedWidgetPage extends StatefulWidget {
   static const String routeName = "/animated-widget";
@@ -12,24 +12,34 @@ class AnimatedWidgetPage extends StatefulWidget {
 class _AnimatedWidgetPageState extends State<AnimatedWidgetPage>
     with TickerProviderStateMixin {
   AnimationController _controller;
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show();
+
     _controller =
         AnimationController(duration: Duration(seconds: 3), vsync: this)
           ..repeat();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -38,6 +48,10 @@ class _AnimatedWidgetPageState extends State<AnimatedWidgetPage>
     return Scaffold(
       appBar: AppBar(
         title: Text("Animated Widget"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
       ),
       body: Center(
         child: ScaleContainer(

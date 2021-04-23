@@ -1,8 +1,7 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/model/future-builder.dart';
 import 'package:flutter_widgets/services/future-builder.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class FutureBuilderPage extends StatefulWidget {
   static const String routeName = "/future-builder";
@@ -21,10 +20,10 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+      //..load()
+      //..show(anchorType: AnchorType.top, anchorOffset: 90);
   }
 
   @override

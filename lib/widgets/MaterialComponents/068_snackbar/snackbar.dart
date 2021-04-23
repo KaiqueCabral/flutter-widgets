@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class SnackBarPage extends StatefulWidget {
   static const String routeName = "/snackbar";
@@ -15,9 +14,9 @@ class _SnackBarPageState extends State<SnackBarPage> {
   @override
   void initState() {
     super.initState();
-    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+    //..load()
+    //..show(anchorType: AnchorType.top, anchorOffset: 90);
   }
 
   @override
@@ -115,32 +114,38 @@ class RowWithIcons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        FlatButton.icon(
-          color: Colors.amber[100],
+        TextButton.icon(
           onPressed: () {
             snackBarMessage(
                 context, Icons.directions_bike, Colors.amber[100], "Bike");
           },
           icon: Icon(Icons.directions_bike),
           label: Text("Bike"),
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.amber[100],
+          ),
         ),
-        FlatButton.icon(
-          color: Colors.teal[100],
+        TextButton.icon(
           onPressed: () {
             snackBarMessage(
                 context, Icons.directions_bus, Colors.teal[100], "Bus");
           },
           icon: Icon(Icons.directions_bus),
           label: Text("Bus"),
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.teal[100],
+          ),
         ),
-        FlatButton.icon(
-          color: Colors.indigo[100],
+        TextButton.icon(
           onPressed: () {
             snackBarMessage(
                 context, Icons.directions_car, Colors.indigo[100], "Car");
           },
           icon: Icon(Icons.directions_car),
           label: Text("Car"),
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.indigo[100],
+          ),
         ),
       ],
     );
@@ -172,6 +177,6 @@ class RowWithIcons extends StatelessWidget {
 
     // Find the Scaffold in the widget tree and use
     // it to show a SnackBar.
-    Scaffold.of(context).showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

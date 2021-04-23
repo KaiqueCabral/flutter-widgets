@@ -1,6 +1,6 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class AnimatedIconPage extends StatefulWidget {
   static const String routeName = "/animated-icon";
@@ -14,7 +14,7 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
   bool isMenuClosed = false;
   AnimationController _animationControllerPlay;
   AnimationController _animationControllerMenu;
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
@@ -28,17 +28,25 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
       duration: Duration(seconds: 2),
     );
 
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
-      ..load()
-      ..show();
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
     _animationControllerPlay.dispose();
     _animationControllerMenu.dispose();
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -57,6 +65,11 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
     return Scaffold(
       appBar: AppBar(
         title: Text("Animated Icon"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        width: MediaQuery.of(context).size.width,
+        height: _ad.size.height.toDouble(),
       ),
       body: Container(
         alignment: Alignment.topCenter,

@@ -1,7 +1,7 @@
 import 'dart:math';
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class Item {
   Item({this.name});
@@ -15,23 +15,32 @@ class AnimatedListPage extends StatefulWidget {
 }
 
 class _AnimatedListPage extends State<AnimatedListPage> {
-  List<Item> items = new List();
+  List<Item> items = [];
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   var rng = new Random();
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-      ..load()
-      ..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -111,6 +120,11 @@ class _AnimatedListPage extends State<AnimatedListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Animated List"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        width: MediaQuery.of(context).size.width,
+        height: _ad.size.height.toDouble(),
       ),
       body: SafeArea(
         minimum: EdgeInsets.only(bottom: 55),

@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class AspectRatioPage extends StatefulWidget {
   static const String routeName = "/aspect-ratio";
@@ -15,10 +14,10 @@ class _AspectRatioPageState extends State<AspectRatioPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
-      ..load()
-      ..show();
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
+    //..load()
+    //..show();
   }
 
   @override

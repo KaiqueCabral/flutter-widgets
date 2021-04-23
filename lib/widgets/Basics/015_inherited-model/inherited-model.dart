@@ -1,7 +1,6 @@
 import 'dart:math' as math;
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class InheritedModelPage extends StatefulWidget {
   static const String routeName = "/inherited-model";
@@ -18,10 +17,10 @@ class _InheritedModelPage extends State<InheritedModelPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
-      ..load()
-      ..show(anchorOffset: 20);
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
+    //..load()
+    //..show(anchorOffset: 20);
   }
 
   @override
@@ -57,7 +56,7 @@ class _InheritedModelPage extends State<InheritedModelPage> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(20),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       child: Text("Change FIRST"),
                       onPressed: () {
                         setState(() {
@@ -73,7 +72,7 @@ class _InheritedModelPage extends State<InheritedModelPage> {
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       child: Text("Change SECOND"),
                       onPressed: () {
                         setState(() {

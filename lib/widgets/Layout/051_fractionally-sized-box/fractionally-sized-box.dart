@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class FractionallySizedBoxPage extends StatefulWidget {
   static const String routeName = "/fractionally-sized-box";
@@ -16,10 +15,10 @@ class _FractionallySizedBoxPageState extends State<FractionallySizedBoxPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-      ..load()
-      ..show();
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
+    //..load()
+    //..show();
   }
 
   @override

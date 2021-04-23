@@ -1,7 +1,6 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class CupertinoActionSheetPage extends StatefulWidget {
   static const String routeName = "/cupertino-action-sheet";
@@ -19,10 +18,10 @@ class _CupertinoActionSheetPageState extends State<CupertinoActionSheetPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+    //..load()
+    //..show(anchorType: AnchorType.top, anchorOffset: 90);
   }
 
   @override
@@ -44,7 +43,7 @@ class _CupertinoActionSheetPageState extends State<CupertinoActionSheetPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text("Hello!"),
-              RaisedButton(
+              ElevatedButton(
                 child: Text("Click here!"),
                 onPressed: () {
                   final cupertinoActionSheet = CupertinoActionSheet(

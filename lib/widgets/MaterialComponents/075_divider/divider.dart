@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class DividerPage extends StatefulWidget {
   static const String routeName = "/divider";
@@ -15,9 +14,9 @@ class _DividerPageState extends State<DividerPage> {
   @override
   void initState() {
     super.initState();
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show();
+    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+    //..load()
+    //..show();
   }
 
   @override

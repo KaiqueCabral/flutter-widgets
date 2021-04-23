@@ -1,6 +1,6 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class FadeTransitionPage extends StatefulWidget {
   static const String routeName = "/fade-transition";
@@ -14,7 +14,7 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
   AnimationController _animationController;
   Animation _animation;
   CurvedAnimation _curvedAnimation;
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
@@ -37,38 +37,59 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
       }
     });
 
-    //This command is here to start the animation when the page starts
-    //_animationController.forward();
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
 
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+    _ad.load();
   }
 
   @override
   void dispose() {
     _animationController.dispose();
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Fade Transition'),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: FadeTransition(
-            opacity: _animation,
-            child: Icon(
-              Icons.lightbulb_outline,
-              color: Colors.lightGreen,
-              size: 200,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 10),
+        child: Flex(
+          direction: Axis.vertical,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              child: AdWidget(ad: _ad),
+              width: MediaQuery.of(context).size.width,
+              height: _ad.size.height.toDouble(),
+              margin: EdgeInsets.only(bottom: isPortrait ? 50 : 0),
             ),
-          ),
+            FadeTransition(
+              opacity: _animation,
+              child: Icon(
+                Icons.lightbulb_outline,
+                color: Colors.lightGreen,
+                size: isPortrait ? 300 : 90,
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

@@ -1,6 +1,6 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class AnimatedcrossFadePage extends StatefulWidget {
   static const String routeName = "/animated-cross-fade";
@@ -11,20 +11,29 @@ class AnimatedcrossFadePage extends StatefulWidget {
 
 class _AnimatedcrossFadePageState extends State<AnimatedcrossFadePage> {
   bool _first = true;
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -34,38 +43,51 @@ class _AnimatedcrossFadePageState extends State<AnimatedcrossFadePage> {
       appBar: AppBar(
         title: Text("Animation Cross Fade"),
       ),
-      body: Container(
-        color: Colors.lightBlue[100],
-        alignment: Alignment.center,
-        child: AnimatedCrossFade(
-          duration: Duration(seconds: 2),
-          firstChild: Container(
-            alignment: Alignment.center,
-            color: Colors.deepOrange[100],
-            child: FlutterLogo(
-              style: FlutterLogoStyle.horizontal,
-              size: 200,
-            ),
-            width: 250,
-            height: 250,
+      backgroundColor: Colors.lightBlue[100],
+      body: Column(
+        children: [
+          Container(
+            child: AdWidget(ad: _ad),
+            width: MediaQuery.of(context).size.width,
+            height: _ad.size.height.toDouble(),
+            margin: const EdgeInsets.only(top: 10),
           ),
-          secondChild: Container(
-            alignment: Alignment.center,
-            color: Colors.red[500],
-            child: FlutterLogo(
-              style: FlutterLogoStyle.stacked,
-              size: 150.0,
-              textColor: Colors.white,
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              child: AnimatedCrossFade(
+                duration: Duration(seconds: 2),
+                firstChild: Container(
+                  alignment: Alignment.center,
+                  color: Colors.deepOrange[100],
+                  child: FlutterLogo(
+                    style: FlutterLogoStyle.horizontal,
+                    size: 200,
+                  ),
+                  width: 250,
+                  height: 250,
+                ),
+                secondChild: Container(
+                  alignment: Alignment.center,
+                  color: Colors.red[500],
+                  child: FlutterLogo(
+                    style: FlutterLogoStyle.stacked,
+                    size: 150.0,
+                    textColor: Colors.white,
+                  ),
+                  width: 250,
+                  height: 250,
+                ),
+                crossFadeState: _first
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
+                firstCurve: Curves.easeIn,
+                secondCurve: Curves.fastOutSlowIn,
+                sizeCurve: Curves.bounceIn,
+              ),
             ),
-            width: 250,
-            height: 250,
           ),
-          crossFadeState:
-              _first ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-          firstCurve: Curves.easeIn,
-          secondCurve: Curves.fastOutSlowIn,
-          sizeCurve: Curves.bounceIn,
-        ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(

@@ -1,6 +1,5 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class ValueListenableBuilderPage extends StatefulWidget {
   static const String routeName = "/value-listenable-builder";
@@ -17,10 +16,10 @@ class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show(anchorType: AnchorType.top, anchorOffset: 90);
+    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
+    //..load()
+    //..show(anchorType: AnchorType.top, anchorOffset: 90);
   }
 
   @override

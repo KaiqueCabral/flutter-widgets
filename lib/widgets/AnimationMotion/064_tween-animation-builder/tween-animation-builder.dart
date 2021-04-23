@@ -1,6 +1,6 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/ads/ads_standard.dart';
 
 class TweenAnimationBuilderPage extends StatefulWidget {
   static const String routeName = "/tween-animation-builder";
@@ -11,20 +11,29 @@ class TweenAnimationBuilderPage extends StatefulWidget {
 
 class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
   Color finalColor = Colors.red[900];
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-      ..load()
-      ..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -33,6 +42,10 @@ class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Tween Animation Builder"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
       ),
       body: Center(
         child: Column(

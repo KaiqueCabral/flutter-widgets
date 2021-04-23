@@ -22,14 +22,16 @@ class _IgnorePointerPageState extends State<IgnorePointerPage> {
                 Text("IgnorePointer >>>"),
                 IgnorePointer(
                   ignoring: true,
-                  child: FlatButton.icon(
-                    color: Colors.red[100],
+                  child: TextButton.icon(
                     onPressed: () {},
                     icon: Icon(
                       Icons.touch_app,
                       color: Colors.black54,
                     ),
                     label: Text("This button doesn't work"),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.red[100],
+                    ),
                   ),
                 ),
               ],
