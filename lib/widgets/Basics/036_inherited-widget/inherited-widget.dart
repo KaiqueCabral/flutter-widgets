@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class Check {
   bool isLoading;
@@ -38,20 +39,29 @@ class _AncestorWidget extends StatefulWidget {
 }
 
 class _InheritedWidgetPage extends State<_AncestorWidget> {
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-    //..load()
-    //..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -63,22 +73,21 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
       appBar: AppBar(
         title: Text("Inherited Widget"),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Visibility(
-        visible: !ancestorWidget.check.isLoading,
-        child: FloatingActionButton(
-          child: Icon(Icons.ac_unit),
-          onPressed: () {},
-        ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
+        margin: const EdgeInsets.only(top: 10),
       ),
       body: ancestorWidget.check.isLoading
-          ? CircularProgressIndicator()
+          ? Center(child: CircularProgressIndicator())
           : Container(
               padding: EdgeInsets.all(20),
               child: Column(
                 children: <Widget>[
                   Container(
-                    child: Text("Username: ${ancestorWidget.check.isLoading}"),
+                    child: Text(
+                      "Username: ${ancestorWidget.check.isLoading}",
+                    ),
                   ),
                   SizedBox(
                     height: 30,
@@ -113,6 +122,16 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
                         },
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Visibility(
+                    visible: !ancestorWidget.check.isLoading,
+                    child: ElevatedButton(
+                      child: Icon(Icons.ac_unit),
+                      onPressed: () {},
+                    ),
                   ),
                 ],
               ),

@@ -1,6 +1,7 @@
 import 'dart:math' as math;
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class InheritedModelPage extends StatefulWidget {
   static const String routeName = "/inherited-model";
@@ -12,20 +13,29 @@ class _InheritedModelPage extends State<InheritedModelPage> {
   Color _colorOne = Colors.brown;
   Color _colorTwo = Colors.green;
   int _count = 0;
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.mediumRectangle)
-    //..load()
-    //..show(anchorOffset: 20);
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -34,6 +44,11 @@ class _InheritedModelPage extends State<InheritedModelPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Inherited Model"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
+        margin: const EdgeInsets.only(top: 10),
       ),
       body: SingleChildScrollView(
         child: Column(
