@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class MediaQueryPage extends StatefulWidget {
   static const String routeName = "/media-query";
@@ -9,19 +10,29 @@ class MediaQueryPage extends StatefulWidget {
 }
 
 class _MediaQueryPageState extends State<MediaQueryPage> {
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-    //..load()
-    //..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.fullBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -72,6 +83,10 @@ class _MediaQueryPageState extends State<MediaQueryPage> {
         title: Text("Media Query"),
       ),
       backgroundColor: Colors.yellow[100],
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (_mediaQuery.orientation == Orientation.landscape) {

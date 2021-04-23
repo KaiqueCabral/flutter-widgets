@@ -25,6 +25,14 @@ import 'package:flutter_widgets/widgets/Layout/054_container/container.dart';
 import 'package:flutter_widgets/widgets/Layout/066_tab-bar/default-tab-controller.dart';
 import 'package:flutter_widgets/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
 import 'package:flutter_widgets/widgets/Layout/081_checkbox-list-tile/checkbox-list-tile.dart';
+import 'package:flutter_widgets/widgets/Scrolling/009_page-view/page-view.dart';
+import 'package:flutter_widgets/widgets/Scrolling/042_reordenable-list-view/reordenable-list-view.dart';
+import 'package:flutter_widgets/widgets/Scrolling/060_draggable-scrollable-sheet/draggable-scrollable-sheet.dart';
+import 'package:flutter_widgets/widgets/Scrolling/071_notification-listener/notification-listener.dart';
+import 'package:flutter_widgets/widgets/Styling/034_media-query/media-query.dart';
+import 'package:flutter_widgets/widgets/Styling/061_color-filtered/color-filtered.dart';
+import 'package:flutter_widgets/widgets/Text/041_rich-text/rich-text.dart';
+import 'package:flutter_widgets/widgets/Text/055_selectable-text/selectable-text.dart';
 import 'package:flutter_widgets/widgets/home/menu-items.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -80,7 +88,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             child: getNavItem(Icons.view_carousel, "GO! GO! GO!",
-                CheckboxListTilePage.routeName, context),
+                NotificationListenerPage.routeName, context),
           ),
           Flex(
             direction: Axis.vertical,
