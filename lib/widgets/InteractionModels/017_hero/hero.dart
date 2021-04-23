@@ -1,3 +1,4 @@
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/widgets/InteractionModels/017_hero/hero-details.dart';
@@ -9,20 +10,29 @@ class HeroPage extends StatefulWidget {
 }
 
 class _HeroPage extends State<HeroPage> {
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-    //..load()
-    //..show(anchorType: AnchorType.top, anchorOffset: 90);
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -33,10 +43,15 @@ class _HeroPage extends State<HeroPage> {
         title: Text("Hero"),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            Container(
+              child: AdWidget(ad: _ad),
+              height: _ad.size.height.toDouble(),
+              margin: const EdgeInsets.only(top: 10),
+            ),
             Row(
               children: <Widget>[
                 Expanded(
@@ -146,6 +161,9 @@ class _HeroPage extends State<HeroPage> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 90,
             ),
           ],
         ),

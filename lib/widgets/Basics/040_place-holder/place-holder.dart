@@ -45,7 +45,6 @@ class _PlaceHolderPageState extends State<PlaceHolderPage> {
       bottomSheet: Container(
         child: AdWidget(ad: _ad),
         height: _ad.size.height.toDouble(),
-        margin: const EdgeInsets.only(top: 10),
       ),
       body: Container(
         child: Column(

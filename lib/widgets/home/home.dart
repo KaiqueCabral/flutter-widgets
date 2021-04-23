@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/menu.dart';
-import 'package:flutter_widgets/widgets/Basics/072_builder/builder.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/076_ignore-pointer/ignore-pointer.dart';
 import 'package:flutter_widgets/widgets/home/menu-items.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             child: getNavItem(Icons.view_carousel, "GO! GO! GO!",
-                BuilderPage.routeName, context),
+                IgnorePointerPage.routeName, context),
           ),
           Flex(
             direction: Axis.vertical,

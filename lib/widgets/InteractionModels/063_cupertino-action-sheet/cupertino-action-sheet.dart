@@ -1,3 +1,4 @@
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,20 +14,29 @@ class CupertinoActionSheetPage extends StatefulWidget {
 class _CupertinoActionSheetPageState extends State<CupertinoActionSheetPage> {
   String _choice = "Click on the button above and choose an option!";
   String _option = "";
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-    //..load()
-    //..show(anchorType: AnchorType.top, anchorOffset: 90);
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -35,6 +45,10 @@ class _CupertinoActionSheetPageState extends State<CupertinoActionSheetPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cupertino Action Sheet"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
       ),
       body: Container(
         child: Center(

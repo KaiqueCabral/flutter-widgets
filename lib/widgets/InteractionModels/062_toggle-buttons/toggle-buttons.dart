@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class ToggleButtonsPage extends StatefulWidget {
   static const String routeName = "/toggle-buttons";
@@ -18,20 +19,29 @@ class _ToggleButtonsPageState extends State<ToggleButtonsPage> {
   List<bool> lstIsSelectedEC = List.generate(3, (_) => false);
   List<bool> lstIsSelectedECN = List.generate(3, (_) => false);
   List<bool> lstIsSelectedECO = List.generate(3, (index) => (index == 0));
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-    //..load()
-    //..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -40,6 +50,10 @@ class _ToggleButtonsPageState extends State<ToggleButtonsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Toggle Buttons"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
       ),
       body: Container(
         alignment: Alignment.center,

@@ -48,7 +48,6 @@ class _InheritedModelPage extends State<InheritedModelPage> {
       bottomSheet: Container(
         child: AdWidget(ad: _ad),
         height: _ad.size.height.toDouble(),
-        margin: const EdgeInsets.only(top: 10),
       ),
       body: SingleChildScrollView(
         child: Column(

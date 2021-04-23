@@ -76,7 +76,6 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
       bottomSheet: Container(
         child: AdWidget(ad: _ad),
         height: _ad.size.height.toDouble(),
-        margin: const EdgeInsets.only(top: 10),
       ),
       body: ancestorWidget.check.isLoading
           ? Center(child: CircularProgressIndicator())

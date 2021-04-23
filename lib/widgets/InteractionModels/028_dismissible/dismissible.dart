@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class DismissiblePage extends StatefulWidget {
   static const String routeName = "/dismissible";
@@ -10,20 +11,29 @@ class DismissiblePage extends StatefulWidget {
 class _DismissiblePage extends State<DismissiblePage> {
   final _items = List<String>.generate(20, (i) => "Item ${i + 1}");
   String _text = "";
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-    //..load()
-    //..show(anchorType: AnchorType.top, anchorOffset: 90);
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -33,8 +43,12 @@ class _DismissiblePage extends State<DismissiblePage> {
       appBar: AppBar(
         title: Text("Dismissible"),
       ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
+      ),
       body: ListView.builder(
-        padding: EdgeInsets.only(top: 55),
+        padding: EdgeInsets.only(bottom: 55),
         itemCount: _items.length,
         itemBuilder: (context, index) {
           final item = _items[index];
