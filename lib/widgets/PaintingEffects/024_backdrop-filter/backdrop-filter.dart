@@ -1,7 +1,8 @@
 import 'dart:ui';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:flutter_widgets/shared/settings.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class BackdropFilterPage extends StatefulWidget {
   static const String routeName = "/backdrop-filter";
@@ -11,19 +12,29 @@ class BackdropFilterPage extends StatefulWidget {
 }
 
 class _BackdropFilterPageState extends State<BackdropFilterPage> {
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-    //..load()
-    //..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.fullBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -32,6 +43,10 @@ class _BackdropFilterPageState extends State<BackdropFilterPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Backdrop Filter"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
       ),
       body: Stack(
         children: <Widget>[
@@ -48,9 +63,10 @@ class _BackdropFilterPageState extends State<BackdropFilterPage> {
                 sigmaY: 6,
               ),
               child: Container(
-                  decoration: BoxDecoration(
-                color: Colors.grey.shade100.withOpacity(0.2),
-              )),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100.withOpacity(0.2),
+                ),
+              ),
             ),
           ),
         ],

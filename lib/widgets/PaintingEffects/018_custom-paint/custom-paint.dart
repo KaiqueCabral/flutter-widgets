@@ -1,6 +1,7 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class Sky extends CustomPainter {
   @override
@@ -60,19 +61,29 @@ class CustomPaintPage extends StatefulWidget {
 }
 
 class _CustomPaintPageState extends State<CustomPaintPage> {
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-    //..load()
-    //..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.fullBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -81,6 +92,10 @@ class _CustomPaintPageState extends State<CustomPaintPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Custom Paint"),
+      ),
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
       ),
       body: CustomPaint(
         painter: Sky(),
