@@ -63,7 +63,7 @@ class _CupertinoActivityIndicatorPageState
               ),
             ),
             Image.network(
-              "${Settings.apiURL}/images/white-owl.jpg",
+              "https://picsum.photos/seed/picsum/100/100",
               height: 100,
               fit: BoxFit.cover,
               loadingBuilder: (BuildContext context, Widget child,

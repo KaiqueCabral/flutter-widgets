@@ -51,7 +51,7 @@ class Menu {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Check the code:",
+            "Check out the code:",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
@@ -66,7 +66,7 @@ class Menu {
               direction: Axis.vertical,
               children: <Widget>[
                 Image.asset(
-                  "assets/images/github_Logo.png",
+                  "assets/images/github_logo.png",
                   width: 100,
                   color: Colors.white,
                 ),

@@ -37,7 +37,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
     super.dispose();
   }
 
-  String _imageURL = "${Settings.apiURL}/images/flutter-small.jpg";
+  String _imageURL = "https://picsum.photos/seed/picsum/250/250";
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
         onPressed: () {
           setState(
             () {
-              _imageURL = "${Settings.apiURL}/images/flutter-big.jpg";
+              _imageURL = "https://picsum.photos/seed/picsum/600/600";
             },
           );
         },

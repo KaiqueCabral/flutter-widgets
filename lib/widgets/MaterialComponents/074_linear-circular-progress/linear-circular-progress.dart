@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
-import 'package:flutter_widgets/shared/settings.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class LinearCircularProgressPage extends StatefulWidget {
@@ -66,7 +65,7 @@ class _LinearCircularProgressPageState
               valueColor: AlwaysStoppedAnimation<Color>(Colors.amber),
             ),
             Image.network(
-              "${Settings.apiURL}/images/white-owl.jpg",
+              "https://picsum.photos/seed/picsum/600/300",
               height: 100,
               fit: BoxFit.cover,
               loadingBuilder: (BuildContext context, Widget child,

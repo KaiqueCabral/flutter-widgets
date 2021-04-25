@@ -107,7 +107,7 @@ class _OpacityPageState extends State<OpacityPage> {
                       padding: EdgeInsets.all(5),
                       child: Opacity(
                         child: Image.network(
-                          "${Settings.apiURL}/images/landscape-city.jpg",
+                          "https://picsum.photos/seed/picsum/600/300",
                           colorBlendMode: BlendMode.modulate,
                           loadingBuilder: (BuildContext context, Widget child,
                               ImageChunkEvent progress) {

@@ -24,6 +24,8 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/images/aurora-borealis.jpg
     - assets/images/flutter-fade-in-image.jpg
-    - assets/images/gitHub_logo.png
+    - assets/images/github_logo.png
+    - assets/images/landscape.jpg
     - assets/images/loading.gif

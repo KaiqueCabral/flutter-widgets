@@ -52,7 +52,7 @@ class _BackdropFilterPageState extends State<BackdropFilterPage> {
         children: <Widget>[
           ConstrainedBox(
             child: Image.network(
-              "${Settings.apiURL}/images/landscape.jpg",
+              "https://picsum.photos/seed/picsum/600/300",
             ),
             constraints: BoxConstraints.expand(),
           ),

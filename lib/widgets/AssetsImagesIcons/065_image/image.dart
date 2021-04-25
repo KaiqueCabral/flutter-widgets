@@ -65,7 +65,7 @@ class _ImagePageState extends State<ImagePage> {
                 ),
                 listItem(
                   Image.network(
-                    "${Settings.apiURL}/images/white-owl.jpg",
+                    "https://picsum.photos/seed/picsum/300/300",
                     loadingBuilder: (BuildContext context, Widget child,
                         ImageChunkEvent loadingProgress) {
                       if (loadingProgress == null) return child;
@@ -84,14 +84,17 @@ class _ImagePageState extends State<ImagePage> {
                 ),
                 listItem(
                   Image.network(
-                    "${Settings.apiURL}/images/barn-owl.jpg",
+                    "https://picsum.photos/seed/picsum/300/300",
                     fit: BoxFit.cover,
                     width: 300,
                     semanticLabel: "Image of an owl from the internet",
                   ),
                   context,
                 ),
-                listItem(Text("Asset Images"), context),
+                listItem(
+                  Text("Asset Images"),
+                  context,
+                ),
                 listItem(
                   Image.asset(
                     "assets/images/flutter-fade-in-image.jpg",
