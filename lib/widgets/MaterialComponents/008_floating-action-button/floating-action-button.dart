@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class FloatingActionButtonPage extends StatefulWidget {
   static const String routeName = "/floating-action-button";
@@ -23,10 +24,12 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
   String _text = "Testing Floating Action Button";
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
+    super.initState();
+
     _animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 500),
@@ -48,17 +51,24 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
       ),
     );
 
-    //bannerAd = AdsStandard().createBannerAd(AdSize.largeBanner)
-    //..load()
-    //..show(anchorType: AnchorType.top, anchorOffset: 90);
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.largeBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
 
-    super.initState();
+    _ad.load();
   }
 
   @override
   void dispose() {
     _animationController.dispose();
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
@@ -137,23 +147,33 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
       appBar: AppBar(
         title: Text("Floating Action Button"),
       ),
-      body: Row(
-        children: <Widget>[
+      body: Column(
+        children: [
           Container(
-            child: Text(_text),
-            alignment: Alignment.center,
-            color: Colors.grey,
-            padding: EdgeInsets.all(20),
-            width: MediaQuery.of(context).size.width / 4.0,
+            child: AdWidget(ad: _ad),
+            height: _ad.size.height.toDouble(),
           ),
           Expanded(
-            child: Container(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                "Click here! >>> ",
-                style: TextStyle(fontSize: 24, color: Colors.grey),
-              ),
-              padding: EdgeInsets.all(25),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  child: Text(_text),
+                  alignment: Alignment.center,
+                  color: Colors.grey,
+                  padding: EdgeInsets.all(20),
+                  width: MediaQuery.of(context).size.width / 4.0,
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      "Click here! >>> ",
+                      style: TextStyle(fontSize: 24, color: Colors.grey),
+                    ),
+                    padding: EdgeInsets.all(25),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

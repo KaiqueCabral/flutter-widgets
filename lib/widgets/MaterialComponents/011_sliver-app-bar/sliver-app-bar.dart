@@ -1,5 +1,6 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/shared/ads/ad_helper.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class SliverAppBarPage extends StatefulWidget {
   static const String routeName = "/sliver-app-bar";
@@ -9,25 +10,39 @@ class SliverAppBarPage extends StatefulWidget {
 }
 
 class _SliverAppBarPageState extends State<SliverAppBarPage> {
-  BannerAd bannerAd;
+  BannerAd _ad;
 
   @override
   void initState() {
     super.initState();
-    //bannerAd = AdsStandard().createBannerAd(AdSize.banner)
-    //..load()
-    //..show();
+
+    _ad = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      size: AdSize.fullBanner,
+      request: AdRequest(),
+      listener: AdListener(
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        },
+      ),
+    );
+
+    _ad.load();
   }
 
   @override
   void dispose() {
-    bannerAd?.dispose();
+    _ad?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: Container(
+        child: AdWidget(ad: _ad),
+        height: _ad.size.height.toDouble(),
+      ),
       body: Container(
         padding: EdgeInsets.only(bottom: 55),
         child: CustomScrollView(
@@ -53,8 +68,8 @@ class _SliverAppBarPageState extends State<SliverAppBarPage> {
               delegate: SliverChildListDelegate(
                 List.generate(
                   20,
-                  (index) => listItem(
-                      Colors.white, "Item ${index.toString().padLeft(2, '0')}"),
+                  (index) => listItem(Colors.white,
+                      "Item ${(index + 1).toString().padLeft(2, '0')}"),
                 ),
               ),
             ),
