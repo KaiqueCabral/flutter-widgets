@@ -19,7 +19,7 @@ class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
 
     _ad = BannerAd(
       adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
+      size: AdSize.fullBanner,
       request: AdRequest(),
       listener: AdListener(
         onAdFailedToLoad: (ad, error) {

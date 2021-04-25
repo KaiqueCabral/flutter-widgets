@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
-import 'package:flutter_widgets/shared/settings.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class ImagePage extends StatefulWidget {

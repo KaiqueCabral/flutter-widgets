@@ -75,7 +75,7 @@ class _AnimatedPositionedPage extends State<AnimatedPositionedPage>
               bottom: _verticalAlignment,
               left: _horizontalAlignment,
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.6,
+                width: 150,
                 height: 150,
                 color: Colors.deepPurple[400],
               ),

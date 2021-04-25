@@ -47,7 +47,7 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
 
     _ad = BannerAd(
       adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
+      size: AdSize.fullBanner,
       request: AdRequest(),
       listener: AdListener(
         onAdFailedToLoad: (ad, error) {

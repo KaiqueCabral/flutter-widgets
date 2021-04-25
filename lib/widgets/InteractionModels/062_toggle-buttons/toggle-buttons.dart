@@ -27,7 +27,7 @@ class _ToggleButtonsPageState extends State<ToggleButtonsPage> {
 
     _ad = BannerAd(
       adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
+      size: AdSize.fullBanner,
       request: AdRequest(),
       listener: AdListener(
         onAdFailedToLoad: (ad, error) {
@@ -57,7 +57,7 @@ class _ToggleButtonsPageState extends State<ToggleButtonsPage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.only(bottom: 65, left: 30, right: 30, top: 30),
         child: ListView(
           children: <Widget>[
             Column(

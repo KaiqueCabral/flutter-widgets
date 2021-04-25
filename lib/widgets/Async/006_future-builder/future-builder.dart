@@ -24,7 +24,7 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
 
     _ad = BannerAd(
       adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
+      size: AdSize.fullBanner,
       request: AdRequest(),
       listener: AdListener(
         onAdFailedToLoad: (ad, error) {
@@ -56,99 +56,106 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
             height: _ad.size.height.toDouble(),
             margin: const EdgeInsets.only(top: 10),
           ),
-          SingleChildScrollView(
-            padding: EdgeInsets.only(
-              top: 70,
-              bottom: 70,
-            ),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: FutureBuilder<FutureBuilderModel>(
-                    future: getFutureResponse(_post),
-                    builder: (context, snapshot) {
-                      List<Widget> children;
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).orientation == Orientation.portrait
+                    ? 70
+                    : 10,
+                bottom:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? 70
+                        : 10,
+              ),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: FutureBuilder<FutureBuilderModel>(
+                      future: getFutureResponse(_post),
+                      builder: (context, snapshot) {
+                        List<Widget> children;
 
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.done:
-                          if (snapshot.hasData) {
-                            children = <Widget>[
-                              Icon(
-                                Icons.check_circle_outline,
-                                color: Colors.green,
-                                size: 60,
-                              ),
-                              SafeArea(
-                                minimum: EdgeInsets.all(20),
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        postInfo("ID: ${snapshot.data.id}"),
-                                        postInfo(
-                                            "User ID: ${snapshot.data.userId}"),
-                                      ],
-                                    ),
-                                    Divider(),
-                                    Container(
-                                      child: Text(
-                                        'Title: ${snapshot.data.title}',
-                                        style: TextStyle(fontSize: 24),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    Divider(),
-                                    Container(
-                                      child: Text(
-                                        'Body: ${snapshot.data.body} ${snapshot.data.body}',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                    ),
-                                  ],
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.done:
+                            if (snapshot.hasData) {
+                              children = <Widget>[
+                                Icon(
+                                  Icons.check_circle_outline,
+                                  color: Colors.green,
+                                  size: 60,
                                 ),
-                              ),
-                            ];
-                          } else if (snapshot.hasError) {
+                                SafeArea(
+                                  minimum: EdgeInsets.all(20),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Row(
+                                        children: <Widget>[
+                                          postInfo("ID: ${snapshot.data.id}"),
+                                          postInfo(
+                                              "User ID: ${snapshot.data.userId}"),
+                                        ],
+                                      ),
+                                      Divider(),
+                                      Container(
+                                        child: Text(
+                                          'Title: ${snapshot.data.title}',
+                                          style: TextStyle(fontSize: 24),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Divider(),
+                                      Container(
+                                        child: Text(
+                                          'Body: ${snapshot.data.body} ${snapshot.data.body}',
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ];
+                            } else if (snapshot.hasError) {
+                              children = <Widget>[
+                                Icon(
+                                  Icons.error_outline,
+                                  color: Colors.red,
+                                  size: 60,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 16),
+                                  child: Text('Error: ${snapshot.error}'),
+                                ),
+                              ];
+                            }
+                            break;
+                          default:
                             children = <Widget>[
-                              Icon(
-                                Icons.error_outline,
-                                color: Colors.red,
-                                size: 60,
+                              SizedBox(
+                                child: CircularProgressIndicator(),
+                                width: 60,
+                                height: 60,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16),
-                                child: Text('Error: ${snapshot.error}'),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 16),
+                                child: Text('Awaiting result...'),
                               ),
                             ];
-                          }
-                          break;
-                        default:
-                          children = <Widget>[
-                            SizedBox(
-                              child: CircularProgressIndicator(),
-                              width: 60,
-                              height: 60,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 16),
-                              child: Text('Awaiting result...'),
-                            ),
-                          ];
-                          break;
-                      }
+                            break;
+                        }
 
-                      return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: children,
-                        ),
-                      );
-                    },
+                        return Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: children,
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

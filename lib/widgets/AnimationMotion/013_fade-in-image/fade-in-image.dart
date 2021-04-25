@@ -1,7 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_widgets/shared/settings.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class FadeInImagePage extends StatefulWidget {
@@ -19,7 +18,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
 
     _ad = BannerAd(
       adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
+      size: AdSize.banner,
       request: AdRequest(),
       listener: AdListener(
         onAdFailedToLoad: (ad, error) {
@@ -52,14 +51,17 @@ class _FadeInImagePage extends State<FadeInImagePage> {
             color: Colors.grey[100],
             child: AdWidget(ad: _ad),
             height: _ad.size.height.toDouble(),
-            margin: const EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.symmetric(vertical: 10),
           ),
-          Center(
-            child: Container(
-              child: Column(
-                children: <Widget>[
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Flex(
+                direction: Axis.vertical,
+                children: [
                   Container(
                     alignment: Alignment.bottomCenter,
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: FadeInImage.memoryNetwork(
                       fadeInDuration: Duration(
                         seconds: 1,
@@ -76,6 +78,7 @@ class _FadeInImagePage extends State<FadeInImagePage> {
                   Container(
                     color: Colors.grey[100],
                     alignment: Alignment.bottomCenter,
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: FadeInImage.assetNetwork(
                       fadeInDuration: Duration(
                         seconds: 1,
@@ -83,7 +86,6 @@ class _FadeInImagePage extends State<FadeInImagePage> {
                       fadeInCurve: Curves.easeInToLinear,
                       placeholder: "assets/images/loading.gif",
                       image: _imageURL,
-                      //image has to be an URL
                       height: 200,
                     ),
                   ),

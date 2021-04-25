@@ -18,7 +18,7 @@ class _DraggablePage extends State<DraggablePage> {
 
     _ad = BannerAd(
       adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
+      size: AdSize.fullBanner,
       request: AdRequest(),
       listener: AdListener(
         onAdFailedToLoad: (ad, error) {
@@ -47,7 +47,7 @@ class _DraggablePage extends State<DraggablePage> {
         height: _ad.size.height.toDouble(),
       ),
       body: SafeArea(
-        minimum: EdgeInsets.all(30),
+        minimum: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             Row(
@@ -124,7 +124,7 @@ class _DraggablePage extends State<DraggablePage> {
 
   Center title(String title, Color color) => Center(
         child: Padding(
-          padding: EdgeInsets.only(bottom: 50, top: 50),
+          padding: EdgeInsets.only(bottom: 0, top: 0),
           child: Text(
             title,
             style: TextStyle(
@@ -149,15 +149,15 @@ class _DraggablePage extends State<DraggablePage> {
       Expanded(
         child: Draggable(
           child: Container(
-            width: 100,
-            height: 100,
+            width: 75,
+            height: 75,
             color: color[300],
             alignment: Alignment.center,
             child: Icon(icon),
           ),
           feedback: Container(
-            width: 100,
-            height: 100,
+            width: 75,
+            height: 75,
             color: color,
             alignment: Alignment.center,
             child: Icon(icon),

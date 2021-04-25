@@ -56,8 +56,9 @@ class _BuilderPageState extends State<BuilderPage> {
                   backgroundColor: Colors.blue,
                   duration: Duration(seconds: 15),
                   content: Text(
-                      "The SnackBar wouldn't work inside of only one BuildContext.\n\n"
-                      "Buuut, thanks to the Builder Widget the Snackbar is working."),
+                    "The SnackBar would not work inside of only one BuildContext.\n\n"
+                    "Buuut, thanks to the Builder Widget the Snackbar is working.",
+                  ),
                 ),
               );
             },
