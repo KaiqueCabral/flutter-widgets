@@ -8,6 +8,7 @@ import 'package:flutter_widgets/widgets/home/menu/basics.dart';
 import 'package:flutter_widgets/widgets/home/menu/interaction-models.dart';
 import 'package:flutter_widgets/widgets/home/menu/layout.dart';
 import 'package:flutter_widgets/widgets/home/menu/material-components.dart';
+import 'package:flutter_widgets/widgets/home/menu/packages.dart';
 import 'package:flutter_widgets/widgets/home/menu/painting-effects.dart';
 import 'package:flutter_widgets/widgets/home/menu/scrolling.dart';
 import 'package:flutter_widgets/widgets/home/menu/styling.dart';
@@ -92,6 +93,15 @@ class _MenuItems extends State<MenuItems> {
         MenuMaterialComponents(
           context: context,
           menu: Menu(colorItems: Colors.teal[700]),
+        ).subItems,
+      ),
+      Menu.getMenu(
+        Icons.format_paint,
+        "Packages",
+        Colors.pink[300],
+        MenuPackages(
+          context: context,
+          menu: Menu(colorItems: Colors.pink[300]),
         ).subItems,
       ),
       Menu.getMenu(

@@ -29,6 +29,7 @@ import 'package:flutter_widgets/widgets/InteractionModels/031_draggable/draggabl
 import 'package:flutter_widgets/widgets/InteractionModels/062_toggle-buttons/toggle-buttons.dart';
 import 'package:flutter_widgets/widgets/InteractionModels/063_cupertino-action-sheet/cupertino-action-sheet.dart';
 import 'package:flutter_widgets/widgets/InteractionModels/076_ignore-pointer/ignore-pointer.dart';
+import 'package:flutter_widgets/widgets/InteractionModels/088_interactive-viewer/interactive-viewer.dart';
 import 'package:flutter_widgets/widgets/Layout/001_safe-area/safe-area.dart';
 import 'package:flutter_widgets/widgets/Layout/002_expanded/expanded.dart';
 import 'package:flutter_widgets/widgets/Layout/003_wrap/wrap.dart';
@@ -64,6 +65,8 @@ import 'package:flutter_widgets/widgets/MaterialComponents/068_snackbar/snackbar
 import 'package:flutter_widgets/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/075_divider/divider.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/077_cupertino-activity-indicator/cupertino-activity-indicator.dart';
+import 'package:flutter_widgets/widgets/Packages/085_url_launcher/url_launcher.page.dart';
+import 'package:flutter_widgets/widgets/Packages/086_sqflite/sqflite.page.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -148,6 +151,8 @@ routes() {
         InheritedModelPage(),
     InheritedWidgetPage.routeName: (BuildContext context) =>
         InheritedWidgetPage(),
+    InteractiveViewerPage.routeName: (BuildContext context) =>
+        InteractiveViewerPage(),
     LayoutBuilderPage.routeName: (BuildContext context) => LayoutBuilderPage(),
     LimitedBoxPage.routeName: (BuildContext context) => LimitedBoxPage(),
     LinearCircularProgressPage.routeName: (BuildContext context) =>
@@ -179,6 +184,7 @@ routes() {
         SliverListGridPage(),
     SnackBarPage.routeName: (BuildContext context) => SnackBarPage(),
     SpacerPage.routeName: (BuildContext context) => SpacerPage(),
+    SQLitePage.routeName: (BuildContext context) => SQLitePage(),
     StackPage.routeName: (BuildContext context) => StackPage(),
     StreamBuilderPage.routeName: (BuildContext context) => StreamBuilderPage(),
     TablePage.routeName: (BuildContext context) => TablePage(),
@@ -188,6 +194,7 @@ routes() {
     TransformPage.routeName: (BuildContext context) => TransformPage(),
     TweenAnimationBuilderPage.routeName: (BuildContext context) =>
         TweenAnimationBuilderPage(),
+    URLLauncherPage.routeName: (BuildContext context) => URLLauncherPage(),
     ValueListenableBuilderPage.routeName: (BuildContext context) =>
         ValueListenableBuilderPage(),
     WrapPage.routeName: (BuildContext context) => WrapPage(),
