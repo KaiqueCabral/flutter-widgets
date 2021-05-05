@@ -55,8 +55,12 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Container(
-            child: getNavItem(Icons.view_carousel, "GO! GO! GO!",
-                NotificationListenerPage.routeName, context),
+            child: getNavItem(
+              Icons.view_carousel,
+              "GO! GO! GO!",
+              NotificationListenerPage.routeName,
+              context,
+            ),
           ),
           Flex(
             direction: Axis.vertical,

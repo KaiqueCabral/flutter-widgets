@@ -55,6 +55,7 @@ import 'package:flutter_widgets/widgets/Layout/066_tab-bar/default-tab-controlle
 import 'package:flutter_widgets/widgets/Layout/069_list-wheel-scroll-view/list-wheel-scroll-view.dart';
 import 'package:flutter_widgets/widgets/Layout/080_padding/padding.dart';
 import 'package:flutter_widgets/widgets/Layout/081_checkbox-list-tile/checkbox-list-tile.dart';
+import 'package:flutter_widgets/widgets/Layout/089_grid-view/grid-view.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/008_floating-action-button/floating-action-button.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/011_sliver-app-bar/sliver-app-bar.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/019_tooltip/tooltip.dart';
@@ -65,6 +66,7 @@ import 'package:flutter_widgets/widgets/MaterialComponents/068_snackbar/snackbar
 import 'package:flutter_widgets/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/075_divider/divider.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/077_cupertino-activity-indicator/cupertino-activity-indicator.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/090_switch-list-tile/switch-list-tile.dart';
 import 'package:flutter_widgets/widgets/Packages/085_url_launcher/url_launcher.page.dart';
 import 'package:flutter_widgets/widgets/Packages/086_sqflite/sqflite.page.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/005_opacity/opacity.dart';
@@ -142,6 +144,7 @@ routes() {
     FractionallySizedBoxPage.routeName: (BuildContext context) =>
         FractionallySizedBoxPage(),
     FutureBuilderPage.routeName: (BuildContext context) => FutureBuilderPage(),
+    GridViewPage.routeName: (BuildContext context) => GridViewPage(),
     HeroPage.routeName: (BuildContext context) => HeroPage(),
     HeroDetailsPage.routeName: (BuildContext context) => HeroDetailsPage(),
     IgnorePointerPage.routeName: (BuildContext context) => IgnorePointerPage(),
@@ -187,6 +190,8 @@ routes() {
     SQLitePage.routeName: (BuildContext context) => SQLitePage(),
     StackPage.routeName: (BuildContext context) => StackPage(),
     StreamBuilderPage.routeName: (BuildContext context) => StreamBuilderPage(),
+    SwitchListTilePage.routeName: (BuildContext context) =>
+        SwitchListTilePage(),
     TablePage.routeName: (BuildContext context) => TablePage(),
     TabsPage.routeName: (BuildContext context) => TabsPage(),
     ToggleButtonsPage.routeName: (BuildContext context) => ToggleButtonsPage(),

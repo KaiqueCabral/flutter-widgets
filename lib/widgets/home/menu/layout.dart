@@ -25,6 +25,7 @@ import 'package:flutter_widgets/widgets/Layout/069_list-wheel-scroll-view/list-w
 import 'package:flutter_widgets/widgets/Layout/053_list-tile/list-tile.dart';
 import 'package:flutter_widgets/widgets/Layout/080_padding/padding.dart';
 import 'package:flutter_widgets/widgets/Layout/081_checkbox-list-tile/checkbox-list-tile.dart';
+import 'package:flutter_widgets/widgets/Layout/089_grid-view/grid-view.dart';
 
 class MenuLayout {
   final BuildContext context;
@@ -51,6 +52,8 @@ class MenuLayout {
           FlexiblePage.routeName, context),
       menu.getNavItem(Icons.aspect_ratio, "Fractionally Sized Box",
           FractionallySizedBoxPage.routeName, context),
+      menu.getNavItem(Icons.table_chart_outlined, "Grid View",
+          GridViewPage.routeName, context),
       menu.getNavItem(
           Icons.layers, "Indexed Stack", IndexedStackPage.routeName, context),
       menu.getNavItem(

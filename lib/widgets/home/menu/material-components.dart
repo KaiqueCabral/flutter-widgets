@@ -10,6 +10,7 @@ import 'package:flutter_widgets/widgets/MaterialComponents/068_snackbar/snackbar
 import 'package:flutter_widgets/widgets/MaterialComponents/074_linear-circular-progress/linear-circular-progress.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/075_divider/divider.dart';
 import 'package:flutter_widgets/widgets/MaterialComponents/077_cupertino-activity-indicator/cupertino-activity-indicator.dart';
+import 'package:flutter_widgets/widgets/MaterialComponents/090_switch-list-tile/switch-list-tile.dart';
 
 class MenuMaterialComponents {
   final BuildContext context;
@@ -35,6 +36,8 @@ class MenuMaterialComponents {
           SliverAppBarPage.routeName, context),
       menu.getNavItem(
           Icons.message, "SnackBar", SnackBarPage.routeName, context),
+      menu.getNavItem(Icons.swap_horizontal_circle_rounded, "Switch List Tile",
+          SwitchListTilePage.routeName, context),
       menu.getNavItem(Icons.title, "Tooltip", TooltipPage.routeName, context),
     ];
   }

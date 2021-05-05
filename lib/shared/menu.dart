@@ -125,6 +125,19 @@ class Menu {
                   color: Colors.lightBlue,
                 ),
               ),
+              TextSpan(text: ".\n\n"),
+              TextSpan(text: "Most of the code can be found on "),
+              TextSpan(
+                text: "Flutter Documentation",
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () => launchInWebViewOrVC(
+                        "https://flutter.dev/docs",
+                      ),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.lightBlue,
+                ),
+              ),
               TextSpan(text: "."),
             ],
           ),
