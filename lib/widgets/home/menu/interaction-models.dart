@@ -12,9 +12,9 @@ import 'package:flutter_widgets/widgets/InteractionModels/088_interactive-viewer
 class MenuInteractionModels {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuInteractionModels({this.context, this.menu}) {
+  MenuInteractionModels({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(
           Icons.mouse, "Absorb Pointer", AbsorbPointerPage.routeName, context),

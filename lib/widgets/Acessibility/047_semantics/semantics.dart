@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,24 +11,13 @@ class SemanticsPage extends StatefulWidget {
 }
 
 class _SemanticsPageState extends State<SemanticsPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
-
-    _ad.load();
+    _ad = AdManager.createBannerAd();
   }
 
   @override
@@ -107,11 +97,7 @@ class _SemanticsPageState extends State<SemanticsPage> {
             Expanded(
               child: SizedBox(),
             ),
-            Container(
-              child: AdWidget(ad: _ad),
-              width: _ad.size.width.toDouble(),
-              height: _ad.size.height.toDouble(),
-            ),
+            AdManager.showBannerAd(_ad),
           ],
         ),
         color: Colors.indigo[100],

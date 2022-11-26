@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -9,24 +10,26 @@ class ReordenableListViewPage extends StatefulWidget {
 }
 
 class _ReordenableListViewPage extends State<ReordenableListViewPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -39,12 +42,12 @@ class _ReordenableListViewPage extends State<ReordenableListViewPage> {
     Cars(1, "Ford", "New Fiesta", Colors.white),
     Cars(2, "Fiat", "500", Colors.red),
     Cars(3, "Chevrolet", "Camaro", Colors.yellow),
-    Cars(4, "Toyota", "Corolla", Colors.grey[500]),
+    Cars(4, "Toyota", "Corolla", Colors.grey[500]!),
     Cars(5, "VW", "Jetta", Colors.black),
     Cars(6, "Ford", "Focus", Colors.white),
     Cars(7, "Fiat", "Uno", Colors.red),
     Cars(8, "Chevrolet", "Malibu", Colors.yellow),
-    Cars(9, "Toyota", "Yaris", Colors.grey[500]),
+    Cars(9, "Toyota", "Yaris", Colors.grey[500]!),
     Cars(10, "VW", "Beetle", Colors.black),
   ];
 
@@ -54,10 +57,15 @@ class _ReordenableListViewPage extends State<ReordenableListViewPage> {
       appBar: AppBar(
         title: Text("Reordenable List View"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Container(
         color: Colors.orange[100],
         child: ReorderableListView(

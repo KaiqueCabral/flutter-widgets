@@ -6,9 +6,9 @@ import 'package:flutter_widgets/widgets/Styling/061_color-filtered/color-filtere
 class MenuStyling {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuStyling({this.context, this.menu}) {
+  MenuStyling({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(Icons.color_lens, "Color Filtered",
           ColorFilteredPage.routeName, context),

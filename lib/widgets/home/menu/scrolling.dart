@@ -8,9 +8,9 @@ import 'package:flutter_widgets/widgets/Scrolling/071_notification-listener/noti
 class MenuScrolling {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuScrolling({this.context, this.menu}) {
+  MenuScrolling({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(Icons.drag_handle, "Draggable Scrollable Sheet",
           DraggableScrollableSheetPage.routeName, context),

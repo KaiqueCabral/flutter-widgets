@@ -6,9 +6,9 @@ import 'package:flutter_widgets/widgets/Text/055_selectable-text/selectable-text
 class MenuText {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuText({this.context, this.menu}) {
+  MenuText({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(
           Icons.text_fields, "Rich Text", RichTextPage.routeName, context),

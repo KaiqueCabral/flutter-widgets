@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -11,24 +11,26 @@ class ClipRRectPage extends StatefulWidget {
 }
 
 class _ClipRRectPageState extends State<ClipRRectPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -43,10 +45,15 @@ class _ClipRRectPageState extends State<ClipRRectPage> {
       appBar: AppBar(
         title: Text("ClipRRect"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: SafeArea(
         minimum: EdgeInsets.all(30),
         child: Row(
@@ -55,11 +62,13 @@ class _ClipRRectPageState extends State<ClipRRectPage> {
             Column(
               children: <Widget>[
                 ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.lerp(
-                    Radius.circular(30),
-                    Radius.circular(30),
-                    30,
-                  )),
+                  borderRadius: BorderRadius.all(
+                    Radius.lerp(
+                      Radius.circular(30),
+                      Radius.circular(30),
+                      30,
+                    )!,
+                  ),
                   clipBehavior: Clip.antiAlias,
                   child: Container(
                     //margin: EdgeInsets.all(10),

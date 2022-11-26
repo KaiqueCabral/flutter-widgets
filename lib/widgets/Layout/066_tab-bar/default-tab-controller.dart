@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,24 +11,26 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -51,10 +54,7 @@ class _TabsPageState extends State<TabsPage> {
             ],
           ),
         ),
-        bottomSheet: Container(
-          child: AdWidget(ad: _ad),
-          height: _ad.size.height.toDouble(),
-        ),
+        bottomSheet: AdManager.showBannerAd(_ad),
         body: TabBarView(
           children: <Widget>[
             _tabContainer("Bike is a good way to exercise."),

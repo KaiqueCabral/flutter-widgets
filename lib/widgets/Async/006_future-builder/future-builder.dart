@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/model/future-builder.dart';
 import 'package:flutter_widgets/services/future-builder.dart';
@@ -7,8 +8,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 class FutureBuilderPage extends StatefulWidget {
   static const String routeName = "/future-builder";
 
-  FutureBuilderPage({Key key, this.title}) : super(key: key);
-  final String title;
+  FutureBuilderPage({Key? key}) : super(key: key);
 
   @override
   _FutureBuilderPage createState() => _FutureBuilderPage();
@@ -16,24 +16,26 @@ class FutureBuilderPage extends StatefulWidget {
 
 class _FutureBuilderPage extends State<FutureBuilderPage> {
   int _post = 1;
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -51,11 +53,16 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
       body: Flex(
         direction: Axis.vertical,
         children: [
-          Container(
-            child: AdWidget(ad: _ad),
-            height: _ad.size.height.toDouble(),
-            margin: const EdgeInsets.only(top: 10),
-          ),
+          (!kIsWeb)
+              ? Container(
+                  child: AdWidget(ad: _ad!),
+                  height: _ad!.size.height.toDouble(),
+                  margin: const EdgeInsets.only(top: 10),
+                )
+              : Container(
+                  height: 0,
+                  width: 0,
+                ),
           Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.only(
@@ -73,7 +80,7 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
                     child: FutureBuilder<FutureBuilderModel>(
                       future: getFutureResponse(_post),
                       builder: (context, snapshot) {
-                        List<Widget> children;
+                        late List<Widget> children;
 
                         switch (snapshot.connectionState) {
                           case ConnectionState.done:
@@ -90,15 +97,15 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
                                     children: <Widget>[
                                       Row(
                                         children: <Widget>[
-                                          postInfo("ID: ${snapshot.data.id}"),
+                                          postInfo("ID: ${snapshot.data?.id}"),
                                           postInfo(
-                                              "User ID: ${snapshot.data.userId}"),
+                                              "User ID: ${snapshot.data?.userId}"),
                                         ],
                                       ),
                                       Divider(),
                                       Container(
                                         child: Text(
-                                          'Title: ${snapshot.data.title}',
+                                          'Title: ${snapshot.data?.title}',
                                           style: TextStyle(fontSize: 24),
                                           textAlign: TextAlign.center,
                                         ),
@@ -106,7 +113,7 @@ class _FutureBuilderPage extends State<FutureBuilderPage> {
                                       Divider(),
                                       Container(
                                         child: Text(
-                                          'Body: ${snapshot.data.body} ${snapshot.data.body}',
+                                          'Body: ${snapshot.data?.body} ${snapshot.data?.body}',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(fontSize: 18),
                                         ),

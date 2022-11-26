@@ -5,9 +5,9 @@ import 'package:flutter_widgets/widgets/Acessibility/047_semantics/semantics.dar
 class MenuAccessibility {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuAccessibility({this.context, this.menu}) {
+  MenuAccessibility({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(
           Icons.textsms, "Semantics", SemanticsPage.routeName, context),

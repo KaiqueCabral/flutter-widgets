@@ -1,10 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedContainerPage extends StatefulWidget {
   static const String routeName = "/animated-container";
-  AnimatedContainerPage({Key key}) : super(key: key);
+  AnimatedContainerPage({Key? key}) : super(key: key);
 
   @override
   _AnimatedContainerPageState createState() => _AnimatedContainerPageState();
@@ -14,24 +15,26 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   bool isSelected = false;
   String _textAnimCont = "Click Here!";
   Color _colorAnimCont = Colors.deepPurple;
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.banner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.banner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -46,10 +49,15 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
       appBar: AppBar(
         title: Text("Animated Container"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.grey,
@@ -77,7 +85,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
                             _textAnimCont = "Yeah! It works.\n" +
                                 "But only once.\n" +
                                 "You can't go back.";
-                            _colorAnimCont = Colors.blue[700];
+                            _colorAnimCont = Colors.blue;
                           });
                         },
                         child: AnimatedContainer(

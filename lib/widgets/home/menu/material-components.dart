@@ -15,9 +15,9 @@ import 'package:flutter_widgets/widgets/MaterialComponents/090_switch-list-tile/
 class MenuMaterialComponents {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuMaterialComponents({this.context, this.menu}) {
+  MenuMaterialComponents({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(
           Icons.add_alert, "Alert Dialog", AlertDialogPage.routeName, context),

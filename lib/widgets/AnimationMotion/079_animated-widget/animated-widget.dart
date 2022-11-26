@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,8 @@ class AnimatedWidgetPage extends StatefulWidget {
 
 class _AnimatedWidgetPageState extends State<AnimatedWidgetPage>
     with TickerProviderStateMixin {
-  AnimationController _controller;
-  BannerAd _ad;
+  late AnimationController _controller;
+  BannerAd? _ad;
 
   @override
   void initState() {
@@ -22,18 +23,20 @@ class _AnimatedWidgetPageState extends State<AnimatedWidgetPage>
         AnimationController(duration: Duration(seconds: 3), vsync: this)
           ..repeat();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -49,10 +52,15 @@ class _AnimatedWidgetPageState extends State<AnimatedWidgetPage>
       appBar: AppBar(
         title: Text("Animated Widget"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Center(
         child: ScaleContainer(
           controller: _controller,
@@ -63,10 +71,10 @@ class _AnimatedWidgetPageState extends State<AnimatedWidgetPage>
 }
 
 class ScaleContainer extends AnimatedWidget {
-  const ScaleContainer({Key key, AnimationController controller})
+  const ScaleContainer({Key? key, required AnimationController controller})
       : super(key: key, listenable: controller);
 
-  Animation<double> get _progress => listenable;
+  Animation<double> get _progress => listenable as Animation<double>;
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/menu.dart';
 import 'package:flutter_widgets/widgets/Scrolling/071_notification-listener/notification-listener.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_widgets/widgets/home/menu-items.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
+  HomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -16,7 +17,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    MobileAds.instance.initialize();
+    if (!kIsWeb) {
+      MobileAds.instance.initialize();
+    }
   }
 
   @override
@@ -78,9 +81,7 @@ class _HomePageState extends State<HomePage> {
                 child: InkWell(
                   onTap: () => Menu.launchInWebViewOrVC(
                       "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X5FNNUEWVNALQ&source=url"),
-                  child: Image.network(
-                    "https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif",
-                  ),
+                  child: Text("PayPal"),
                 ),
               ),
               Text(

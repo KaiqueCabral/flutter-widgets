@@ -1,14 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class FloatingActionButtonPage extends StatefulWidget {
   static const String routeName = "/floating-action-button";
-  final Function() onPressed;
-  final String tooltip;
-  final IconData icon;
-
-  FloatingActionButtonPage({this.onPressed, this.tooltip, this.icon});
 
   @override
   _FloatingActionButtonPage createState() => _FloatingActionButtonPage();
@@ -17,14 +13,14 @@ class FloatingActionButtonPage extends StatefulWidget {
 class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
     with SingleTickerProviderStateMixin {
   bool isOpened = false;
-  AnimationController _animationController;
-  Animation<Color> _buttonColor;
-  Animation<double> _animateIcon;
-  Animation<double> _translateButton;
+  late AnimationController _animationController;
+  late Animation<Color?> _buttonColor;
+  late Animation<double> _animateIcon;
+  late Animation<double> _translateButton;
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
   String _text = "Testing Floating Action Button";
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
@@ -51,18 +47,20 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
       ),
     );
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -150,8 +148,8 @@ class _FloatingActionButtonPage extends State<FloatingActionButtonPage>
       body: Column(
         children: [
           Container(
-            child: AdWidget(ad: _ad),
-            height: _ad.size.height.toDouble(),
+            child: AdWidget(ad: _ad!),
+            height: _ad!.size.height.toDouble(),
           ),
           Expanded(
             child: Row(

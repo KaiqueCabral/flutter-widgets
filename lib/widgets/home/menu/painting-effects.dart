@@ -12,9 +12,9 @@ import 'package:flutter_widgets/widgets/PaintingEffects/078_clip-oval/clip-oval.
 class MenuPaintingEffects {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuPaintingEffects({this.context, this.menu}) {
+  MenuPaintingEffects({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(Icons.filter, "Backdrop Filter",
           BackdropFilterPage.routeName, context),

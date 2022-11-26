@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -12,24 +13,26 @@ class ValueListenableBuilderPage extends StatefulWidget {
 class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
   final ValueNotifier<int> _counter = ValueNotifier<int>(0);
   final Widget _text = const Text("ValueListenableBuilder!");
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -46,14 +49,19 @@ class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            child: AdWidget(ad: _ad),
-            height: _ad.size.height.toDouble(),
-            margin: const EdgeInsets.only(top: 10),
-          ),
+          (!kIsWeb)
+              ? Container(
+                  child: AdWidget(ad: _ad!),
+                  height: _ad!.size.height.toDouble(),
+                  margin: const EdgeInsets.only(top: 10),
+                )
+              : Container(
+                  height: 0,
+                  width: 0,
+                ),
           Expanded(
             child: ValueListenableBuilder(
-              builder: (BuildContext context, int value, Widget child) {
+              builder: (BuildContext context, int value, Widget? child) {
                 // This builder will only get called when the _counter
                 // is updated.
                 return Column(
@@ -69,7 +77,11 @@ class _ValueListenableBuilderPage extends State<ValueListenableBuilderPage> {
                     SizedBox(
                       height: 30,
                     ),
-                    child,
+                    child ??
+                        Container(
+                          height: 0,
+                          width: 0,
+                        ),
                   ],
                 );
               },

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,24 +11,26 @@ class ListViewPage extends StatefulWidget {
 }
 
 class _ListViewPageState extends State<ListViewPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -42,18 +45,23 @@ class _ListViewPageState extends State<ListViewPage> {
       appBar: AppBar(
         title: Text("List View"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Container(
         color: Colors.cyanAccent[700],
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
-            container(Colors.amber[600], "Entry A"),
-            container(Colors.amber[500], "Entry B"),
-            container(Colors.amber[100], "Entry C"),
+            container(Colors.amber[600]!, "Entry A"),
+            container(Colors.amber[500]!, "Entry B"),
+            container(Colors.amber[100]!, "Entry C"),
             Container(
               color: Colors.orange,
               child: ListTile(

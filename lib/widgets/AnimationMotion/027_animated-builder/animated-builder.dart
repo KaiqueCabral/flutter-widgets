@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +11,8 @@ class AnimatedBuilderPage extends StatefulWidget {
 
 class _AnimatedBuilderPage extends State<AnimatedBuilderPage>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  BannerAd _ad;
+  late AnimationController _controller;
+  BannerAd? _ad;
 
   @override
   void initState() {
@@ -23,18 +24,20 @@ class _AnimatedBuilderPage extends State<AnimatedBuilderPage>
       upperBound: 2,
     )..repeat(reverse: true);
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -50,15 +53,20 @@ class _AnimatedBuilderPage extends State<AnimatedBuilderPage>
       appBar: AppBar(
         title: Text("Animated Builder"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        width: MediaQuery.of(context).size.width,
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              width: MediaQuery.of(context).size.width,
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Center(
         child: AnimatedBuilder(
           animation: _controller,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return Transform.rotate(
               angle: _controller.value * 2.0 * 3.1415,
               child: child,

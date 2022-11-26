@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
@@ -10,25 +11,27 @@ class TweenAnimationBuilderPage extends StatefulWidget {
 }
 
 class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
-  Color finalColor = Colors.red[900];
-  BannerAd _ad;
+  Color finalColor = Colors.red;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -43,10 +46,15 @@ class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
       appBar: AppBar(
         title: Text("Tween Animation Builder"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -55,16 +63,19 @@ class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
           children: <Widget>[
             Text("Click on icon below to see the animation:"),
             TweenAnimationBuilder(
-              tween: ColorTween(begin: Colors.red[50], end: finalColor),
+              tween: ColorTween(
+                begin: Colors.red[50],
+                end: finalColor,
+              ),
               duration: Duration(seconds: 2),
               curve: Curves.easeInCirc,
-              builder: (BuildContext context, Color _color, Widget child) {
+              builder: (BuildContext context, Color? _color, Widget? child) {
                 return IconButton(
-                  icon: child,
+                  icon: child ?? Icon(IconData(1)),
                   iconSize: 100.0,
                   color: _color,
                   onPressed: () {
-                    setState(() => finalColor = Colors.blue[900]);
+                    setState(() => finalColor = Colors.blue);
                   },
                 );
               },

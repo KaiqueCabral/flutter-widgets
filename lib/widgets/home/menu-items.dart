@@ -26,7 +26,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.accessibility,
         "Accessibility",
-        Colors.grey[900],
+        Colors.grey[900]!,
         MenuAccessibility(
           context: context,
           menu: Menu(colorItems: Colors.grey[700]),
@@ -35,7 +35,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.movie,
         "Animation & Motion",
-        Colors.red[500],
+        Colors.red[500]!,
         MenuAnimationMotion(
           context: context,
           menu: Menu(colorItems: Colors.red[300]),
@@ -44,7 +44,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.image,
         "Assets, Image & Icon",
-        Colors.yellow[900],
+        Colors.yellow[900]!,
         MenuAssetsImagesIcons(
           context: context,
           menu: Menu(colorItems: Colors.yellow[700]),
@@ -53,7 +53,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.sync,
         "Async",
-        Colors.deepOrange[900],
+        Colors.deepOrange[900]!,
         MenuAsync(
           context: context,
           menu: Menu(colorItems: Colors.deepOrange[700]),
@@ -62,7 +62,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.crop_square,
         "Basics",
-        Colors.grey[900],
+        Colors.grey[900]!,
         MenuBasics(
           context: context,
           menu: Menu(colorItems: Colors.grey[700]),
@@ -71,7 +71,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.person,
         "Interaction Models",
-        Colors.brown[900],
+        Colors.brown[900]!,
         MenuInteractionModels(
           context: context,
           menu: Menu(colorItems: Colors.brown[700]),
@@ -80,7 +80,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.layers,
         "Layout",
-        Colors.indigo[900],
+        Colors.indigo[900]!,
         MenuLayout(
           context: context,
           menu: Menu(colorItems: Colors.indigo[700]),
@@ -89,7 +89,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.library_add,
         "Material Components",
-        Colors.teal[900],
+        Colors.teal[900]!,
         MenuMaterialComponents(
           context: context,
           menu: Menu(colorItems: Colors.teal[700]),
@@ -98,7 +98,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.format_paint,
         "Packages",
-        Colors.pink[300],
+        Colors.pink[300]!,
         MenuPackages(
           context: context,
           menu: Menu(colorItems: Colors.pink[300]),
@@ -107,7 +107,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.format_paint,
         "Painting Effects",
-        Colors.purple[900],
+        Colors.purple[900]!,
         MenuPaintingEffects(
           context: context,
           menu: Menu(colorItems: Colors.purple[700]),
@@ -116,7 +116,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.settings_overscan,
         "Scrolling",
-        Colors.amber[700],
+        Colors.amber[700]!,
         MenuScrolling(
           context: context,
           menu: Menu(colorItems: Colors.amber[500]),
@@ -125,7 +125,7 @@ class _MenuItems extends State<MenuItems> {
       Menu.getMenu(
         Icons.style,
         "Styling",
-        Colors.cyan[700],
+        Colors.cyan[700]!,
         MenuStyling(
           context: context,
           menu: Menu(colorItems: Colors.cyan[500]),

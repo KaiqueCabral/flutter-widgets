@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -21,10 +22,10 @@ class InheritedWidgetPage extends StatelessWidget {
 
 class AncestorWidget extends InheritedWidget {
   final Check check;
-  AncestorWidget({Key key, this.check, Widget child})
+  AncestorWidget({Key? key, required this.check, required Widget child})
       : super(key: key, child: child);
 
-  static AncestorWidget of(BuildContext context) {
+  static AncestorWidget? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<AncestorWidget>();
   }
 
@@ -33,30 +34,32 @@ class AncestorWidget extends InheritedWidget {
 }
 
 class _AncestorWidget extends StatefulWidget {
-  _AncestorWidget({Key key}) : super(key: key);
+  _AncestorWidget({Key? key}) : super(key: key);
 
   _InheritedWidgetPage createState() => _InheritedWidgetPage();
 }
 
 class _InheritedWidgetPage extends State<_AncestorWidget> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -73,11 +76,16 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
       appBar: AppBar(
         title: Text("Inherited Widget"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
-      body: ancestorWidget.check.isLoading
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
+      body: (ancestorWidget?.check.isLoading ?? false)
           ? Center(child: CircularProgressIndicator())
           : Container(
               padding: EdgeInsets.all(20),
@@ -85,7 +93,7 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      "Username: ${ancestorWidget.check.isLoading}",
+                      "Username: ${ancestorWidget?.check.isLoading}",
                     ),
                   ),
                   SizedBox(
@@ -110,13 +118,13 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
                         child: Text("OK"),
                         onPressed: () async {
                           setState(() {
-                            ancestorWidget.check.isLoading = true;
+                            ancestorWidget?.check.isLoading = true;
                           });
 
                           await Future.delayed(Duration(seconds: 2));
 
                           setState(() {
-                            ancestorWidget.check.isLoading = false;
+                            ancestorWidget?.check.isLoading = false;
                           });
                         },
                       ),
@@ -126,7 +134,7 @@ class _InheritedWidgetPage extends State<_AncestorWidget> {
                     height: 30,
                   ),
                   Visibility(
-                    visible: !ancestorWidget.check.isLoading,
+                    visible: !(ancestorWidget?.check.isLoading ?? true),
                     child: ElevatedButton(
                       child: Icon(Icons.ac_unit),
                       onPressed: () {},

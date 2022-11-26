@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
@@ -10,24 +11,26 @@ class AnimatedPaddingPage extends StatefulWidget {
 
 class _AnimatedPaddingPage extends State<AnimatedPaddingPage> {
   EdgeInsets _padding = EdgeInsets.zero;
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -52,11 +55,16 @@ class _AnimatedPaddingPage extends State<AnimatedPaddingPage> {
       appBar: AppBar(
         title: Text("Animated Padding"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        width: MediaQuery.of(context).size.width,
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              width: MediaQuery.of(context).size.width,
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,7 +75,7 @@ class _AnimatedPaddingPage extends State<AnimatedPaddingPage> {
             },
             child: Text("Click Here!"),
             style: ElevatedButton.styleFrom(
-              primary: Colors.red[600],
+              backgroundColor: Colors.red[600],
               textStyle: TextStyle(
                 color: Colors.white,
               ),

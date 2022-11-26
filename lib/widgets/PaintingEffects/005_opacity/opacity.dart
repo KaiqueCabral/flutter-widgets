@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,24 +11,26 @@ class OpacityPage extends StatefulWidget {
 }
 
 class _OpacityPageState extends State<OpacityPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -42,20 +45,27 @@ class _OpacityPageState extends State<OpacityPage> {
       appBar: AppBar(
         title: Text("Opacity"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: SafeArea(
         minimum: EdgeInsets.all(10),
         child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           child: Column(
             children: <Widget>[
               Row(
                 children: <Widget>[
                   Container(
                     width: 100,
-                    height: 150,
+                    height: 75,
                     padding: EdgeInsets.all(20),
                     margin: EdgeInsets.all(5),
                     color: Colors.red,
@@ -73,19 +83,23 @@ class _OpacityPageState extends State<OpacityPage> {
                       child: Container(
                         padding: EdgeInsets.all(20),
                         margin: EdgeInsets.all(5),
-                        height: 150,
+                        height: 75,
                         color: Colors.red,
                         child: Center(
                           child: Text(
-                              "The same Red box\n\nBut with Opacity (0.75).",
-                              textAlign: TextAlign.center),
+                            "The same Red box\nBut with Opacity (0.75).",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Container(
                     width: 100,
-                    height: 150,
+                    height: 75,
                     padding: EdgeInsets.all(20),
                     margin: EdgeInsets.all(5),
                     color: Colors.red,
@@ -99,33 +113,29 @@ class _OpacityPageState extends State<OpacityPage> {
                   ),
                 ],
               ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(5),
-                      child: Opacity(
-                        child: Image.network(
-                          "https://picsum.photos/seed/picsum/600/300",
-                          colorBlendMode: BlendMode.modulate,
-                          loadingBuilder: (BuildContext context, Widget child,
-                              ImageChunkEvent progress) {
-                            if (progress == null) return child;
-                            return Center(
-                              child: CircularProgressIndicator(
-                                value: progress.expectedTotalBytes != null
-                                    ? progress.cumulativeBytesLoaded /
-                                        progress.expectedTotalBytes
-                                    : null,
-                              ),
-                            );
-                          },
-                        ),
-                        opacity: 0.75,
-                      ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(5),
+                  child: Opacity(
+                    child: Image.network(
+                      "https://picsum.photos/seed/picsum/600/300",
+                      colorBlendMode: BlendMode.modulate,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? progress) {
+                        if (progress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: progress.expectedTotalBytes != null
+                                ? progress.cumulativeBytesLoaded /
+                                    progress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
                     ),
+                    opacity: 0.75,
                   ),
-                ],
+                ),
               )
             ],
           ),

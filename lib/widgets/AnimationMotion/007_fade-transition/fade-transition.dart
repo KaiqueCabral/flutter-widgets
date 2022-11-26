@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,10 @@ class FadeTransitionPage extends StatefulWidget {
 
 class _FadeTransitionPage extends State<FadeTransitionPage>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation _animation;
-  CurvedAnimation _curvedAnimation;
-  BannerAd _ad;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+  late CurvedAnimation _curvedAnimation;
+  BannerAd? _ad;
 
   @override
   void initState() {
@@ -37,18 +38,20 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
       }
     });
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -67,29 +70,36 @@ class _FadeTransitionPage extends State<FadeTransitionPage>
       appBar: AppBar(
         title: Text('Fade Transition'),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 10),
-        child: Flex(
-          direction: Axis.vertical,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              child: AdWidget(ad: _ad),
-              width: MediaQuery.of(context).size.width,
-              height: _ad.size.height.toDouble(),
-              margin: EdgeInsets.only(bottom: isPortrait ? 50 : 0),
-            ),
-            FadeTransition(
-              opacity: _animation,
-              child: Icon(
-                Icons.lightbulb_outline,
-                color: Colors.lightGreen,
-                size: isPortrait ? 300 : 90,
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.only(top: 10),
+          child: Flex(
+            direction: Axis.vertical,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              (!kIsWeb)
+                  ? Container(
+                      child: AdWidget(ad: _ad!),
+                      width: MediaQuery.of(context).size.width,
+                      height: _ad!.size.height.toDouble(),
+                      margin: EdgeInsets.only(bottom: isPortrait ? 50 : 0),
+                    )
+                  : Container(
+                      height: 0,
+                      width: 0,
+                    ),
+              FadeTransition(
+                opacity: _animation,
+                child: Icon(
+                  Icons.lightbulb_outline,
+                  color: Colors.lightGreen,
+                  size: isPortrait ? 300 : 90,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

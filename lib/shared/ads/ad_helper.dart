@@ -14,6 +14,10 @@
 
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 class AdManager {
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
@@ -31,5 +35,39 @@ class AdManager {
       return 'ca-app-pub-3940256099942544/3986624511';
     }
     throw new UnsupportedError("Unsupported platform");
+  }
+
+  static BannerAd? createBannerAd() {
+    if (!kIsWeb) {
+      var _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
+
+      _ad.load();
+
+      return _ad;
+    }
+
+    return null;
+  }
+
+  static Container showBannerAd(BannerAd? _ad) {
+    return (_ad != null)
+        ? Container(
+            child: AdWidget(ad: _ad),
+            width: _ad.size.width.toDouble(),
+            height: _ad.size.height.toDouble(),
+          )
+        : Container(
+            height: 0,
+            width: 0,
+          );
   }
 }

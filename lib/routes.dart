@@ -69,6 +69,7 @@ import 'package:flutter_widgets/widgets/MaterialComponents/077_cupertino-activit
 import 'package:flutter_widgets/widgets/MaterialComponents/090_switch-list-tile/switch-list-tile.dart';
 import 'package:flutter_widgets/widgets/Packages/085_url_launcher/url_launcher.page.dart';
 import 'package:flutter_widgets/widgets/Packages/086_sqflite/sqflite.page.dart';
+import 'package:flutter_widgets/widgets/Packages/090_location/location.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/005_opacity/opacity.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/016_clip-r-rect/clip-r-rect.dart';
 import 'package:flutter_widgets/widgets/PaintingEffects/018_custom-paint/custom-paint.dart';
@@ -164,6 +165,8 @@ routes() {
     ListViewPage.routeName: (BuildContext context) => ListViewPage(),
     ListWheelScrollViewPage.routeName: (BuildContext context) =>
         ListWheelScrollViewPage(),
+    LocationPackagePage.routeName: (BuildContext context) =>
+        LocationPackagePage(),
     MediaQueryPage.routeName: (BuildContext context) => MediaQueryPage(),
     NotificationListenerPage.routeName: (BuildContext context) =>
         NotificationListenerPage(),

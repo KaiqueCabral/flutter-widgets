@@ -17,9 +17,9 @@ import 'package:flutter_widgets/widgets/AnimationMotion/079_animated-widget/anim
 class MenuAnimationMotion {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuAnimationMotion({this.context, this.menu}) {
+  MenuAnimationMotion({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(Icons.view_carousel, "Animated Builder",
           AnimatedBuilderPage.routeName, context),

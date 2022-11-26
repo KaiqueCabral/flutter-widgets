@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -11,24 +12,26 @@ class URLLauncherPage extends StatefulWidget {
 }
 
 class _URLLauncherPageState extends State<URLLauncherPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -44,8 +47,8 @@ class _URLLauncherPageState extends State<URLLauncherPage> {
         title: Text("URL Launcher"),
       ),
       bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
+        child: AdWidget(ad: _ad!),
+        height: _ad!.size.height.toDouble(),
         margin: const EdgeInsets.only(top: 10),
       ),
       body: Center(
@@ -70,10 +73,9 @@ class _URLLauncherPageState extends State<URLLauncherPage> {
   }
 
   static Future<void> launchInWebViewOrVC(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        universalLinksOnly: true,
+    if (await canLaunchUrl(Uri.https(url))) {
+      await launchUrl(
+        Uri.https(url),
       );
     } else {
       throw "Could not launch $url";

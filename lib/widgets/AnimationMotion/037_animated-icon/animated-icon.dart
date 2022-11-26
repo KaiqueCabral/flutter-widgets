@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,9 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
     with TickerProviderStateMixin {
   bool isPlaying = false;
   bool isMenuClosed = false;
-  AnimationController _animationControllerPlay;
-  AnimationController _animationControllerMenu;
-  BannerAd _ad;
+  late AnimationController _animationControllerPlay;
+  late AnimationController _animationControllerMenu;
+  BannerAd? _ad;
 
   @override
   void initState() {
@@ -28,18 +29,20 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
       duration: Duration(seconds: 2),
     );
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -66,13 +69,18 @@ class _AnimatedIconPage extends State<AnimatedIconPage>
       appBar: AppBar(
         title: Text("Animated Icon"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        width: MediaQuery.of(context).size.width,
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              width: MediaQuery.of(context).size.width,
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Container(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

@@ -30,9 +30,9 @@ import 'package:flutter_widgets/widgets/Layout/089_grid-view/grid-view.dart';
 class MenuLayout {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuLayout({this.context, this.menu}) {
+  MenuLayout({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(
           Icons.vertical_align_bottom, "Align", AlignPage.routeName, context),

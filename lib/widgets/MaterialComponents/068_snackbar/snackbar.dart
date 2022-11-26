@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,24 +11,26 @@ class SnackBarPage extends StatefulWidget {
 }
 
 class _SnackBarPageState extends State<SnackBarPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -42,10 +45,15 @@ class _SnackBarPageState extends State<SnackBarPage> {
       appBar: AppBar(
         title: Text("SnackBar"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -69,7 +77,7 @@ class _SnackBarPageState extends State<SnackBarPage> {
                   children: <Widget>[
                     containerExplained(
                       "Widget with scaffold",
-                      Colors.blue[500],
+                      Colors.blue[500]!,
                     ),
                   ],
                 ),
@@ -78,11 +86,11 @@ class _SnackBarPageState extends State<SnackBarPage> {
                   children: <Widget>[
                     containerExplained(
                       "Widget with\nbutton to activate\nthe SnackBar",
-                      Colors.blue[200],
+                      Colors.blue[200]!,
                     ),
                     containerExplained(
                       "Widget with\nbutton to activate\nthe SnackBar",
-                      Colors.blue[200],
+                      Colors.blue[200]!,
                     ),
                   ],
                 ),
@@ -132,7 +140,7 @@ class RowWithIcons extends StatelessWidget {
         TextButton.icon(
           onPressed: () {
             snackBarMessage(
-                context, Icons.directions_bike, Colors.amber[100], "Bike");
+                context, Icons.directions_bike, Colors.amber[100]!, "Bike");
           },
           icon: Icon(Icons.directions_bike),
           label: Text("Bike"),
@@ -143,7 +151,7 @@ class RowWithIcons extends StatelessWidget {
         TextButton.icon(
           onPressed: () {
             snackBarMessage(
-                context, Icons.directions_bus, Colors.teal[100], "Bus");
+                context, Icons.directions_bus, Colors.teal[100]!, "Bus");
           },
           icon: Icon(Icons.directions_bus),
           label: Text("Bus"),
@@ -154,7 +162,7 @@ class RowWithIcons extends StatelessWidget {
         TextButton.icon(
           onPressed: () {
             snackBarMessage(
-                context, Icons.directions_car, Colors.indigo[100], "Car");
+                context, Icons.directions_car, Colors.indigo[100]!, "Car");
           },
           icon: Icon(Icons.directions_car),
           label: Text("Car"),

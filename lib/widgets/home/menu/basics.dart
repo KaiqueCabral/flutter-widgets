@@ -8,9 +8,9 @@ import 'package:flutter_widgets/widgets/Basics/072_builder/builder.dart';
 class MenuBasics {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuBasics({this.context, this.menu}) {
+  MenuBasics({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(Icons.build, "Builder", BuilderPage.routeName, context),
       menu.getNavItem(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Menu {
-  final Color colorItems;
+  final Color? colorItems;
   Menu({this.colorItems});
 
   static ExpansionTile getMenu(
@@ -88,11 +88,11 @@ class Menu {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.blue[900],
-            Colors.blue[700],
+            Colors.blue[900]!,
+            Colors.blue[700]!,
             Colors.blue,
-            Colors.blue[400],
-            Colors.blue[300],
+            Colors.blue[400]!,
+            Colors.blue[300]!,
           ],
         ),
       ),
@@ -153,10 +153,9 @@ class Menu {
   }
 
   static Future<void> launchInWebViewOrVC(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        universalLinksOnly: true,
+    if (await canLaunchUrl(Uri.https(url))) {
+      await launchUrl(
+        Uri.https(url),
       );
     } else {
       throw "Could not launch $url";

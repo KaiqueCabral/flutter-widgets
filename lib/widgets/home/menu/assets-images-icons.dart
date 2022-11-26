@@ -5,9 +5,9 @@ import 'package:flutter_widgets/widgets/AssetsImagesIcons/065_image/image.dart';
 class MenuAssetsImagesIcons {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuAssetsImagesIcons({this.context, this.menu}) {
+  MenuAssetsImagesIcons({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(Icons.image, "Image", ImagePage.routeName, context),
     ];

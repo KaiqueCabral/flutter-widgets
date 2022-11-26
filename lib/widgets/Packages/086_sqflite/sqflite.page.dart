@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -11,24 +12,26 @@ class SQLitePage extends StatefulWidget {
 }
 
 class _SQLitePageState extends State<SQLitePage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -43,11 +46,7 @@ class _SQLitePageState extends State<SQLitePage> {
       appBar: AppBar(
         title: Text("SQLite"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-        margin: const EdgeInsets.only(top: 10),
-      ),
+      bottomSheet: AdManager.showBannerAd(_ad),
       body: Center(
         child: InkWell(
           child: Container(
@@ -70,10 +69,9 @@ class _SQLitePageState extends State<SQLitePage> {
   }
 
   static Future<void> launchInWebViewOrVC(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        universalLinksOnly: true,
+    if (await canLaunchUrl(Uri.https(url))) {
+      await launchUrl(
+        Uri.https(url),
       );
     } else {
       throw "Could not launch $url";

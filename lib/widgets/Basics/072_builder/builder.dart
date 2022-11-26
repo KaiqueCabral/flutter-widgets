@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -9,24 +10,26 @@ class BuilderPage extends StatefulWidget {
 }
 
 class _BuilderPageState extends State<BuilderPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.largeBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.largeBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -41,11 +44,16 @@ class _BuilderPageState extends State<BuilderPage> {
       appBar: AppBar(
         title: Text("Builder"),
       ),
-      body: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-        margin: const EdgeInsets.only(top: 10),
-      ),
+      body: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+              margin: const EdgeInsets.only(top: 10),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       floatingActionButton: Builder(
         builder: (BuildContext context) {
           return FloatingActionButton(

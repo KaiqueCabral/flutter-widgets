@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -13,24 +14,26 @@ class CupertinoActivityIndicatorPage extends StatefulWidget {
 
 class _CupertinoActivityIndicatorPageState
     extends State<CupertinoActivityIndicatorPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -45,10 +48,15 @@ class _CupertinoActivityIndicatorPageState
       appBar: AppBar(
         title: Text("Cupertino Activity Indicator"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,7 +74,7 @@ class _CupertinoActivityIndicatorPageState
               height: 100,
               fit: BoxFit.cover,
               loadingBuilder: (BuildContext context, Widget child,
-                  ImageChunkEvent loadingProgress) {
+                  ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Center(
                   child: CupertinoActivityIndicator(),
@@ -77,16 +85,16 @@ class _CupertinoActivityIndicatorPageState
             StreamBuilder<int>(
               stream: getNumber(),
               builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                if (snapshot.data != null && snapshot.data > 0) {
+                if (snapshot.data != null && snapshot.data! > 0) {
                   return Column(
                     children: <Widget>[
                       Text(
-                        "${snapshot.data + 1}",
+                        "${snapshot.data! + 1}",
                         style: TextStyle(
                           fontSize: 14,
                         ),
                       ),
-                      snapshot.data + 1 == 100
+                      snapshot.data! + 1 == 100
                           ? Icon(
                               Icons.check_box,
                               color: Colors.green,
@@ -95,7 +103,10 @@ class _CupertinoActivityIndicatorPageState
                     ],
                   );
                 }
-                return Container();
+                return Container(
+                  height: 0,
+                  width: 0,
+                );
               },
             ),
           ],

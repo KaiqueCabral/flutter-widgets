@@ -7,9 +7,9 @@ import 'package:flutter_widgets/widgets/Async/030_value-listenable-builder/value
 class MenuAsync {
   final BuildContext context;
   final Menu menu;
-  List<Widget> subItems;
+  late List<Widget> subItems;
 
-  MenuAsync({this.context, this.menu}) {
+  MenuAsync({required this.context, required this.menu}) {
     subItems = <Widget>[
       menu.getNavItem(Icons.arrow_forward_ios, "Future Builder",
           FutureBuilderPage.routeName, context),

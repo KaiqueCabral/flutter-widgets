@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,24 +11,26 @@ class MediaQueryPage extends StatefulWidget {
 }
 
 class _MediaQueryPageState extends State<MediaQueryPage> {
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -83,10 +86,15 @@ class _MediaQueryPageState extends State<MediaQueryPage> {
         title: Text("Media Query"),
       ),
       backgroundColor: Colors.yellow[100],
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (_mediaQuery.orientation == Orientation.landscape) {
@@ -123,9 +131,9 @@ class _MediaQueryPageState extends State<MediaQueryPage> {
                     _mutualExpanded("Card 3"),
                   ],
                 ),
-                _footerExpanded("Using Flex 1", Colors.red[200], 1),
-                _footerExpanded("Using Flex 2", Colors.red[400], 2),
-                _footerExpanded("Using Flex 3", Colors.red[600], 3),
+                _footerExpanded("Using Flex 1", Colors.red[200]!, 1),
+                _footerExpanded("Using Flex 2", Colors.red[400]!, 2),
+                _footerExpanded("Using Flex 3", Colors.red[600]!, 3),
               ],
             ),
           );

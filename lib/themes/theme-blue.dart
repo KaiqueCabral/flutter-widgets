@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-appTheme(Color themeColor) {
+appTheme(MaterialColor themeColor) {
   return ThemeData(
     primarySwatch: themeColor,
     dividerTheme: DividerThemeData(

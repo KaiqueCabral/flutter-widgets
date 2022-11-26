@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/shared/ads/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,24 +11,26 @@ class DraggablePage extends StatefulWidget {
 
 class _DraggablePage extends State<DraggablePage> {
   int _radio = 0, _tv = 0, _star = 0;
-  BannerAd _ad;
+  BannerAd? _ad;
 
   @override
   void initState() {
     super.initState();
 
-    _ad = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.fullBanner,
-      request: AdRequest(),
-      listener: AdListener(
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    );
+    if (!kIsWeb) {
+      _ad = BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
 
-    _ad.load();
+      _ad?.load();
+    }
   }
 
   @override
@@ -42,10 +45,15 @@ class _DraggablePage extends State<DraggablePage> {
       appBar: AppBar(
         title: Text("Draggable"),
       ),
-      bottomSheet: Container(
-        child: AdWidget(ad: _ad),
-        height: _ad.size.height.toDouble(),
-      ),
+      bottomSheet: (!kIsWeb)
+          ? Container(
+              child: AdWidget(ad: _ad!),
+              height: _ad!.size.height.toDouble(),
+            )
+          : Container(
+              height: 0,
+              width: 0,
+            ),
       body: SafeArea(
         minimum: EdgeInsets.all(10),
         child: Column(
@@ -69,7 +77,7 @@ class _DraggablePage extends State<DraggablePage> {
                 Expanded(
                   child: DragTarget(
                     builder:
-                        (context, List<String> candidateData, rejectedData) {
+                        (context, List<String?> candidateData, rejectedData) {
                       return title("TV", Colors.red);
                     },
                     onWillAccept: (data) {
@@ -85,7 +93,7 @@ class _DraggablePage extends State<DraggablePage> {
                 Expanded(
                   child: DragTarget(
                     builder:
-                        (context, List<String> candidateData, rejectedData) {
+                        (context, List<String?> candidateData, rejectedData) {
                       return title("Star", Colors.red);
                     },
                     onWillAccept: (data) {
@@ -101,7 +109,7 @@ class _DraggablePage extends State<DraggablePage> {
                 Expanded(
                   child: DragTarget(
                     builder:
-                        (context, List<String> candidateData, rejectedData) {
+                        (context, List<String?> candidateData, rejectedData) {
                       return title("Radio", Colors.red);
                     },
                     onWillAccept: (data) {
